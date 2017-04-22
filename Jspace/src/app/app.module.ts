@@ -19,6 +19,6 @@ import { AppComponent } from './app.component';
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent,AceComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
