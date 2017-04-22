@@ -1,5 +1,6 @@
 #ace {
-    height: 250px;
-    width: 450px;
-    margin: 200px;
+    position: absolute;
+    height:50%;
+    width: 50%;
+    margin-left: 10%;
 }
