@@ -5,6 +5,9 @@ import { HttpModule }           from '@angular/http';
 import { AceEditorComponent }   from 'ng2-ace-editor';
 import { AceComponent }         from './ace.component';
 import { AppComponent }         from './app.component';
+import { InMemoryWebApiModule }   from 'angular-in-memory-web-api';
+import { InMemoryDataService }    from './in-memory.data-service';
+import { CodeService }          from './code.service';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,10 @@ import { AppComponent }         from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
-  providers: [],
+  providers: [CodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,11 @@
 <ace-editor id="ace"#editor
        [(text)]="text"
+       (textChanged)="onChange($event)"
        [options]="options"
 ></ace-editor>
+  <div>
+    <div *ngFor="let code of codes | async">
+      {{code.coded}}
+    </div>
+  </div>
+
