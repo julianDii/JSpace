@@ -3,14 +3,16 @@ import { NgModule }             from '@angular/core';
 import { FormsModule }          from '@angular/forms';
 import { HttpModule }           from '@angular/http';
 import { AceEditorComponent }   from 'ng2-ace-editor';
-import { AceComponent }         from './ace.component';
+import { AceInputComponent }         from './ace-input/ace-input.component';
 import { AppComponent }         from './app.component';
+import { AceOutputComponent } from './ace-output/ace-output.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AceEditorComponent,
-    AceComponent
+    AceInputComponent,
+    AceOutputComponent
   ],
   imports: [
     BrowserModule,
