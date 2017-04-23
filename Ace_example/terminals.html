@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+
+      .wrapper {
+          width: 80%;
+          margin: auto;
+      }
+        .ace_editor {
+            height: 200px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <h1>Input terminal</h1>
+  <pre id="editor_input"></pre>
+
+  <h1>Output terminal</h1>
+  <pre id="editor_output"></pre>
+
+</div>
+  <!-- load ace -->
+  <script src="src/ace.js"></script>
+  <script>
+      var input_text = 'start';
+      console.log(input_text);
+      // input terminal
+      var editor_input = ace.edit("editor_input");
+      editor_input.setTheme("ace/theme/tomorrow_night_blue");
+      editor_input.session.setMode("ace/mode/javascript");
+      editor_input.setOptions({
+          autoScrollEditorIntoView: true,
+          minLines: 30
+      });
+      editor_input.renderer.setScrollMargin(10, 10, 10, 10);
+      editor_input.setHighlightActiveLine(true);
+
+      // To listen for an onchange:
+      editor_input.getSession().on('change', function(e) {
+          input_text = editor_input.getValue();
+          editor_output.setValue(input_text);
+          console.log(input_text);
+          console.log("number of lines: " + editor_input.session.getLength()); // Get total number of lines
+      });
+
+
+      // output terminal
+      var editor_output = ace.edit("editor_output");
+      editor_output.setTheme("ace/theme/tomorrow_night_blue");
+      editor_output.session.setMode("ace/mode/javascript");
+      editor_output.setOptions({
+          autoScrollEditorIntoView: true,
+          minLines: 30
+      });
+      editor_output.renderer.setScrollMargin(10, 10, 10, 10);
+      editor_output.renderer.setShowGutter(false); // Editor without line numbers
+      editor_output.setReadOnly(true);
+      editor_output.setHighlightActiveLine(false);
+
+
+  </script>
+
+
+
+</body>
+</html>
