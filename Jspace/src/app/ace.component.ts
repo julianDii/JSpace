@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Code }                 from './code';
-import { Subject }           from 'rxjs/Subject';
-import { Observable }        from 'rxjs/Observable';
-import { CodeTestSevice }    from './code-test.service'
-import { CodeService }       from './code.service'
+import { Code }                         from './code';
+import { Subject }                      from 'rxjs/Subject';
+import { Observable }                   from 'rxjs/Observable';
+import { CodeTestSevice }               from './code-test.service'
+import { CodeService }                  from './code.service'
 // Observable class extensions
 import 'rxjs/add/observable/of';
 // Observable operators
@@ -48,11 +48,7 @@ export class AceComponent implements OnInit {
     }
 
   ngAfterViewInit() {
-        this.editor.getEditor().setOptions({
-        });
+        this.editor.getEditor().setOptions({ });
         this.editor.getEditor().getSession().setMode("ace/mode/javascript");
-      
     }
-    
-
 }
