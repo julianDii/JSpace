@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {AceInputComponent} from "./ace-input/ace-input.component";
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,10 @@ export class AppComponent {
   title = 'JSpace!';
   titleInput = 'Input terminal'
   titleOutput = 'Output terminal'
+
+  @ViewChild(AceInputComponent) sendCode: AceInputComponent;
+
+  send() {
+    console.log('send text: ' + this.sendCode.sendCode());
+  }
 }

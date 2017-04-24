@@ -33,4 +33,8 @@ export class AceInputComponent {
     });
   }
 
+  sendCode() {
+    return this.inputEditor.getEditor();
+  }
+
 }
