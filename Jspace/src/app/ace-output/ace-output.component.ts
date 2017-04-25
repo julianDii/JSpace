@@ -11,16 +11,18 @@ export class AceOutputComponent {
 
   ngAfterViewInit() {
     var outputEditor = this.outputEditor.getEditor();
+
     outputEditor.setOptions({
       mode: "ace/mode/javascript",
       printMargin: false,
       readOnly: true, // To simulate terminal only for output text
       showGutter: false
     });
-
     outputEditor.renderer.setScrollMargin(10);
+  }
 
-
+  showAnswer(text) {
+    this.outputEditor.getEditor().setValue(text); // Get the content of input editor
   }
 
 }

@@ -3,3 +3,8 @@
   margin: auto;
 }
 
+#btnRun {
+  width: 50px;
+  height: 25px;
+  background-color: rgb(255, 140, 0);
+}
