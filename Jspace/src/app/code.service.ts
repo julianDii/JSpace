@@ -9,8 +9,7 @@ export class CodeService {
     private codeUrl = 'api/codes';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http) { }
-    
+    constructor(private http: Http) {}
     getCoded(): Promise<Code[]> {
         return this.http.get(this.codeUrl)
                .toPromise()
