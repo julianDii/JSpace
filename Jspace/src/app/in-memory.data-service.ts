@@ -5,12 +5,10 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService  {
   createDb() {
     let codes = [
-      {id:1, coded: 'x', response: 'go on Code!'},
-      {id:2, coded: 'var', response: 'Do you want to declare a variable?'},
-      {id:3, coded: 'var x=1;', response: 'nice! You declared a variable'},
-      {id:4, coded: 'function()', response: 'U going for a function?'},
-      {id:5, coded: 'function()x={var y=1;};', response: 'cool! This is a correct function'},
-      {id:6, coded: '//comment', response: 'This is a comment'},
+      {id:1, coded: '', response: 'go on Code!'},
+      {id:2, coded: 'let', response: 'You want to declare a variable? What is its name?'},
+      {id:3, coded: 'let x', response: 'ok!, cool x? and what is the value?'},
+      {id:4, coded: 'let x=1', response: 'Cool! The value is 1. Nice you are done!'},
     ];
     return {codes};
   }
