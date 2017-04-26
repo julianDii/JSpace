@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 # Install additional modules
+To get the project started on your machine install the following modules and copy the entire node_modules from a new angular-cli project.
 
 npm i -S ng2-ace-editor
 npm i angular-in-memory-web-api
