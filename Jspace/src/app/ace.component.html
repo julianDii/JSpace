@@ -1,0 +1,14 @@
+<ace-editor id="ace"#editor
+       [(text)]="text"
+       (textChanged)="onChange($event)"
+       [options]="options"
+></ace-editor>
+<div>TASK1: Declare a varaiable with name x and value 1.</div>
+  <div>
+    <div *ngFor="let code of codes | async;let i = index" >
+      <div *ngIf="i==0">
+        {{code.response}}
+      </div>
+    </div>
+  </div>
+
