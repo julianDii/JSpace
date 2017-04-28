@@ -14,12 +14,12 @@ export class AppComponent {
   buttonName = 'Run';
 
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;
-  @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
+  @ViewChild(AceOutputComponent) aceOutputEvalFunction: AceOutputComponent;
 
   run() {
     var textFromInput = this.aceInput.sendCode();
-    console.log('sent text: ' +'/n' + textFromInput);
+    console.log('sent text: ' + textFromInput);
     console.log();
-    this.aceOutput.showAnswer(textFromInput);
+    this.aceOutputEvalFunction.showAnswer(textFromInput);
   }
 }
