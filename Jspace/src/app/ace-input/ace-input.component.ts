@@ -20,15 +20,37 @@ export class AceInputComponent {
     });
     inputEditor.renderer.setScrollMargin(10);
 
-    // To listen for an onchange:
-    inputEditor.on('change', function (e) {
-      // console.log(inputEditor.getValue());
-      // console.log("number of lines: " + inputEditor.session.getLength()); // Get total number of lines
-    });
+    // FOR TESTING
+    var function1 = "var me = 'jana'; " + "\n" +
+      "function foo(name) {" + "\n" +
+      "var x = 3; " + "\n" +
+      "var y = 'hello '; " + "\n" +
+      "return y+name; " + "\n" +
+      "} " + "\n" +
+      "foo(me);"
+
+    inputEditor.setValue(function1);
+    // END TESTING
   }
 
   sendCode() {
-    return this.inputEditor.getEditor().getValue(); // Get the content of input editor
+    // annotations are syntax errors, infos or warnings
+    // ANNOTATION OBJECT - DOCUMENTATION
+    // { row:82,
+    //   column:22,
+    //   text:"Use the array literal notation [].",
+    //   type:"warning",
+    //   lint:{/*raw output from jslint*/}
+    // }
+    var annotations = this.inputEditor.getEditor().session.getAnnotations();
+    console.log(annotations);
+
+    if (annotations.length != 0) {
+      // send annotations object if editor shows any annotations
+      return ['error', annotations];
+    }
+    // send code typed in input editor
+    return ['code', this.inputEditor.getEditor().getValue()];
   }
 
 }
