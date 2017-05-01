@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {AceInputComponent} from "./ace-input/ace-input.component";
+import {AceOutputComponent} from "./ace-output/ace-output.component";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'JSpace!';
+  titleInput = 'Input terminal';
+  titleOutput = 'Output terminal';
+  buttonName = 'Run';
+
+  @ViewChild(AceInputComponent) aceInput: AceInputComponent;
+  @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
+
+  setTextFromInputToOutput() {
+    var textFromInput = this.aceInput.getStringFromEditor();
+    console.log('sent text: ' + textFromInput);
+    this.aceOutput.setEditorValue(textFromInput);
+  }
 }
