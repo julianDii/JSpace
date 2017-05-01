@@ -18,17 +18,11 @@ export class AceInputComponent {
       readOnly: false,
       showGutter: true
     });
+
     inputEditor.renderer.setScrollMargin(10);
-
-    // To listen for an onchange:
-    inputEditor.on('change', function (e) {
-      // console.log(inputEditor.getValue());
-      // console.log("number of lines: " + inputEditor.session.getLength()); // Get total number of lines
-    });
   }
 
-  sendCode() {
-    return this.inputEditor.getEditor().getValue(); // Get the content of input editor
+  getStringFromEditor() {
+    return this.inputEditor.getEditor().getValue();
   }
-
 }

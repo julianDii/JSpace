@@ -15,14 +15,14 @@ export class AceOutputComponent {
     outputEditor.setOptions({
       mode: "ace/mode/javascript",
       printMargin: false,
-      readOnly: true, // To simulate terminal only for output text
+      readOnly: true,
       showGutter: false
     });
     outputEditor.renderer.setScrollMargin(10);
   }
 
-  showAnswer(text) {
-    this.outputEditor.getEditor().setValue(text); // Get the content of input editor
+  setEditorValue(text) {
+    this.outputEditor.getEditor().setValue(text);
   }
 
 }
