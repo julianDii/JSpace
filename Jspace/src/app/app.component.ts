@@ -70,6 +70,7 @@ export class AppComponent implements OnInit {
     case 1:
     this.aceOutput.setEditorValue("Awesome, " + this.name + "! It worked.");
     case 2:
+    this.aceInput.setEditorValue("")
     break;
   }
  }
