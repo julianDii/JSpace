@@ -9,8 +9,6 @@ import {AceOutputComponent} from "./ace-output/ace-output.component";
 })
 
 export class AppComponent implements OnInit {
-    
-
   title = 'JSpace!';
   titleInput = 'Input terminal';
   titleOutput = 'Output terminal';
