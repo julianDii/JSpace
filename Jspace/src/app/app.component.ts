@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import {AceInputComponent} from "./ace-input/ace-input.component";
-import {AceOutputComponent} from "./ace-output/ace-output.component";
+import { AceInputComponent }            from "./ace-input/ace-input.component";
+import { AceOutputComponent }           from "./ace-output/ace-output.component";
 
 @Component({
   selector: 'app-root',
