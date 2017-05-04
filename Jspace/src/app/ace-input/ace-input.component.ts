@@ -25,4 +25,8 @@ export class AceInputComponent {
   getStringFromEditor() {
     return this.inputEditor.getEditor().getValue();
   }
+
+  setEditorValue(text) {
+    this.inputEditor.getEditor().setValue(text);
+  }
 }
