@@ -26,6 +26,7 @@ export class AceOutputComponent {
 
   setEditorValue(text) {
     this.outputEditor.getEditor().setValue(text);
+    this.outputEditor.getEditor().navigateFileStart();
   }
 
 }
