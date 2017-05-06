@@ -11,7 +11,7 @@ export class Task {
     private id: number,
     private instruction: String,
     private messageCorrect: String,
-    private messagesFalse: String[]
+    private messagesWrong: String[]
   ) {}
 
 
@@ -19,14 +19,14 @@ export class Task {
     return this.instruction;
   }
 
-  getMessageCorrect(): String {
-    return this.messageCorrect;
+  getMessageCorrect(valueFromUser: string = ""): String {
+    console.log(valueFromUser)
+    return this.setValueFromUserToMessages(valueFromUser, this.messageCorrect);
   }
 
-  getMessagesFalse(): String[] {
-    return this.messagesFalse;
+  getMessagesWrong(valueFromUser: String = ""): String[] {
+    return this.messagesWrong;
   }
-
 
   setInstruction(value: String) {
     this.instruction = value;
@@ -36,7 +36,12 @@ export class Task {
     this.messageCorrect = value;
   }
 
-  setMessagesFalse(value: String[]) {
-    this.messagesFalse = value;
+  setMessagesWrong(value: String[]) {
+    this.messagesWrong = value;
   }
+
+  setValueFromUserToMessages(valueFromUser: string, message: String) {
+    return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
+  }
+
 }
