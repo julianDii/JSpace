@@ -13,7 +13,6 @@ export class AppComponent {
   titleInput = 'Input terminal';
   titleOutput = 'Output terminal';
   buttonName = 'Run';
-  codes:JSON;
 
   constructor(private analyseCodeService: AnalyseCodeService) {}
 
@@ -27,7 +26,20 @@ export class AppComponent {
   }
   runCodeAnalyse() {
     var textFromInput = this.aceInput.getStringFromEditor();
-    this.analyseCodeService.getTokenizedCode(textFromInput)
-    .subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data)));
+    this.analyseCodeService.getTokenizedCode(textFromInput).subscribe();
+    if(this.analyseCodeService.taskOneTest()){
+      this.aceOutput.setEditorValue("You declared a variable");
+    } else {
+      this.aceOutput.setEditorValue("try again!");
+    }
+    
+    
+   
   }
+  displayTokenizedCode() {
+    var textFromInput = this.aceInput.getStringFromEditor();
+    this.analyseCodeService.getTokenizedCode(textFromInput)
+    .subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data,null,2)));
+  }
+  
 }
