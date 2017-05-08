@@ -1,8 +1,9 @@
-import {Injectable, ViewChild}   from '@angular/core';
-import {TasksService} from "../tasks/tasks.service";
-import {Task}         from "app/tasks/task";
-import {AceInputComponent} from "../ace-input/ace-input.component";
-import {AceOutputComponent} from "../ace-output/ace-output.component";
+import {Injectable, ViewChild}  from '@angular/core';
+import {TasksService}           from '../tasks/tasks.service';
+import {Task}                   from 'app/tasks/task';
+import {AceInputComponent}      from '../ace-input/ace-input.component';
+import {AceOutputComponent}     from '../ace-output/ace-output.component';
+import {CodeAnalyzeService}     from '../analyze/analyze.service'
 
 /**
  * GameService controls the game progress:
@@ -34,6 +35,7 @@ export class GameService {
     this.aceInput = aceIn;
     this.aceOutput = aceOut;
     this.currentTaskNumber = 0;
+  
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     this.isOver = false;
     console.log(this.currentTask);
@@ -46,12 +48,16 @@ export class GameService {
     let textFromInput = this.aceInput.getStringFromEditor();
     // TODO: implement syntax checking before validating code
     console.log('text from input: ' + textFromInput);
-    let answer = this.tasksService.validateCode(this.currentTaskNumber, textFromInput);
+    let answer = this.tasksService.validateCode(this.currentTaskNumber,textFromInput);
     if (answer.solved) {
       this.btnNextDisabled = false;
     }
     this.aceOutput.setEditorValue(answer.message);
     console.log("current task", this.currentTask);
+  }
+  
+  getCurrentTaskNumber():number {
+    return this.currentTaskNumber
   }
 
   goToNextTask() {

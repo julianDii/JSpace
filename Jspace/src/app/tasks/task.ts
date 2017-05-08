@@ -14,7 +14,6 @@ export class Task {
     private messagesWrong: String[]
   ) {}
 
-
   getInstruction(): String {
     return this.instruction;
   }
