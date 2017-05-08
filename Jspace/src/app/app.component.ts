@@ -26,20 +26,19 @@ export class AppComponent {
   }
   runCodeAnalyse() {
     var textFromInput = this.aceInput.getStringFromEditor();
-    this.analyseCodeService.getTokenizedCode(textFromInput).subscribe();
+    this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+      data => this.analyseCodeService.taskOneTest()
+    );
     if(this.analyseCodeService.taskOneTest()){
       this.aceOutput.setEditorValue("You declared a variable");
     } else {
-      this.aceOutput.setEditorValue("try again!");
+      this.aceOutput.setEditorValue("try again")
     }
-    
-    
-   
   }
+
   displayTokenizedCode() {
     var textFromInput = this.aceInput.getStringFromEditor();
     this.analyseCodeService.getTokenizedCode(textFromInput)
     .subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data,null,2)));
   }
-  
 }
