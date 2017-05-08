@@ -14,8 +14,6 @@ export class AppComponent {
   titleOutput = 'Output terminal';
   buttonName = 'Run';
 
-  constructor(private analyseCodeService: AnalyseCodeService) {}
-
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;
   @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
 
@@ -24,5 +22,5 @@ export class AppComponent {
     console.log('sent text: ' + textFromInput);
     this.aceOutput.setEditorValue(textFromInput);
   }
-  
+
 }
