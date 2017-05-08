@@ -9,7 +9,7 @@ app.get('/api/user/tok/:code', function(req, res) {
 
 // endpoint for parse user code
 app.get('/api/user/parse/:code', function(req,res) {
-    res.send(esprima.parse(req.params.code));
+    res.json(esprima.parse(req.params.code));
 });
 
 app.listen(3000, function () {
