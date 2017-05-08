@@ -22,16 +22,7 @@ export class AppComponent implements OnInit{
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;
   @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
 
-  constructor(private game: GameService) {
-<<<<<<< HEAD
-=======
-  }
-
-  ngOnInit() {
-    this.game.newGame(this.aceInput, this.aceOutput);
-    console.log("new game created")
->>>>>>> 7cf9dff7dbf1c08cf31bc9900ebe52871e4f1bec
-  }
+  constructor(private game: GameService) {}
 
   ngOnInit() {
     this.game.newGame(this.aceInput, this.aceOutput);
