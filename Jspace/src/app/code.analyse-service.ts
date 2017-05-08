@@ -26,9 +26,22 @@ export class AnalyseCodeService {
       if (p != undefined){
         for (var key in p[0]) {
           if (p[0].hasOwnProperty(key)) {
-            if(p[0][key] === "Keyword" && (p[1][key] === "Identifier") && (p[2][key] === "Punctuator")){
-              console.log("variable declaration = true");
-              return true;
+            if
+            (p[0][key] === "Keyword" && 
+            (p[1][key] === "Identifier") && 
+            (p[2][key] === "Punctuator") && 
+            (p[3][key] === "Numeric") && 
+            (p[4][key] === "Punctuator")){
+              console.log("Variable is properly declared, but Identifier is not ok");
+              for(var value in p[0]) {
+                if (p[0].hasOwnProperty(value)) {
+                  if
+                  (p[1][value] === "oxygen"){
+                    console.log("OXYGEN TRUE");
+                    return true;
+                  }
+                }
+              }
           } else {
             console.log("false")}
             return false;
