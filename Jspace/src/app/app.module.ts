@@ -6,7 +6,6 @@ import { AceEditorComponent }   from 'ng2-ace-editor';
 import { AceInputComponent }         from './ace-input/ace-input.component';
 import { AppComponent }         from './app.component';
 import { AceOutputComponent } from './ace-output/ace-output.component';
-import { AnalyseCodeService }   from './code.analyse-service'
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { AnalyseCodeService }   from './code.analyse-service'
     FormsModule,
     HttpModule
   ],
-  providers: [AnalyseCodeService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
