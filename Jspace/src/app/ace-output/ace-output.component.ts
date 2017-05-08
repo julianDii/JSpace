@@ -13,16 +13,20 @@ export class AceOutputComponent {
     var outputEditor = this.outputEditor.getEditor();
 
     outputEditor.setOptions({
-      mode: "ace/mode/javascript",
+      mode: "ace/mode/text",
       printMargin: false,
       readOnly: true,
-      showGutter: false
+      showGutter: false,
+      highlightActiveLine: false,
+      wrapBehavioursEnabled: true,
+      wrap: "free"
     });
     outputEditor.renderer.setScrollMargin(10);
   }
 
   setEditorValue(text) {
     this.outputEditor.getEditor().setValue(text);
+    this.outputEditor.getEditor().navigateFileStart();
   }
 
 }
