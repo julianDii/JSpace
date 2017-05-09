@@ -7,21 +7,33 @@ import { Observable } from "rxjs/Observable";
 export class AnalyseCodeService {
     private tokenizeCodeEndpoint = 'http://localhost:3000/api/user/tok';
     private parseCodeEndpoint = 'http://localhost:3000/api/user/parse';
-    code:string;
-    json;
     
     constructor(private http: Http) { }
     
     getTokenizedCode(code) {
-      this.code = code;
+      
       const url = `${this.tokenizeCodeEndpoint}/${code}`;
       console.log(url)
       return this.http.get(url)
-        .map(response =>this.json = response.json())
+        .map(response =>response.json())
+    }
+    taskTwoTest(data):boolean{
+      var p = data;
+      console.log(JSON.stringify(p)) 
+      if(p != undefined){
+        for (var key in p[0]) {
+          if (p[0].hasOwnProperty(key)) {
+            if(p[0][key] === "Keyword"){
+                console.log(true)
+                return true;
+            } else return false;
+          }
+        }
+      } 
     }
 
-    taskOneTest():boolean{
-    var p = this.json;
+    taskOneTest(data):boolean{
+    var p = data;
     console.log(JSON.stringify(p))  
       if (p != undefined){
         for (var key in p[0]) {

@@ -27,13 +27,15 @@ export class AppComponent {
   runCodeAnalyse() {
     var textFromInput = this.aceInput.getStringFromEditor();
     this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-      data => this.analyseCodeService.taskOneTest()
+      data => {
+        data = this.analyseCodeService.taskTwoTest(data)
+        if (data) {
+          this.aceOutput.setEditorValue("You declared a variable")
+        } else {
+          this.aceOutput.setEditorValue("try again")
+        }
+      }
     );
-    if(this.analyseCodeService.taskOneTest()){
-      this.aceOutput.setEditorValue("You declared a variable");
-    } else {
-      this.aceOutput.setEditorValue("try again")
-    }
   }
 
   displayTokenizedCode() {
