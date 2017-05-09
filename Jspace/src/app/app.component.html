@@ -1,8 +1,10 @@
 <h1>{{title}}</h1>
 <div class="wrapper">
-  <h2>{{titleInput}}</h2>
-  <ace-input-component  ></ace-input-component>
-  <button id="btnRun" (click)="runCodeAnalyse()">{{buttonName}}</button>
   <h2>{{titleOutput}}</h2>
   <ace-output-component></ace-output-component>
+  <h2>{{titleInput}}</h2>
+  <ace-input-component  ></ace-input-component>
+  <button id="btnOne" (click)="runTaskOne()">{{buttonNameOne}}</button>
+  <button id="btnTwo" (click)="runTaskTwo()">{{buttonNameTwo}}</button>
+  <button id="btnThree" (click)="runTaskThree()">{{buttonNameThree}}</button>
 </div>

@@ -12,11 +12,14 @@ export class AceOutputComponent {
   ngAfterViewInit() {
     var outputEditor = this.outputEditor.getEditor();
 
-    outputEditor.setOptions({
-      mode: "ace/mode/javascript",
+     outputEditor.setOptions({
+      mode: "ace/mode/text",
       printMargin: false,
       readOnly: true,
-      showGutter: false
+      showGutter: false,
+      highlightActiveLine: false,
+      wrapBehavioursEnabled: true,
+      wrap: "free"
     });
     outputEditor.renderer.setScrollMargin(10);
   }

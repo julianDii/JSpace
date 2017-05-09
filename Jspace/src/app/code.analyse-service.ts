@@ -17,13 +17,14 @@ export class AnalyseCodeService {
       return this.http.get(url)
         .map(response =>response.json())
     }
-    taskTwoTest(data):boolean{
+
+    taskOneTest(data):boolean{
       var p = data;
       console.log(JSON.stringify(p)) 
-      if(p != undefined){
+      if(p != undefined || data != ""){
         for (var key in p[0]) {
           if (p[0].hasOwnProperty(key)) {
-            if(p[0][key] === "Keyword"){
+            if(p[0][key] === "Identifier"){
                 console.log(true)
                 return true;
             } else return false;
@@ -32,10 +33,10 @@ export class AnalyseCodeService {
       } 
     }
 
-    taskOneTest(data):boolean{
+    taskTwoTest(data):boolean{
     var p = data;
     console.log(JSON.stringify(p))  
-      if (p != undefined){
+      if (p != undefined || data != ""){
         for (var key in p[0]) {
           if (p[0].hasOwnProperty(key)) {
             if
@@ -63,5 +64,20 @@ export class AnalyseCodeService {
             }
         }
       }
+    }
+
+    taskThreeTest(data):boolean{
+      var p = data;
+      console.log(JSON.stringify(p)) 
+      if(p != undefined || data != ""){
+        for (var key in p[0]) {
+          if (p[0].hasOwnProperty(key)) {
+            if(p[0][key] === "Keyword"){
+                console.log(true)
+                return true;
+            } else return false;
+          }
+        }
+      } 
     }
 }
