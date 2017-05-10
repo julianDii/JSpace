@@ -4,7 +4,7 @@ var esprima = require('esprima');
 
 // endpoint for code analyse requests
 app.get('/api/user/tok/:code', function(req, res) {
-    res.json(esprima.tokenize(req.params.code));
+    res.json(esprima.tokenize(req.params.code, {tolerant: true}));
 });
 
 // endpoint for parse user code
