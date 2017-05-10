@@ -24,13 +24,13 @@ export class AppComponent {
   @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
 
   runTaskOne() {
-    
+
     var textFromInput = this.aceInput.getStringFromEditor();
     this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
         data = this.tokenTestService.taskOneTest(data)
         if (data) {
-          this.aceOutput.setEditorValue("Awesome, " + textFromInput.trim().toUpperCase() + "! It worked.")
+          this.aceOutput.setEditorValue("Awesome, " + textFromInput + "! It worked.")
         } else {
           this.aceOutput.setEditorValue("Ouch! Something went wrong. Please check if you spelled everything in the right way, first.")
         }
@@ -39,9 +39,9 @@ export class AppComponent {
   }
 
   runTaskTwo() {
-    
+
     var textFromInput = this.aceInput.getStringFromEditor();
-    
+
     this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
         data = this.tokenTestService.taskTwoTest(data)
@@ -53,9 +53,9 @@ export class AppComponent {
       }
     );
   }
-  
+
   runTaskThree() {
-    
+
     var textFromInput = this.aceInput.getStringFromEditor();
     this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
