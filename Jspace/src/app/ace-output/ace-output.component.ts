@@ -5,6 +5,7 @@ import {Component, ViewChild} from '@angular/core';
   templateUrl: './ace-output.component.html',
   styleUrls: ['./ace-output.component.css']
 })
+
 export class AceOutputComponent {
   @ViewChild('outputEditor') outputEditor;
   text: string = "";

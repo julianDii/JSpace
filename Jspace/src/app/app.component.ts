@@ -41,6 +41,7 @@ export class AppComponent {
   runTaskTwo() {
     
     var textFromInput = this.aceInput.getStringFromEditor();
+    
     this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
         data = this.tokenTestService.taskTwoTest(data)
@@ -52,6 +53,7 @@ export class AppComponent {
       }
     );
   }
+  
   runTaskThree() {
     
     var textFromInput = this.aceInput.getStringFromEditor();

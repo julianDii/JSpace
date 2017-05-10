@@ -1,6 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AceOutputComponent } from './ace-output.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AceOutputComponent} from './ace-output.component';
 
 describe('AceOutputComponent', () => {
   let component: AceOutputComponent;
