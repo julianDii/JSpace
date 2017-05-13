@@ -6,10 +6,9 @@ export class TokenTestService {
     //var remove = removeQuotationMarks(input);
     return validateIdentifier(input);
   }
-
+  
   taskTwoTest(json: JSON): boolean {
-    console.log(Object.keys(json).length)
-    if(Object.keys(json).length === 5){
+    if (Object.keys(json).length === 5){
       var expectedIdentifier = "oxygen";
       var expectedMin = 0;
       var expectedMax = 100;
@@ -20,15 +19,17 @@ export class TokenTestService {
       var semicolon = json[4].value;
       return checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier) && checkequalSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax) && checkSemicolon(semicolon);
   } else {
-    console.log("U might forgot somethin. The elements you typed in are " +  Object.keys(json).length)
+    console.log("U might forgot something. The elements you typed in are only " +  Object.keys(json).length)
     return false;
   } 
 }
 
-  taskThreeTest(json: JSON): boolean {
-    var expectedIdentifier = "oxygen";
-    var expectedOperator = "*";
-    var expectedNumber = "2";
+taskThreeTest(json: JSON): boolean {
+    if (Object.keys(json).length === 6) {
+      var expectedIdentifier = "oxygen";
+      var expectedOperator = "*";
+      var expectedNumber = "2";
+
     if (json[1].value === "*") {
       var firstIdentifier = json[0].value;
       var equalSign = json[2].value;
@@ -53,13 +54,15 @@ export class TokenTestService {
       var number = json[2].value;
       var semicolon = json[5].value;
     }
-
     return validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier) && checkIdentifier(firstIdentifier, expectedIdentifier) && checkequalSign(equalSign) && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator) && validateNumber(number) && checkNumber(number, expectedNumber) && checkSemicolon(semicolon);
+  }
+  else {
+    console.log("U might forgot something. The elements you typed in are only " +  Object.keys(json).length)
+    return false;
   }
 }
 
-
-
+}
 // Support Functions
 function validateIdentifier(input) {
   return checkInputLength(input) && checkFirstLetter(input) && checkFollowingLetters(input);

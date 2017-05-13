@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {AceInputComponent}    from './ace-input/ace-input.component';
 import {AceOutputComponent}   from './ace-output/ace-output.component';
 import {AnalyseCodeService}   from './analyze-code/code.analyse-service';
-import {TokenTestService}       from './test-code/token.test-service'
+import {TokenTestService}     from './test-code/token.test-service'
 
 @Component({
   selector: 'app-root',
@@ -26,18 +26,15 @@ export class AppComponent {
   runTaskOne() {
     let textFromInput:string = this.aceInput.getStringFromEditor();
     if(textFromInput.length > 0) {
-      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+      this.analyseCodeService.getTokenizedCode(textFromInput.trim).subscribe(
       data => {
-        if(data === !undefined) {
           data = this.tokenTestService.taskOneTest(data)
-           if (data) {
+          if (data) {
           this.aceOutput.setEditorValue("Awesome, " + textFromInput + "! It worked.")
         } else {
           this.aceOutput.setEditorValue("Ouch! Something went wrong. Please check if you spelled everything in the right way, first.")
         }
-      }
-    }
-    );
+      });
   } else { this.aceOutput.setEditorValue("You forgot to type something :)")}
  }
  
@@ -47,13 +44,12 @@ export class AppComponent {
       this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
           data = this.tokenTestService.taskTwoTest(data)
-           if (data) {
+          if (data) {
           this.aceOutput.setEditorValue("Good job you declared a variable with the name oxygen and a numeric value!")
         } else {
           this.aceOutput.setEditorValue("Ouch! Something went wrong. Please check if you spelled everything in the right way, first.")
         }
-      }
-    );
+      });
   } else { this.aceOutput.setEditorValue("You forgot to type something :)")}  
 }
 
@@ -68,8 +64,7 @@ runTaskThree() {
         } else {
           this.aceOutput.setEditorValue("Task 3 false")
         }
-      }
-    );
+      });
   } else {this.aceOutput.setEditorValue("You forgot to type something :)")}   
 }
 
