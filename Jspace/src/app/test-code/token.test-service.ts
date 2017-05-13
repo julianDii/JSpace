@@ -25,7 +25,7 @@ export class TokenTestService {
 }
 
 taskThreeTest(json: JSON): boolean {
-    if (Object.keys(json).length === 6) {
+    if (Object.keys(json).length === 8) {
       var expectedIdentifier = "oxygen";
       var expectedOperator = "*";
       var expectedNumber = "2";

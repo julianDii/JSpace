@@ -9,7 +9,8 @@ import {AceOutputComponent}   from './ace-output/ace-output.component';
 import {GameService}          from "./game/game.service";
 import {TasksService}         from "./tasks/tasks.service";
 import {TokenTestService}     from './test-code/token.test-service';
-import {AnalyseCodeService}   from './analyze-code/analyze.code-service'
+import {AnalyseCodeService}   from './analyze-code/analyze.code-service';
+import {AppController}        from './app-controller/app.controller-service'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {AnalyseCodeService}   from './analyze-code/analyze.code-service'
     GameService,
     TasksService,
     TokenTestService,
-    AnalyseCodeService
+    AnalyseCodeService,
+    AppController
   ],
   bootstrap: [AppComponent]
 })

@@ -22,8 +22,12 @@ export class TasksService {
     return this.allTasks[taskNumber];
   }
 
+  //This can not happen here 
   validateCode(taskId: number, input: String){
     // TODO: implement elementar functions for code validation
+    if (taskId === 0) {
+
+    }
 
     let solved: boolean = true;
     if (solved)
@@ -82,6 +86,12 @@ export class TasksService {
         "Your statement should contain 5 parts: the keyword to declare a variable, the identifier of the variable, " +
         "the assignment operator, the value of the variable as a number and the semicolon." +
         "Once again please."]
+      ),
+      new Task(
+        2,
+        "lsdfk",
+        "sdölfk",
+        ["dölflsd","dsflök"]
       )]
     return tasks;
   }
