@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Task} from "./task";
+import {Injectable}         from '@angular/core';
+import {Task}               from './task';
+import {CodeAnalyzeService} from '../analyze/analyze.service';
 
 /**
  * TaskService manages all tasks in game and their validation
  */
-
 @Injectable()
 export class TasksService {
 
@@ -12,20 +12,35 @@ export class TasksService {
 
   allTasks: Task[] = [];
 
-  constructor() {
+  constructor(private codeAnalyzeService: CodeAnalyzeService) {
+    
     console.log("tasks service injected")
     this.allTasks = this.getTasks();
     console.log("object with all tasks created")
   }
-
+  
   getTask(taskNumber: number) {
     return this.allTasks[taskNumber];
   }
 
   validateCode(taskId: number, input: String){
-    // TODO: implement elementar functions for code validation
+    let solved: boolean;
+    if(taskId === 0) {
+      this.codeAnalyzeService.getTokenizedCode(input).subscribe(
+      data => this.codeAnalyzeService.tasksNameTest()
+    );
+    solved = this.codeAnalyzeService.tasksNameTest();
+    }
+    if(taskId === 1) {
+      this.codeAnalyzeService.getTokenizedCode(input).subscribe(
+      data => this.codeAnalyzeService.taskOneTest()
+    );
+    solved = this.codeAnalyzeService.taskOneTest();
+    }
+  
+    console.log(solved)
 
-    let solved: boolean = true;
+    
     if (solved)
       return {solved: true, message: this.getTask(taskId).getMessageCorrect(input.toString())};
     else

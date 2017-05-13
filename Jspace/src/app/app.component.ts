@@ -12,7 +12,7 @@ import {AceInputComponent} from "./ace-input/ace-input.component";
 })
 
 export class AppComponent implements OnInit{
-
+  
   title = 'JSpace!';
   titleInput = 'Input terminal';
   titleOutput = 'Output terminal';
@@ -22,11 +22,12 @@ export class AppComponent implements OnInit{
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;
   @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
 
-  constructor(private game: GameService) {}
+  constructor(private game: GameService,task:TasksService) {}
 
   ngOnInit() {
-    this.game.newGame(this.aceInput, this.aceOutput);
+    this.game.newGame(this.aceInput, this.aceOutput); 
     console.log("new game created")
+   
   }
 
 }
