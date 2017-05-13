@@ -22,42 +22,45 @@ export class AppComponent {
 
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;
   @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
-
+  
   runTaskOne() {
-
-    var textFromInput = this.aceInput.getStringFromEditor();
-    this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+    let textFromInput:string = this.aceInput.getStringFromEditor();
+    if(textFromInput.length > 0) {
+      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
-        data = this.tokenTestService.taskOneTest(data)
-        if (data) {
+        if(data === !undefined) {
+          data = this.tokenTestService.taskOneTest(data)
+           if (data) {
           this.aceOutput.setEditorValue("Awesome, " + textFromInput + "! It worked.")
         } else {
           this.aceOutput.setEditorValue("Ouch! Something went wrong. Please check if you spelled everything in the right way, first.")
         }
       }
+    }
     );
-  }
-
-  runTaskTwo() {
-
-    var textFromInput = this.aceInput.getStringFromEditor();
-
-    this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+  } else { this.aceOutput.setEditorValue("You forgot to type something :)")}
+ }
+ 
+ runTaskTwo() {
+    let textFromInput:string = this.aceInput.getStringFromEditor();
+    if(textFromInput.length > 0) {
+      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
-        data = this.tokenTestService.taskTwoTest(data)
-        if (data) {
+          data = this.tokenTestService.taskTwoTest(data)
+           if (data) {
           this.aceOutput.setEditorValue("Good job you declared a variable with the name oxygen and a numeric value!")
         } else {
           this.aceOutput.setEditorValue("Ouch! Something went wrong. Please check if you spelled everything in the right way, first.")
         }
       }
     );
-  }
+  } else { this.aceOutput.setEditorValue("You forgot to type something :)")}  
+}
 
-  runTaskThree() {
-
-    var textFromInput = this.aceInput.getStringFromEditor();
-    this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+runTaskThree() {
+    let textFromInput:string = this.aceInput.getStringFromEditor();
+    if(textFromInput.length > 0) {
+      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
       data => {
         data = this.tokenTestService.taskThreeTest(data)
         if (data) {
@@ -67,12 +70,16 @@ export class AppComponent {
         }
       }
     );
-  }
+  } else {this.aceOutput.setEditorValue("You forgot to type something :)")}   
+}
 
 //For testing or example purpose, should be removed later
-  displayTokenizedCode() {
-    var textFromInput = this.aceInput.getStringFromEditor();
-    this.analyseCodeService.getTokenizedCode(textFromInput)
-    .subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data,null,2)));
-  }
+ displayTokenizedCode() {
+   let textFromInput:string = this.aceInput.getStringFromEditor();
+   if(textFromInput.length > 0) {
+     this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+       data => this.aceOutput.setEditorValue(JSON.stringify(data,null,2)));
+      }
+      else {this.aceOutput.setEditorValue("You forgot to type something :)")}
+    }
 }

@@ -8,17 +8,22 @@ export class TokenTestService {
   }
 
   taskTwoTest(json: JSON): boolean {
-    var expectedIdentifier = "oxygen";
-    var expectedMin = 0;
-    var expectedMax = 100;
-    var keyword = json[0].value;
-    var identifier = json[1].value;
-    var equalSign = json[2].value;
-    var number = json[3].value;
-    var semicolon = json[4].value;
-
-    return checkCorrektKeysTask1(json) && checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier) && checkequalSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax) && checkSemicolon(semicolon);
-  }
+    console.log(Object.keys(json).length)
+    if(Object.keys(json).length === 5){
+      var expectedIdentifier = "oxygen";
+      var expectedMin = 0;
+      var expectedMax = 100;
+      var keyword = json[0].value;
+      var identifier = json[1].value;
+      var equalSign = json[2].value;
+      var number = json[3].value;
+      var semicolon = json[4].value;
+      return checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier) && checkequalSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax) && checkSemicolon(semicolon);
+  } else {
+    console.log("U might forgot somethin. The elements you typed in are " +  Object.keys(json).length)
+    return false;
+  } 
+}
 
   taskThreeTest(json: JSON): boolean {
     var expectedIdentifier = "oxygen";
@@ -118,8 +123,4 @@ function checkKeyword(keyword) {
 
 function checkequalSign(equalSign) {
   return stringEqualsString(equalSign, "=");
-}
-
-function checkCorrektKeysTask1(dataInput){
-  return ((dataInput[0].type === "Keyword") && (dataInput[1].type === "Identifier") && (dataInput[2].type === "Punctuator") && (dataInput[4].type === "Punctuator") && (dataInput[3].type === "Numeric"));
 }
