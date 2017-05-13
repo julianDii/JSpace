@@ -4,20 +4,17 @@ var esprima = require('esprima');
 
 // endpoint for code analyse requests
 app.get('/api/user/tok/:code', function(req, res) {
-    console.log(req.params.code.charAt(0));
     if((isNaN(req.params.code.charAt(0)))){
          res.json(esprima.tokenize(req.params.code));
     } else {
        console.log("error")
        res.json([
-  {
-    "type": "error",
-    "value": "1st letter is a number"
-  }
-])
-
+           {
+               "type": "error",
+               "value": "Leading numbers are not allowed"
+            }
+            ])
     }
-    
 });
 
 // endpoint for parse user code
