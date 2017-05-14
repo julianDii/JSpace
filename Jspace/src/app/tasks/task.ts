@@ -12,7 +12,7 @@ export class Task {
     private instruction: String,
     private messageCorrect: String,
     private messagesWrong: String[]
-  ) {}
+  ) { }
 
 
   getInstruction(): String {

@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {GameService} from "./game/game.service";
-import {TasksService} from "./tasks/tasks.service";
-import {AceOutputComponent} from "./ace-output/ace-output.component";
-import {AceInputComponent} from "./ace-input/ace-input.component";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GameService } from "./game/game.service";
+import { TasksService } from "./tasks/tasks.service";
+import { AceOutputComponent } from "./ace-output/ace-output.component";
+import { AceInputComponent } from "./ace-input/ace-input.component";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import {AceInputComponent} from "./ace-input/ace-input.component";
   providers: [GameService, TasksService]
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   title = 'JSpace!';
   titleInput = 'Input terminal';
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;
   @ViewChild(AceOutputComponent) aceOutput: AceOutputComponent;
 
-  constructor(private game: GameService) {}
+  constructor(private game: GameService) { }
 
   ngOnInit() {
     this.game.newGame(this.aceInput, this.aceOutput);

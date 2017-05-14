@@ -1,8 +1,10 @@
-import {Injectable, ViewChild}   from '@angular/core';
-import {TasksService} from "../tasks/tasks.service";
-import {Task}         from "app/tasks/task";
-import {AceInputComponent} from "../ace-input/ace-input.component";
-import {AceOutputComponent} from "../ace-output/ace-output.component";
+import { Injectable, ViewChild } from '@angular/core';
+import { TasksService } from "../tasks/tasks.service";
+import { Task } from "app/tasks/task";
+import { AceInputComponent } from "../ace-input/ace-input.component";
+import { AceOutputComponent } from "../ace-output/ace-output.component";
+import { TokenTestService } from '../test-code/token.test-service'
+import { AnalyseCodeService } from '../analyze-code/analyze.code-service'
 
 /**
  * GameService controls the game progress:
@@ -25,7 +27,9 @@ export class GameService {
   aceOutput: AceOutputComponent;
   btnNextDisabled: boolean;
 
-  constructor(private tasksService: TasksService) {
+  constructor(private tasksService: TasksService,
+    private tokenTestService: TokenTestService,
+    private analyseCodeService: AnalyseCodeService, ) {
     console.log("game service injected")
   }
 
@@ -43,15 +47,57 @@ export class GameService {
   }
 
   validateCode() {
-    let textFromInput = this.aceInput.getStringFromEditor();
-    // TODO: implement syntax checking before validating code
-    console.log('text from input: ' + textFromInput);
-    let answer = this.tasksService.validateCode(this.currentTaskNumber, textFromInput);
-    if (answer.solved) {
-      this.btnNextDisabled = false;
+    let textFromInput: string = this.aceInput.getStringFromEditor()
+    if (this.currentTaskNumber === 0) {
+      if (textFromInput.length > 0) {
+        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+          data => {
+            data = this.tokenTestService.taskOneTest(data)
+            if (data) {
+              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect())
+              this.btnNextDisabled = false
+              this.aceInput.clearEditor()
+            } else {
+              let answer = this.currentTask.getMessagesWrong(textFromInput)
+              this.aceOutput.setEditorValue(answer[0])
+            }
+          });
+      } else { this.aceOutput.setEditorValue("You forgot to type something :)") }
     }
-    this.aceOutput.setEditorValue(answer.message);
-    console.log("current task", this.currentTask);
+
+    if (this.currentTaskNumber === 1) {
+      if (textFromInput.length > 0) {
+        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+          data => {
+            data = this.tokenTestService.taskTwoTest(data)
+            if (data) {
+              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect())
+              this.btnNextDisabled = false
+              this.aceInput.clearEditor()
+            } else {
+              let answer = this.currentTask.getMessagesWrong(textFromInput)
+              this.aceOutput.setEditorValue(answer[0])
+            }
+          });
+      } else { this.aceOutput.setEditorValue("You forgot to type something :)") }
+    }
+
+    if (this.currentTaskNumber === 2) {
+      if (textFromInput.length > 0) {
+        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+          data => {
+            data = this.tokenTestService.taskThreeTest(data)
+            if (data) {
+              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect())
+              this.btnNextDisabled = false;
+              this.aceInput.clearEditor();
+            } else {
+              let answer = this.currentTask.getMessagesWrong(textFromInput)
+              this.aceOutput.setEditorValue(answer[0])
+            }
+          });
+      } else { this.aceOutput.setEditorValue("You forgot to type something :)") }
+    }
   }
 
   goToNextTask() {
@@ -62,8 +108,7 @@ export class GameService {
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;
     }
-    else
-    {
+    else {
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
       this.aceInput.clearEditor();

@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Task} from "./task";
+import { Injectable } from '@angular/core';
+import { Task } from './task';
 
 /**
  * TaskService manages all tasks in game and their validation
@@ -22,16 +22,6 @@ export class TasksService {
     return this.allTasks[taskNumber];
   }
 
-  validateCode(taskId: number, input: String){
-    // TODO: implement elementar functions for code validation
-
-    let solved: boolean = true;
-    if (solved)
-      return {solved: true, message: this.getTask(taskId).getMessageCorrect(input.toString())};
-    else
-      return {solved: false, message: this.getTask(taskId).getMessagesWrong()[0]};
-  }
-
   getNumberOfAllTasks() {
     return this.allTasks.length;
   }
@@ -48,7 +38,7 @@ export class TasksService {
         "dollar sign. Following may be letters, digits underscores or dollar signs.",
         "Awesome, SUBTITUTETHISPLACE! It worked.",
         ["Sorry, this username does not seem to be a valid name. Please try Again!"]
-       ),
+      ),
       new Task(
         1,
         "I am running on JavaScript. To get back on track, you need to program and reconfigure me. Let’s get started " +
@@ -56,15 +46,15 @@ export class TasksService {
         "Syntax:" + "\n" +
         "A Program is a list of instructions to be executed by a machine." +
         "These instructions are called statements, in JS statements end with semicolons. Big Error-source, so don't " +
-        "forget them." +  "\n" +
-        "JS ignores multiple spaces, so the following is equal:" +  "\n" +
-        "a = 10;" +  "\n" +
-        "a =   	10;" +  "\n" +
-        "Since statements are separated by Semicolons you can also write them in one line, but you shouldn’t." +  "\n" +
-        "a = 5; b = 2; c = a + b;" +  "\n" +
-        "Variables:" +  "\n" +
-        "Variables are containers for storing data values. You declare a JavaScript variable with the var keyword:" +  "\n" +
-        "var x;" +  "\n" +
+        "forget them." + "\n" +
+        "JS ignores multiple spaces, so the following is equal:" + "\n" +
+        "a = 10;" + "\n" +
+        "a =   	10;" + "\n" +
+        "Since statements are separated by Semicolons you can also write them in one line, but you shouldn’t." + "\n" +
+        "a = 5; b = 2; c = a + b;" + "\n" +
+        "Variables:" + "\n" +
+        "Variables are containers for storing data values. You declare a JavaScript variable with the var keyword:" + "\n" +
+        "var x;" + "\n" +
         "After the declaration, the variable has no value. (Technically it has the value of undefined.)" +
         "To assign a value to the variable, use the equal sign:" + "\n" +
         "x = 33;" + "\n" +
@@ -76,12 +66,20 @@ export class TasksService {
         "yourself some oxygen." + "\n" + "\n" +
         "Firstly it’s enough to declare a simple variable called oxygen. You need to give it a value...10 seems to " +
         "be a good decision to accomplish your next tasks."
-      ,
+        ,
         "Yeah! You rock! You increased your oxygen level to SUBTITUTETHISPLACE. It can’t get any worse now.",
         ["Ouch! Something went wrong. Please check if you spelled everything in the right way, first." +
-        "Your statement should contain 5 parts: the keyword to declare a variable, the identifier of the variable, " +
-        "the assignment operator, the value of the variable as a number and the semicolon." +
-        "Once again please."]
+          "Your statement should contain 5 parts: the keyword to declare a variable, the identifier of the variable, " +
+          "the assignment operator, the value of the variable as a number and the semicolon." +
+          "Once again please."]
+      ),
+      new Task(
+        2,
+        "You can also calculate with JavaScript, try to double up your oxygen. To view the existing operators in" +
+        " JavaScript enter operators().Note that the calculated value has to be stored and that you don’t need the" +
+        "var-keyword.For example: x = x + 2;",
+        "Great! You doubled your oxygen and we are good to go now!",
+        ["Whoops! An error happened. Check if you used the right operator and assigned the result to oxygen."]
       )]
     return tasks;
   }
