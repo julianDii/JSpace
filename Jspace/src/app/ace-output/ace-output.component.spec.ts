@@ -8,9 +8,9 @@ describe('AceOutputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AceOutputComponent ]
+      declarations: [AceOutputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -6,9 +6,9 @@ export class TokenTestService {
     var remove = removeQuotationMarks(input);
     return validateIdentifier(input);
   }
-  
+
   taskTwoTest(json: JSON): boolean {
-    if (Object.keys(json).length === 5){
+    if (Object.keys(json).length === 5) {
       var expectedIdentifier = "oxygen";
       var expectedMin = 0;
       var expectedMax = 100;
@@ -18,49 +18,49 @@ export class TokenTestService {
       var number = json[3].value;
       var semicolon = json[4].value;
       return checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier) && checkequalSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax) && checkSemicolon(semicolon);
-  } else {
-    console.log("U might forgot something. The elements you typed in are only " +  Object.keys(json).length)
-    return false;
-  } 
-}
+    } else {
+      console.log("U might forgot something. The elements you typed in are only " + Object.keys(json).length)
+      return false;
+    }
+  }
 
-taskThreeTest(json: JSON): boolean {
-    if (Object.keys(json).length === 8) {
+  taskThreeTest(json: JSON): boolean {
+    if (Object.keys(json).length === 6) {
       var expectedIdentifier = "oxygen";
       var expectedOperator = "*";
       var expectedNumber = "2";
 
-    if (json[1].value === "*") {
-      var firstIdentifier = json[0].value;
-      var equalSign = json[2].value;
-      var secondIdentifier = firstIdentifier;
-      var multiplySign = json[1].value;
-      var number = json[3].value;
-      var semicolon = json[4].value;
+      if (json[1].value === "*") {
+        var firstIdentifier = json[0].value;
+        var equalSign = json[2].value;
+        var secondIdentifier = firstIdentifier;
+        var multiplySign = json[1].value;
+        var number = json[3].value;
+        var semicolon = json[4].value;
+      }
+      if (json[2].value === expectedIdentifier) {
+        var firstIdentifier = json[0].value;
+        var equalSign = json[1].value;
+        var secondIdentifier = json[2].value;
+        var multiplySign = json[3].value;
+        var number = json[4].value;
+        var semicolon = json[5].value;
+      }
+      if (json[2].value === expectedNumber) {
+        var firstIdentifier = json[0].value;
+        var equalSign = json[1].value;
+        var secondIdentifier = json[4].value;
+        var multiplySign = json[3].value;
+        var number = json[2].value;
+        var semicolon = json[5].value;
+      }
+      return validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier) && checkIdentifier(firstIdentifier, expectedIdentifier) && checkequalSign(equalSign) && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator) && validateNumber(number) && checkNumber(number, expectedNumber) && checkSemicolon(semicolon);
     }
-    if (json[2].value === expectedIdentifier) {
-      var firstIdentifier = json[0].value;
-      var equalSign = json[1].value;
-      var secondIdentifier = json[2].value;
-      var multiplySign = json[3].value;
-      var number = json[4].value;
-      var semicolon = json[5].value;
+    else {
+      console.log("U might forgot something. The elements you typed in are only " + Object.keys(json).length)
+      return false;
     }
-    if (json[2].value === expectedNumber) {
-      var firstIdentifier = json[0].value;
-      var equalSign = json[1].value;
-      var secondIdentifier = json[4].value;
-      var multiplySign = json[3].value;
-      var number = json[2].value;
-      var semicolon = json[5].value;
-    }
-    return validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier) && checkIdentifier(firstIdentifier, expectedIdentifier) && checkequalSign(equalSign) && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator) && validateNumber(number) && checkNumber(number, expectedNumber) && checkSemicolon(semicolon);
   }
-  else {
-    console.log("U might forgot something. The elements you typed in are only " +  Object.keys(json).length)
-    return false;
-  }
-}
 
 }
 // Support Functions
