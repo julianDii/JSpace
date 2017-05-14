@@ -6,7 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 To get the project started on your machine install the following modules and copy the entire node_modules from a new angular-cli project.
 
 npm i -S ng2-ace-editor
-npm i angular-in-memory-web-api
+npm install esprima
+npm install express
 
 ## Development server
 
