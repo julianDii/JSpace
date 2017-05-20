@@ -4,6 +4,7 @@ import {Task} from "app/tasks/task";
 import {AceInputComponent} from "../ace-input/ace-input.component";
 import {AceOutputComponent} from "../ace-output/ace-output.component";
 import {AnalyseCodeService} from '../analyze-code/analyze.code-service'
+import {MentorComponent} from "../mentor/mentor.component";
 
 /**
  * GameService controls the game progress:
@@ -19,8 +20,9 @@ import {AnalyseCodeService} from '../analyze-code/analyze.code-service'
 @Injectable()
 export class GameService {
 
-  currentTask: Task;
   currentTaskNumber: number;
+  currentTask: Task;
+  mentor: MentorComponent;
   aceInput: AceInputComponent;
   aceOutput: AceOutputComponent;
   btnNextDisabled: boolean;
@@ -30,16 +32,21 @@ export class GameService {
     console.log("game service injected")
   }
 
-  newGame(aceIn: AceInputComponent, aceOut: AceOutputComponent) {
+  newGame(mentor: MentorComponent, aceIn: AceInputComponent, aceOut: AceOutputComponent) {
     console.log('creating new game...');
-    this.aceInput = aceIn;
-    this.aceOutput = aceOut;
+
     this.currentTaskNumber = 0;
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);
+    this.mentor = mentor;
+    this.aceInput = aceIn;
+    this.aceOutput = aceOut;
+    this.btnNextDisabled = true;
+
+    this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     this.aceInput.clearEditor();
-    this.btnNextDisabled = true;
+
     console.log('new game created');
   }
 
@@ -52,9 +59,11 @@ export class GameService {
         data => {
           let testPassed = this.currentTask.testTask(data);
           if (testPassed) {
+            this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
             this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
             this.btnNextDisabled = false;
           } else {
+            this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
             this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
           }
         });
@@ -64,12 +73,14 @@ export class GameService {
   goToNextTask() {
     this.currentTaskNumber++;
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
+      this.mentor.setMentorText("");
       this.aceOutput.setEditorValue("GAME OVER");
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;
     }
     else {
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
+      this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;

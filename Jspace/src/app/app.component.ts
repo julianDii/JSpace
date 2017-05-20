@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   constructor(private game: GameService) { }
 
   ngOnInit() {
-    this.game.newGame(this.aceInput, this.aceOutput);
+    this.game.newGame(this.mentor, this.aceInput, this.aceOutput);
   }
 
 }
