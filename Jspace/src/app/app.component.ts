@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.game.newGame(this.aceInput, this.aceOutput);
-    console.log("new game created")
   }
 
 }

@@ -22,7 +22,6 @@ export class GameService {
 
   currentTask: Task;
   currentTaskNumber: number;
-  isOver: boolean;
   aceInput: AceInputComponent;
   aceOutput: AceOutputComponent;
   btnNextDisabled: boolean;
@@ -34,76 +33,44 @@ export class GameService {
   }
 
   newGame(aceIn: AceInputComponent, aceOut: AceOutputComponent) {
-    console.log("creating new game...")
     this.aceInput = aceIn;
     this.aceOutput = aceOut;
     this.currentTaskNumber = 0;
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
-    this.isOver = false;
-    console.log(this.currentTask);
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     this.aceInput.clearEditor();
     this.btnNextDisabled = true;
+    console.log("new game created");
   }
 
   validateCode() {
-    let textFromInput: string = this.aceInput.getStringFromEditor()
-    if (this.currentTaskNumber === 0) {
-      if (textFromInput.length > 0) {
-        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-          data => {
-            data = this.tokenTestService.taskOneTest(data)
-            if (data) {
-              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect())
-              this.btnNextDisabled = false
-              this.aceInput.clearEditor()
-            } else {
-              let answer = this.currentTask.getMessagesWrong(textFromInput)
-              this.aceOutput.setEditorValue(answer[0])
-            }
-          });
-      } else { this.aceOutput.setEditorValue("You forgot to type something :)") }
-    }
-
-    if (this.currentTaskNumber === 1) {
-      if (textFromInput.length > 0) {
-        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-          data => {
-            data = this.tokenTestService.taskTwoTest(data)
-            if (data) {
-              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect())
-              this.btnNextDisabled = false
-              this.aceInput.clearEditor()
-            } else {
-              let answer = this.currentTask.getMessagesWrong(textFromInput)
-              this.aceOutput.setEditorValue(answer[0])
-            }
-          });
-      } else { this.aceOutput.setEditorValue("You forgot to type something :)") }
-    }
-
-    if (this.currentTaskNumber === 2) {
-      if (textFromInput.length > 0) {
-        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-          data => {
-            data = this.tokenTestService.taskThreeTest(data)
-            if (data) {
-              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect())
-              this.btnNextDisabled = false;
-              this.aceInput.clearEditor();
-            } else {
-              let answer = this.currentTask.getMessagesWrong(textFromInput)
-              this.aceOutput.setEditorValue(answer[0])
-            }
-          });
-      } else { this.aceOutput.setEditorValue("You forgot to type something :)") }
+    let textFromInput: string = this.aceInput.getStringFromEditor();
+    if (textFromInput.length === 0) {
+      this.aceOutput.setEditorValue("You forgot to type something :)")
+    } else {
+      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+        data => {
+          if (this.currentTaskNumber === 0) {
+            data = this.tokenTestService.taskOneTest(data);
+          } else if (this.currentTaskNumber === 1) {
+            data = this.tokenTestService.taskTwoTest(data);
+          } else if (this.currentTaskNumber === 2) {
+            data = this.tokenTestService.taskThreeTest(data);
+          }
+          if (data) {
+            this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
+            this.btnNextDisabled = false;
+          } else {
+            let answer = this.currentTask.getMessagesWrong(textFromInput);
+            this.aceOutput.setEditorValue(answer[0])
+          }
+        });
     }
   }
 
   goToNextTask() {
     this.currentTaskNumber++;
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
-      this.isOver = true;
       this.aceOutput.setEditorValue("GAME OVER");
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;
@@ -114,7 +81,6 @@ export class GameService {
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;
     }
-    console.log("game over", this.isOver)
     console.log("current task", this.currentTask);
   }
 }

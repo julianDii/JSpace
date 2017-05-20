@@ -44,4 +44,8 @@ export class Task {
     return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
   }
 
+  testTask(){
+
+  }
+
 }
