@@ -1,15 +1,36 @@
-.app-wrapper {
-  background-color: sandybrown;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
-.main {
-  width: 60%;
+.app-wrapper {
+
+  /*height: 100vh;*/
+  width: 90%;
   margin: auto;
 }
 
+main {
+  margin: auto;
+  display: flex;
+}
+
+#sectionForMentor {
+  align-self: flex-end;
+  margin-right: 20px;
+  width: 45%;
+}
+
+#mentorInstructions {
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 20px;
+  margin: 20px 0;
+}
+
+#mentor img {
+  height: 250px;
+}
+
+#sectionForTerminals {
+  width: 55%;
+}
 #btnRun {
   width: 70px;
   height: 30px;

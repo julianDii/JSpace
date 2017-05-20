@@ -1,13 +1,23 @@
 <div class="app-wrapper">
-  <header>
+  <header class="wrapper">
     <h1>{{title}}</h1>
   </header>
-  <div class="main">
-    <h2>{{titleOutput}}</h2>
-    <ace-output-component></ace-output-component>
-    <h2>{{titleInput}}</h2>
-    <ace-input-component></ace-input-component>
-    <button id="btnRun" (click)="game.validateCode()">{{btnRun}}</button>
-    <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
-  </div>
+  <main>
+    <section id="sectionForMentor">
+      <div id="mentorInstructions">
+        <p>Here I am going to help you to repair you spaceship.</p>
+      </div>
+      <div id="mentor">
+        <img src="./assets/img/alien.png"/>
+      </div>
+    </section>
+    <section id="sectionForTerminals">
+      <h2>{{titleOutput}}</h2>
+      <ace-output-component></ace-output-component>
+      <h2>{{titleInput}}</h2>
+      <ace-input-component></ace-input-component>
+      <button id="btnRun" (click)="game.validateCode()">{{btnRun}}</button>
+      <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
+    </section>
+  </main>
 </div>
