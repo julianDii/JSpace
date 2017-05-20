@@ -14,6 +14,8 @@ export class MentorComponent implements OnInit {
   ngOnInit() {
   }
 
+  // TODO: devide text into paragraphs
+
   setMentorText(text: string) {
     this.mentorText = text;
   }
