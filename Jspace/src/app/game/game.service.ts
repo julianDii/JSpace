@@ -60,10 +60,12 @@ export class GameService {
           let testPassed = this.currentTask.testTask(data);
           if (testPassed) {
             this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
+            this.mentor.setImgSuccess();
             this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
             this.btnNextDisabled = false;
           } else {
             this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
+            this.mentor.setImgFailure();
             this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
           }
         });
@@ -72,19 +74,21 @@ export class GameService {
 
   goToNextTask() {
     this.currentTaskNumber++;
+
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
-      this.mentor.setMentorText("");
+      this.mentor.setMentorText("Good bye, old friend. May the Force be with you.");
       this.aceOutput.setEditorValue("GAME OVER");
-      this.aceInput.clearEditor();
-      this.btnNextDisabled = true;
     }
     else {
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
-      this.aceInput.clearEditor();
-      this.btnNextDisabled = true;
     }
+
+    this.mentor.setImgMentor();
+    this.aceInput.clearEditor();
+    this.btnNextDisabled = true;
+
     console.log("current task", this.currentTask);
   }
 }
