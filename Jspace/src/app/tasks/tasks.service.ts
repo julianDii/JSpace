@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Task} from './task';
-import {TaskName} from "./taskName";
-import {TaskOxygen} from "./taskOxygen";
-import {TaskOxygenDouble} from "./taskOxygenDouble";
+import { Injectable } from '@angular/core';
+import { Task } from './task';
+import { TaskName } from './taskName';
+import { TaskOxygen } from './taskOxygen';
+import { TaskOxygenDouble } from "./taskOxygenDouble";
 
 /**
  * TaskService manages all tasks in game and their validation
@@ -16,9 +16,9 @@ export class TasksService {
   private allTasks: Task[] = [];
 
   constructor() {
-    console.log("tasks service injected")
+    console.log('tasks service injected')
     this.allTasks = this.getTasks();
-    console.log("list with all tasks created")
+    console.log('list with all tasks created')
   }
 
   getTask(taskNumber: number) {

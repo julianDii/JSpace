@@ -44,15 +44,15 @@ export function checkNumber(number: string, expectedNumber: string) {
 }
 
 export function checkSemicolon(semicolon: string) {
-return stringEqualsString(semicolon, ";");
+  return stringEqualsString(semicolon, ";");
 }
 
 export function checkIdentifier(identifier: string, expectedIdentifier: string) {
-return stringEqualsString(identifier, expectedIdentifier);
+  return stringEqualsString(identifier, expectedIdentifier);
 }
 
 export function checkOperator(operator: string, expectedOperator: string) {
-return stringEqualsString(operator, expectedOperator);
+  return stringEqualsString(operator, expectedOperator);
 }
 
 export function checkKeyword(keyword: string) {

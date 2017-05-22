@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GameService } from "./game/game.service";
-import { TasksService } from "./tasks/tasks.service";
-import { AceOutputComponent } from "./ace-output/ace-output.component";
-import { AceInputComponent } from "./ace-input/ace-input.component";
+import { GameService } from './game/game.service';
+import { TasksService } from './tasks/tasks.service';
+import { AceOutputComponent } from './ace-output/ace-output.component';
+import { AceInputComponent } from './ace-input/ace-input.component';
 
 @Component({
   selector: 'app-root',

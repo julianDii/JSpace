@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {TasksService} from "../tasks/tasks.service";
-import {Task} from "app/tasks/task";
-import {AceInputComponent} from "../ace-input/ace-input.component";
-import {AceOutputComponent} from "../ace-output/ace-output.component";
-import {AnalyseCodeService} from '../analyze-code/analyze.code-service'
+import { Injectable } from '@angular/core';
+import { TasksService } from '../tasks/tasks.service';
+import { Task } from 'app/tasks/task';
+import { AceInputComponent } from '../ace-input/ace-input.component';
+import { AceOutputComponent } from '../ace-output/ace-output.component';
+import { AnalyseCodeService } from '../analyze-code/analyze.code-service'
 
 /**
  * GameService controls the game progress:
@@ -26,8 +26,8 @@ export class GameService {
   btnNextDisabled: boolean;
 
   constructor(private tasksService: TasksService,
-              private analyseCodeService: AnalyseCodeService,) {
-    console.log("game service injected")
+    private analyseCodeService: AnalyseCodeService, ) {
+    console.log('game service injected')
   }
 
   newGame(aceIn: AceInputComponent, aceOut: AceOutputComponent) {
@@ -46,7 +46,7 @@ export class GameService {
   validateCode() {
     let textFromInput: string = this.aceInput.getStringFromEditor();
     if (textFromInput.length === 0) {
-      this.aceOutput.setEditorValue("You forgot to type something :)")
+      this.aceOutput.setEditorValue('You forgot to type something :)')
     } else {
       this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
         data => {
@@ -64,7 +64,7 @@ export class GameService {
   goToNextTask() {
     this.currentTaskNumber++;
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
-      this.aceOutput.setEditorValue("GAME OVER");
+      this.aceOutput.setEditorValue('GAME OVER');
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;
     }
@@ -74,6 +74,6 @@ export class GameService {
       this.aceInput.clearEditor();
       this.btnNextDisabled = true;
     }
-    console.log("current task", this.currentTask);
+    console.log('current task', this.currentTask);
   }
 }
