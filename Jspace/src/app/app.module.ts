@@ -9,13 +9,15 @@ import { AceOutputComponent } from './ace-output/ace-output.component';
 import { GameService } from './game/game.service';
 import { TasksService } from './tasks/tasks.service';
 import { AnalyseCodeService } from './analyze-code/analyze.code-service';
+import { MentorComponent } from './mentor/mentor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AceEditorComponent,
     AceInputComponent,
-    AceOutputComponent
+    AceOutputComponent,
+    MentorComponent
   ],
   imports: [
     BrowserModule,

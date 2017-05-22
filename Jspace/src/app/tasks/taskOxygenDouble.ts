@@ -9,11 +9,17 @@ export class TaskOxygenDouble extends Task {
   constructor() {
     super(
       2,
-      'You can also calculate with JavaScript, try to double up your oxygen. To view the existing operators in ' +
-      'JavaScript enter operators(). Note that the calculated value has to be stored and that you don’t need the ' +
-      'var-keyword. For example: x = x + 2;',
-      'Great! You doubled your oxygen and we are good to go now!',
-      ['Whoops! An error happened. Check if you used the right operator and assigned the result to oxygen.']
+      "You can also calculate with JavaScript. To view the existing operators in JavaScript enter operators(). " +
+      "Note that the calculated value has to be stored and that you don’t need the var-keyword. " + "\n" +
+      "For example: x = x + 2;",
+
+      "Double up your oxygen level.",
+
+      "Great! We are good to go now!",
+      "Whoops! Check if you used the right operator and assigned the result to oxygen.",
+
+      "You have doubled your oxygen level.",
+      ["An error happened. Try to double up your oxygen level again."]
     );
   }
 

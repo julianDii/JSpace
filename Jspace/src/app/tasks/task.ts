@@ -9,40 +9,43 @@ export abstract class Task {
 
   constructor(
     private id: number,
-    private instruction: String,
-    private messageCorrect: String,
-    private messagesWrong: String[]
+    private mentorText: string,
+    private instruction: string,
+    private mentorAnswerCorrect: string,
+    private mentorAnswerWrong: string,
+    private messageCorrect: string,
+    private messagesWrong: string[]
   ) {
     console.log('id', this.id)
   }
 
-  getInstruction(): String {
-    return this.instruction;
-  }
+  abstract testTask(json: JSON): boolean;
 
-  getMessageCorrect(valueFromUser: string = ""): String {
-    return Task.setValueFromUserToMessages(valueFromUser, this.messageCorrect);
-  }
-
-  getMessageWrong(valueFromUser: String = ""): String {
-    return this.messagesWrong[0];
-  }
-
-  setInstruction(value: String) {
-    this.instruction = value;
-  }
-
-  setMessageCorrect(value: String) {
-    this.messageCorrect = value;
-  }
-
-  setMessagesWrong(value: String[]) {
-    this.messagesWrong = value;
-  }
-
-  static setValueFromUserToMessages(valueFromUser: string, message: String) {
+  static setValueFromUserToMessages(valueFromUser: string, message: string) {
     return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
   }
 
-  abstract testTask(json: JSON): boolean;
+  getMentorText(): string {
+    return this.mentorText;
+  }
+
+  getInstruction(): string {
+    return this.instruction;
+  }
+
+  getMentorAnswerCorrect(valueFromUser: string = ""): string {
+    return Task.setValueFromUserToMessages(valueFromUser, this.mentorAnswerCorrect);
+  }
+
+  getMentorAnswerWrong(): string {
+    return this.mentorAnswerWrong;
+  }
+
+  getMessageCorrect(valueFromUser: string = ""): string {
+    return Task.setValueFromUserToMessages(valueFromUser, this.messageCorrect);
+  }
+
+  getMessageWrong(valueFromUser: string = ""): string {
+    return this.messagesWrong[0];
+  }
 }
