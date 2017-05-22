@@ -1,5 +1,5 @@
-import {Task} from "./task";
-import {removeQuotationMarks, validateIdentifier} from "../test-code/helpers";
+import { Task } from './task';
+import { removeQuotationMarks, validateIdentifier } from '../test-code/helpers';
 
 export class TaskName extends Task {
 

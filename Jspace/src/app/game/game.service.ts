@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {TasksService} from "../tasks/tasks.service";
-import {Task} from "app/tasks/task";
-import {AceInputComponent} from "../ace-input/ace-input.component";
-import {AceOutputComponent} from "../ace-output/ace-output.component";
-import {AnalyseCodeService} from '../analyze-code/analyze.code-service'
-import {MentorComponent} from "../mentor/mentor.component";
+import { Injectable } from '@angular/core';
+import { TasksService } from '../tasks/tasks.service';
+import { Task } from 'app/tasks/task';
+import { AceInputComponent } from '../ace-input/ace-input.component';
+import { AceOutputComponent } from '../ace-output/ace-output.component';
+import { AnalyseCodeService } from '../analyze-code/analyze.code-service'
+import { MentorComponent } from '../mentor/mentor.component';
 
 /**
  * GameService controls the game progress:
@@ -28,7 +28,7 @@ export class GameService {
   btnNextDisabled: boolean;
 
   constructor(private tasksService: TasksService,
-              private analyseCodeService: AnalyseCodeService,) {
+              private analyseCodeService: AnalyseCodeService) {
     console.log("game service injected")
   }
 
@@ -46,14 +46,14 @@ export class GameService {
     this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     this.aceInput.clearEditor();
-
+    
     console.log('new game created');
   }
 
   validateCode() {
     let textFromInput: string = this.aceInput.getStringFromEditor();
     if (textFromInput.length === 0) {
-      this.aceOutput.setEditorValue("You forgot to type something :)")
+      this.aceOutput.setEditorValue('You forgot to type something :)')
     } else {
       this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
         data => {
@@ -76,19 +76,19 @@ export class GameService {
     this.currentTaskNumber++;
 
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
-      this.mentor.setMentorText("Good bye, old friend. May the Force be with you.");
-      this.aceOutput.setEditorValue("GAME OVER");
+      this.mentor.setMentorText('Good bye, old friend. May the Force be with you.');
+      this.aceOutput.setEditorValue('GAME OVER');
     }
     else {
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     }
-
+    
     this.mentor.setImgMentor();
     this.aceInput.clearEditor();
     this.btnNextDisabled = true;
 
-    console.log("current task", this.currentTask);
+    console.log('current task', this.currentTask);
   }
 }

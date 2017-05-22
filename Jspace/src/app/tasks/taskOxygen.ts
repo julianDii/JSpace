@@ -1,8 +1,8 @@
-import {Task} from "./task";
+import { Task } from './task';
 import {
   checkIdentifier, checkInterval, checkKeyword, validateIdentifier, validateNumber, checkEqualSign,
   checkSemicolon
-} from "../test-code/helpers";
+} from '../test-code/helpers';
 
 export class TaskOxygen extends Task {
 
@@ -47,7 +47,7 @@ export class TaskOxygen extends Task {
 
   testTask(json: JSON) {
     if (Object.keys(json).length === 5) {
-      let expectedIdentifier = "oxygen";
+      let expectedIdentifier = 'oxygen';
       let expectedMin = 0;
       let expectedMax = 100;
       let keyword = json[0].value;
@@ -59,7 +59,7 @@ export class TaskOxygen extends Task {
         && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
         && checkSemicolon(semicolon);
     } else {
-      console.log("U might forgot something. The elements you typed in are only " + Object.keys(json).length)
+      console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
       return false;
     }
   }
