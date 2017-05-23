@@ -32,21 +32,21 @@ export class TasksService {
         0,
         "Lucky devil! You are lost in a JavaScript world." + "\n" +
         "It seems like you need to reboot your terminal! Otherwise you won’t be able to send an emergency message!" +
-        "For that you need to login. Please type in your name below." + "\n" + "\n" +
+        "For that you need to login." + "\n" + "Please type in your name below." + "\n" + "\n" +
         "Remember:" + "\n" +
         "Identifiers are used to name variables, and functions. Their first character must be a letter, underscore or " +
-        "dollar sign. Following may be letters, digits underscores or dollar signs.",
-        "Awesome, SUBTITUTETHISPLACE! It worked.",
+        "dollar sign." + "\n" + "Following may be letters, digits underscores or dollar signs.",
+        "Awesome! It worked.",
         ["Sorry, this username does not seem to be a valid name. Please try Again!"]
       ),
       new Task(
         1,
-        "I am running on JavaScript. To get back on track, you need to program and reconfigure me. Let’s get started " +
+        "Lets go! I am running on JavaScript. To get back on track, you need to program and reconfigure me. Let’s get started " +
         "with the basics." + "\n" +
         "Syntax:" + "\n" +
         "A Program is a list of instructions to be executed by a machine." +
-        "These instructions are called statements, in JS statements end with semicolons. Big Error-source, so don't " +
-        "forget them." + "\n" +
+        "These instructions are called statements, in JS statements end with semicolons." + "\n" +
+        "Blablabla Big Error-source, so don't forget them." + "\n" +
         "JS ignores multiple spaces, so the following is equal:" + "\n" +
         "a = 10;" + "\n" +
         "a =   	10;" + "\n" +
@@ -67,7 +67,7 @@ export class TasksService {
         "Firstly it’s enough to declare a simple variable called oxygen. You need to give it a value...10 seems to " +
         "be a good decision to accomplish your next tasks."
         ,
-        "Yeah! You rock! You increased your oxygen level to SUBTITUTETHISPLACE. It can’t get any worse now.",
+        "Yeah bro! You rock! You increased your oxygen level to SUBTITUTETHISPLACE. It can’t get any worse now.",
         ["Ouch! Something went wrong. Please check if you spelled everything in the right way, first." +
           "Your statement should contain 5 parts: the keyword to declare a variable, the identifier of the variable, " +
           "the assignment operator, the value of the variable as a number and the semicolon." +

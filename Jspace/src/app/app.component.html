@@ -1,13 +1,18 @@
+<html>
+<head>
+  <h1>{{title}}</h1>
+</head>
+<body>
 <div class="app-wrapper">
-  <header>
-    <h1>{{title}}</h1>
-  </header>
   <div class="main">
     <h2>{{titleOutput}}</h2>
     <ace-output-component></ace-output-component>
     <h2>{{titleInput}}</h2>
     <ace-input-component></ace-input-component>
-    <button id="btnRun" (click)="game.validateCode()">{{btnRun}}</button>
+    <div class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
+    <!--button id="btnRun" (click)="game.validateCode()">{{btnRun}}</button>-->
     <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
   </div>
 </div>
+</body>
+</html>
