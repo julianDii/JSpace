@@ -67,7 +67,7 @@ export class TaskOxygenDouble extends Task {
           let level = player['oxygen'];
           level = level * parseInt(expectedNumber);
           player[expectedIdentifier] = level;
-          let task = this.getTaskId() + 1;
+          let task = 0;
           player['task'] = task;
           this.localStorageService.saveToLocalStorage('player', player);
         }
