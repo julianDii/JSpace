@@ -24,6 +24,9 @@ export abstract class Task {
   static setValueFromUserToMessages(valueFromUser: string, message: string) {
     return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
   }
+  getTaskId(): number {
+    return this.id;
+  }
 
   getMentorText(): string {
     return this.mentorText;
