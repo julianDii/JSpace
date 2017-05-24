@@ -6,17 +6,19 @@ import { AceEditorComponent } from 'ng2-ace-editor';
 import { AceInputComponent } from './ace-input/ace-input.component';
 import { AppComponent } from './app.component';
 import { AceOutputComponent } from './ace-output/ace-output.component';
-import { GameService } from "./game/game.service";
-import { TasksService } from "./tasks/tasks.service";
-import { TokenTestService } from './test-code/token.test-service';
+import { GameService } from './game/game.service';
+import { TasksService } from './tasks/tasks.service';
 import { AnalyseCodeService } from './analyze-code/analyze.code-service';
+import { MentorComponent } from './mentor/mentor.component';
+import { LocalStorageService } from './storage/local.storage-service'
 
 @NgModule({
   declarations: [
     AppComponent,
     AceEditorComponent,
     AceInputComponent,
-    AceOutputComponent
+    AceOutputComponent,
+    MentorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +28,8 @@ import { AnalyseCodeService } from './analyze-code/analyze.code-service';
   providers: [
     GameService,
     TasksService,
-    TokenTestService,
     AnalyseCodeService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

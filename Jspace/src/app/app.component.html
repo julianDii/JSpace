@@ -1,11 +1,16 @@
-<h1>{{title}}</h1>
 <div class="app-wrapper">
-  <div class="main">
-    <h2>{{titleOutput}}</h2>
-    <ace-output-component></ace-output-component>
-    <h2>{{titleInput}}</h2>
-    <ace-input-component></ace-input-component>
-    <div class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
-    <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
-  </div>
+    <h1>{{title}}</h1>
+  <main>
+    <section id="sectionForMentor">
+      <mentor-component></mentor-component>
+    </section>
+    <section id="sectionForTerminals">
+      <h2>{{titleOutput}}</h2>
+      <ace-output-component></ace-output-component>
+      <h2>{{titleInput}}</h2>
+      <ace-input-component></ace-input-component>
+      <div class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
+      <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
+    </section>
+  </main>
 </div>

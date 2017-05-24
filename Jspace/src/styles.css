@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 html  {
   background: url(https://i.imgur.com/ziXPRHf.png) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -7,5 +6,3 @@ html  {
   -o-background-size: cover;
   background-size: cover;
 }
-
-

@@ -1,0 +1,10 @@
+#mentorText {
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 20px;
+  margin: 20px 0;
+}
+
+#mentor img {
+  height: 250px;
+}

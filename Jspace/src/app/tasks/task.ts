@@ -3,45 +3,52 @@
  * wrong answer
  */
 
-export class Task {
+export abstract class Task {
 
   // TODO: find out how to show the values from user in messages
 
   constructor(
     private id: number,
-    private instruction: String,
-    private messageCorrect: String,
-    private messagesWrong: String[]
-  ) { }
+    private mentorText: string,
+    private instruction: string,
+    private mentorAnswerCorrect: string,
+    private mentorAnswerWrong: string,
+    private messageCorrect: string,
+    private messagesWrong: string[]
+  ) {
+    console.log('id', this.id)
+  }
 
+  abstract testTask(json: JSON): boolean;
 
-  getInstruction(): String {
+  static setValueFromUserToMessages(valueFromUser: string, message: string) {
+    return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
+  }
+  getTaskId(): number {
+    return this.id;
+  }
+
+  getMentorText(): string {
+    return this.mentorText;
+  }
+
+  getInstruction(): string {
     return this.instruction;
   }
 
-  getMessageCorrect(valueFromUser: string = ""): String {
-    console.log(valueFromUser)
-    return this.setValueFromUserToMessages(valueFromUser, this.messageCorrect);
+  getMentorAnswerCorrect(valueFromUser: string = ""): string {
+    return Task.setValueFromUserToMessages(valueFromUser, this.mentorAnswerCorrect);
   }
 
-  getMessagesWrong(valueFromUser: String = ""): String[] {
-    return this.messagesWrong;
+  getMentorAnswerWrong(): string {
+    return this.mentorAnswerWrong;
   }
 
-  setInstruction(value: String) {
-    this.instruction = value;
+  getMessageCorrect(valueFromUser: string = ""): string {
+    return Task.setValueFromUserToMessages(valueFromUser, this.messageCorrect);
   }
 
-  setMessageCorrect(value: String) {
-    this.messageCorrect = value;
+  getMessageWrong(valueFromUser: string = ""): string {
+    return this.messagesWrong[0];
   }
-
-  setMessagesWrong(value: String[]) {
-    this.messagesWrong = value;
-  }
-
-  setValueFromUserToMessages(valueFromUser: string, message: String) {
-    return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
-  }
-
 }
