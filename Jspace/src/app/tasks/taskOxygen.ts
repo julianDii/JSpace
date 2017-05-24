@@ -1,10 +1,13 @@
 import { Task } from './task';
+import { LocalStorageService } from '../storage/local.storage-service'
 import {
   checkIdentifier, checkInterval, checkKeyword, validateIdentifier, validateNumber, checkEqualSign,
   checkSemicolon
 } from '../test-code/helpers';
 
 export class TaskOxygen extends Task {
+
+   private localStorageService = LocalStorageService.getInstance();
 
   constructor() {
     super(
@@ -55,6 +58,21 @@ export class TaskOxygen extends Task {
       let equalSign = json[2].value;
       let number = json[3].value;
       let semicolon = json[4].value;
+
+      if(checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
+        && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
+        && checkSemicolon(semicolon)){
+
+          let task = this.getTaskId() + 1;
+          let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+          player[identifier] = number;
+          player['task'] = task;
+
+         
+          this.localStorageService.saveToLocalStorage('player', player);
+
+        }
+        
       return checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
         && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
         && checkSemicolon(semicolon);

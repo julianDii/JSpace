@@ -10,6 +10,7 @@ import { GameService } from './game/game.service';
 import { TasksService } from './tasks/tasks.service';
 import { AnalyseCodeService } from './analyze-code/analyze.code-service';
 import { MentorComponent } from './mentor/mentor.component';
+import { LocalStorageService } from './storage/local.storage-service'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MentorComponent } from './mentor/mentor.component';
   providers: [
     GameService,
     TasksService,
-    AnalyseCodeService
+    AnalyseCodeService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

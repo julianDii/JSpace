@@ -1,10 +1,14 @@
 import { Task } from './task';
+import { LocalStorageService } from '../storage/local.storage-service'
+
 import {
   checkEqualSign, checkIdentifier, checkNumber, checkOperator, checkSemicolon,
   validateIdentifier, validateNumber
 } from '../test-code/helpers';
 
 export class TaskOxygenDouble extends Task {
+  
+  private localStorageService = LocalStorageService.getInstance();
 
   constructor() {
     super(
@@ -53,6 +57,21 @@ export class TaskOxygenDouble extends Task {
         var number = json[2].value;
         var semicolon = json[5].value;
       }
+
+      if(validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier)
+        && checkIdentifier(firstIdentifier, expectedIdentifier) && checkEqualSign(equalSign)
+        && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator)
+        && validateNumber(number) && checkNumber(number, expectedNumber) && checkSemicolon(semicolon)){
+
+          let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+          let level = player['oxygen'];
+          level = level * parseInt(expectedNumber);
+          player[expectedIdentifier] = level;
+          let task = this.getTaskId() + 1;
+          player['task'] = task;
+          this.localStorageService.saveToLocalStorage('player', player);
+        }
+
       return validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier)
         && checkIdentifier(firstIdentifier, expectedIdentifier) && checkEqualSign(equalSign)
         && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator)

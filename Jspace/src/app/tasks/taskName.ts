@@ -1,7 +1,10 @@
 import { Task } from './task';
 import { removeQuotationMarks, validateIdentifier } from '../test-code/helpers';
+import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskName extends Task {
+
+  private localStorageService = LocalStorageService.getInstance();
 
   constructor() {
     super(
@@ -24,8 +27,16 @@ export class TaskName extends Task {
   }
 
   testTask(json: JSON) {
-    let input = json[0].value;
+    let input:string = json[0].value;
     let remove = removeQuotationMarks(input);
+    
+    if(validateIdentifier(input)){
+      let taskNumber = this.getTaskId() + 1;
+      let player =  {name: input,task: taskNumber};
+  
+      this.localStorageService.saveToLocalStorage('player', player);
+    }
+   
     return validateIdentifier(input);
   }
 }
