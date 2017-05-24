@@ -6,18 +6,19 @@ h2 {
 }
 
 .app-wrapper {
+  margin-top: 100px;
+  margin-left: 5%;
   width: 90%;
-  margin: auto;
 }
 
-.main {
+main {
   margin: auto;
   display: flex;
 }
 
 #sectionForMentor {
   align-self: flex-end;
-  margin-right: 20px;
+  margin-right: 5%;
   width: 45%;
 }
 
