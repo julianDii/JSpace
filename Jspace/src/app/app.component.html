@@ -1,8 +1,4 @@
-<html>
-<head>
-  <h1>{{title}}</h1>
-</head>
-<body>
+<h1>{{title}}</h1>
 <div class="app-wrapper">
   <div class="main">
     <h2>{{titleOutput}}</h2>
@@ -10,9 +6,6 @@
     <h2>{{titleInput}}</h2>
     <ace-input-component></ace-input-component>
     <div class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
-    <!--button id="btnRun" (click)="game.validateCode()">{{btnRun}}</button>-->
     <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
   </div>
 </div>
-</body>
-</html>

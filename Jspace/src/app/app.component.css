@@ -1,12 +1,9 @@
-
-
 h2 {
   font-family: "Tahoma";
   font-weight: bold;
   color: #ffffff;
   text-align: center;
 }
-
 
 .app-wrapper {
   display: flex;
@@ -18,24 +15,6 @@ h2 {
   width: 40%;
   margin: auto;
 }
-
-
-/*
-#btnRun {
-  margin: 5px;
-  width: 70px;
-  height: 30px;
-}
-
-#btnNext {
-  float: right;
-  width: 70px;
-  height: 30px;
-  border-radius: 1px;
-  background: none;
-  box-shadow: none;
-}
-*/
 
 #btnNext {
   -webkit-border-radius: 0;
@@ -79,6 +58,7 @@ h2 {
   -webkit-transform: perspective(500px) rotateX(35deg);
   -moz-transform: perspective(500px) rotateX(35deg);
 }
+
 .button .outer .height {
   position: relative;
   height: 100%;
@@ -94,6 +74,7 @@ h2 {
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
 }
+
 .button:hover .outer .height {
   margin-top: -10px;
   padding-bottom: 10px;
@@ -102,10 +83,12 @@ h2 {
   -webkit-box-shadow: rgba(0,0,0,0.25) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 6px;
   -moz-box-shadow: rgba( 0,0,0,0.25) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 6px;
 }
+
 .button:active .outer .height {
   margin-top: 0px;
   padding-bottom: 0px;
 }
+
 .button .outer .height .inner {
   line-height: 2.8em;
   font-size: 30px;
@@ -127,6 +110,7 @@ h2 {
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
 }
+
 .button:hover .outer .height .inner{
   text-shadow: #B4A7D6 0px 0px 1px;
   background: #432E64; /* Old browsers */
@@ -134,6 +118,7 @@ h2 {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#432E64), color-stop(100%,#8b81d2)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #432E64 0%,#8b81d2 100%); /* Chrome10+,Safari5.1+ */
 }
+
 .button:active .outer .height .inner{
   text-shadow: #51387A 0px 1px 0px;
   border-radius: 16px;
