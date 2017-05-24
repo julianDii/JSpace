@@ -15,7 +15,7 @@ import { MentorComponent } from './mentor/mentor.component';
 
 export class AppComponent implements OnInit {
 
-  title = 'JSpace!';
+  title = '';
   titleInput = 'Input terminal';
   titleOutput = 'Output terminal';
   btnRun = 'Run';
