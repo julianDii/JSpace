@@ -32,8 +32,7 @@ export class TaskName extends Task {
     
     if(validateIdentifier(input)){
       let taskNumber = this.getTaskId() + 1;
-      let player =  {name: input,task: taskNumber};
-  
+      let player = {name: input,task: taskNumber};
       this.localStorageService.saveToLocalStorage('player', player);
     }
    

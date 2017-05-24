@@ -7,7 +7,7 @@ import {
 
 export class TaskOxygen extends Task {
 
-   private localStorageService = LocalStorageService.getInstance();
+  private localStorageService = LocalStorageService.getInstance();
 
   constructor() {
     super(
@@ -59,20 +59,17 @@ export class TaskOxygen extends Task {
       let number = json[3].value;
       let semicolon = json[4].value;
 
-      if(checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
+      if (checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
         && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
-        && checkSemicolon(semicolon)){
+        && checkSemicolon(semicolon)) {
 
-          let task = this.getTaskId() + 1;
-          let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-          player[identifier] = number;
-          player['task'] = task;
+        let task = this.getTaskId() + 1;
+        let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+        player[identifier] = number;
+        player['task'] = task;
+        this.localStorageService.saveToLocalStorage('player', player);
+      }
 
-         
-          this.localStorageService.saveToLocalStorage('player', player);
-
-        }
-        
       return checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
         && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
         && checkSemicolon(semicolon);
