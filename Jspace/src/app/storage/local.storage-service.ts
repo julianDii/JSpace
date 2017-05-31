@@ -26,16 +26,7 @@ export class LocalStorageService {
        return localStorage.getItem(type);
     }
 
-    saveNameWithTaskNumber(name, task) {
-        localStorage.setItem(name, task);
-        let data = localStorage.getItem(name)
-        console.log(data)
-
+    resetLocalStorageItem(type:string) {
+        localStorage.removeItem(type);
     }
-
-    getNameWithTaskNumber() {
-        let data = localStorage.getItem('name');
-        return data;
-    }
-
 }

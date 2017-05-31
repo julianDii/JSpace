@@ -5,6 +5,7 @@ import { AceInputComponent } from '../ace-input/ace-input.component';
 import { AceOutputComponent } from '../ace-output/ace-output.component';
 import { AnalyseCodeService } from '../analyze-code/analyze.code-service'
 import { MentorComponent } from '../mentor/mentor.component';
+import { LocalStorageService } from '../storage/local.storage-service'
 
 /**
  * GameService controls the game progress:
@@ -27,15 +28,24 @@ export class GameService {
   aceOutput: AceOutputComponent;
   btnNextDisabled: boolean;
 
+  private localStorageService = LocalStorageService.getInstance();
+
   constructor(private tasksService: TasksService,
-              private analyseCodeService: AnalyseCodeService) {
+    private analyseCodeService: AnalyseCodeService) {
     console.log("game service injected")
   }
 
   newGame(mentor: MentorComponent, aceIn: AceInputComponent, aceOut: AceOutputComponent) {
     console.log('creating new game...');
 
-    this.currentTaskNumber = 0;
+    if (this.localStorageService.readLocalStorage('player') != undefined) {
+      let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+      console.log("Saved player: " + JSON.stringify(player));
+      this.currentTaskNumber = player['task']
+    } else {
+      console.log("First game...")
+      this.currentTaskNumber = 0;
+    }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);
     this.mentor = mentor;
@@ -46,7 +56,7 @@ export class GameService {
     this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     this.aceInput.clearEditor();
-    
+
     console.log('new game created');
   }
 
@@ -84,7 +94,7 @@ export class GameService {
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     }
-    
+
     this.mentor.setImgMentor();
     this.aceInput.clearEditor();
     this.btnNextDisabled = true;
