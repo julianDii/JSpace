@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { Task } from './task';
 import { TaskName } from './taskName';
 import { TaskOxygen } from './taskOxygen';
-import { TaskOxygenDouble } from "./taskOxygenDouble";
+import { TaskOxygenDouble } from './taskOxygenDouble';
+import { TaskPrintPlayerObject } from './taskPrintPlayerObject';
+import { TaskAddArray } from './taskAddArray';
+import { TaskElementToArray } from './taskElementToArray';
+import { TaskPrintAlienObject } from './taskPrintAlienObject';
+import { TaskCopyArrayElement } from './taskCopyArrayElement';
+import { TaskLoopArray } from './taskLoopArray';
 
 /**
  * TaskService manages all tasks in game and their validation
@@ -33,7 +39,13 @@ export class TasksService {
     return [
       new TaskName(),
       new TaskOxygen(),
-      new TaskOxygenDouble()
+      new TaskOxygenDouble(),
+      new TaskPrintPlayerObject(),
+      new TaskAddArray(),
+      new TaskElementToArray(),
+      new TaskPrintAlienObject(),
+      new TaskCopyArrayElement(),
+      new TaskLoopArray()
     ];
   }
 }
