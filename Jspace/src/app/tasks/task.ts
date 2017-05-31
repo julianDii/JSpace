@@ -24,6 +24,11 @@ export abstract class Task {
   static setValueFromUserToMessages(valueFromUser: string, message: string) {
     return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
   }
+
+  setMessageCorrect(message: string) {
+    this.messageCorrect = message;
+  }
+
   getTaskId(): number {
     return this.id;
   }
