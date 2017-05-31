@@ -1,10 +1,10 @@
 #mentorText {
-  background-color: white;
+  background-color: #9DD8F7;
   border-radius: 15px;
   padding: 5px 20px;
-  margin: 20px 0;
+  font-family: "Raleway Light";
 }
 
 #mentor img {
-  height: 250px;
+  height: 400px;
 }
