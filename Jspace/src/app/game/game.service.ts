@@ -27,7 +27,8 @@ export class GameService {
   aceInput: AceInputComponent;
   aceOutput: AceOutputComponent;
   btnNextDisabled: boolean;
-  btnRunDisabled: boolean;
+  btnNextHidden: boolean;
+  btnRunHidden: boolean;
 
   private localStorageService = LocalStorageService.getInstance();
 
@@ -45,7 +46,7 @@ export class GameService {
       this.currentTaskNumber = player['task']
     } else {
       console.log("First game...")
-      this.currentTaskNumber = 0;
+      this.currentTaskNumber = 8;
     }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);
@@ -53,7 +54,8 @@ export class GameService {
     this.aceInput = aceIn;
     this.aceOutput = aceOut;
     this.btnNextDisabled = true;
-    this.btnRunDisabled = false;
+    this.btnNextHidden = false;
+    this.btnRunHidden = false;
 
     this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
@@ -88,7 +90,8 @@ export class GameService {
     this.currentTaskNumber++;
 
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
-      this.btnRunDisabled = true;
+      this.btnRunHidden = true;
+      this.btnNextHidden = true;
       this.mentor.setMentorText('Good bye, old friend. May the Force be with you.');
       this.aceOutput.setEditorValue('GAME OVER');
     }
