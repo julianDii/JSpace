@@ -32,7 +32,7 @@ export class GameService {
   private localStorageService = LocalStorageService.getInstance();
 
   constructor(private tasksService: TasksService,
-    private analyseCodeService: AnalyseCodeService) {
+              private analyseCodeService: AnalyseCodeService) {
     console.log("game service injected")
   }
 
@@ -45,7 +45,7 @@ export class GameService {
       this.currentTaskNumber = player['task']
     } else {
       console.log("First game...")
-      this.currentTaskNumber = 0;
+      this.currentTaskNumber = 5;
     }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);

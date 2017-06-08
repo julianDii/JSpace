@@ -1,5 +1,5 @@
 import { Task } from './task';
-import { removeQuotationMarks, validateIdentifier } from '../test-code/helpers';
+import { removeQuotationMarks, validateIdentifier, checkInputLength } from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskName extends Task {
@@ -27,15 +27,15 @@ export class TaskName extends Task {
   }
 
   testTask(json: JSON) {
-    let input:string = json[0].value;
+    let input = json[0].value;
     let remove = removeQuotationMarks(input);
-    
-    if(validateIdentifier(input)){
+
+    if(validateIdentifier(input) && checkInputLength(input)){
       let taskNumber = this.getTaskId() + 1;
       let player = {name: input,task: taskNumber};
       this.localStorageService.saveToLocalStorage('player', player);
     }
-   
-    return validateIdentifier(input);
+
+    return validateIdentifier(input) && checkInputLength(input);
   }
 }
