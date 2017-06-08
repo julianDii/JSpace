@@ -16,7 +16,7 @@ export class TaskLoopArray extends Task {
 
     testTask(json: JSON) {
         if(true){
-             this.localStorageService.resetLocalStorageItem('player')
+             this.localStorageService.resetLocalStorageItem('player');
         }
         return true;
     }

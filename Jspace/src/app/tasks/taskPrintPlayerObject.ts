@@ -9,7 +9,16 @@ export class TaskPrintPlayerObject extends Task {
     constructor() {
         super(
             3,
-            "", "", "", "", "",
+            "Objects are variables. But objects can contain many values.Something like:" + "\n" + 
+            "var spacecraft = {model:“Columbia“, weight:“3600kg“};" + "\n" +
+            "The easiest way to print an Object is:" + "\n"+ 
+            "console.log(JSON.stringify(Object));" + "\n"+ 
+            "Your Object, is stored within the Variable user.",
+
+            "",
+            "",
+            "",
+            "",
             [""]
         );
     }
