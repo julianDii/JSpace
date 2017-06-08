@@ -1,7 +1,6 @@
 import { Task } from './task';
 import { } from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
-import {isBoolean} from "util";
 
 export class TaskAddArray extends Task {
 
