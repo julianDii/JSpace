@@ -62,3 +62,9 @@ export function checkKeyword(keyword: string) {
 export function checkEqualSign(equalSign: string) {
   return stringEqualsString(equalSign, "=");
 }
+
+/*
+HELPERS FOR TASK ELEMENT TO ARRAY
+ */
+
+
