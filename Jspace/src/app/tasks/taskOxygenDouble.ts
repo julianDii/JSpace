@@ -7,13 +7,14 @@ import {
 } from '../test-code/helpers';
 
 export class TaskOxygenDouble extends Task {
-  
+
   private localStorageService = LocalStorageService.getInstance();
 
   constructor() {
     super(
       2,
-      "You can also calculate with JavaScript. To view the existing operators in JavaScript enter operators(). " +
+      "You can also calculate with JavaScript." + "\n" +
+      "To view the existing operators in JavaScript enter operators(). " + "\n" +
       "Note that the calculated value has to be stored and that you don’t need the var-keyword. " + "\n" +
       "For example: x = x + 2;",
 
