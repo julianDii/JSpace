@@ -15,15 +15,16 @@ export class TaskPrintPlayerObject extends Task {
             "console.log(JSON.stringify(Object));" + "\n" +
             "Your Object, is stored within the Variable user.",
 
-            "Try to print your user object to the console",
+            "I just made a system check and it seems like we need more aluminium to repair our spaceship."+ "\n" +
+            "Please check if you still have your backpack - maybe it contains the required material.",
 
-            "Nice You got it!",
+            "Fabulous! It worked. Move on to the next task.",
 
-            "Ups! Something went wrong",
+            "Try to print your player object again",
 
-            "user",
+            "",
 
-            ["Error1"]
+            ["Ugh! A terrible error occurred. Check what the mentor is saying!"]
         );
     }
 
