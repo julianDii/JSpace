@@ -34,7 +34,7 @@ export abstract class Task {
   }
 
   getMentorText(): string {
-    return this.mentorText;
+    return this.mentorText.replace(new RegExp('\n', 'g'), "<br/> <br/>");
   }
 
   getInstruction(): string {

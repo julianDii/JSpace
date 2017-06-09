@@ -44,7 +44,7 @@ export class GameService {
       console.log("Saved player: " + JSON.stringify(player));
       this.currentTaskNumber = player['task']
     } else {
-      console.log("First game...")
+      console.log("new game starting...")
       this.currentTaskNumber = 0;
     }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
