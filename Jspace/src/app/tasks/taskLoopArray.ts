@@ -11,12 +11,16 @@ export class TaskLoopArray extends Task {
             8,
             "Despite having a lot of options for different loops, I will show you the for-loop. " + "\n" +
             "It works as follows: " + "\n" +
-            "for(statement1; statement2; statement3) { code block to be executed } Statement 1 is executed before the loop (the code block) starts. Statement 2 defines the condition for running the loop (the code block). Statement 3 is executed each time after the loop (the code block) has been executed." + "\n" +
-            "For instance: for(var i = 0; i < user.backpack.length; i ++) { boardComputer.inventory.push(user.backpack[i]);}",
+            "for (statement1; statement2; statement3) { code block to be executed } " + "\n" + 
+            "Statement 1 is executed before the loop (the code block) starts." + "\n" + 
+            "Statement 2 defines the condition for running the loop (the code block)." + "\n" + 
+            "Statement 3 is executed each time after the loop (the code block) has been executed." + "\n" +
+            "For instance:  " + "\n" + "for (var i = 0; i < user.backpack.length; i ++) { boardComputer.inventory.push(user.backpack[i]);}",
 
             "Time to transfer our items to the board computer." + "\n" +
-            "So that it can calculate the amount of resources and time that we need to repair the ship." + "\n" +
-            "Push the items from our backpack to the inventory of the board computer with a for-loop.",
+            "So that it can calculate the amount of resources and time that we need to repair" + "\n" + "the ship." + "\n" +
+            "Push the items from our backpack to the inventory of the board computer with a" + "\n" + 
+            "for-loop.",
 
             "Transaction complete! All Materials collected.",
 

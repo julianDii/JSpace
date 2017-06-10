@@ -35,12 +35,15 @@ export class TaskOxygen extends Task {
       "yourself some oxygen.",
 
       "I am running on JavaScript. To get back on track, you need to program and reconfigure me. " + "\n" +
-      "Firstly it’s enough to declare a simple variable called oxygen. You need to give it a value...10 seems to " +
+      "Firstly it’s enough to declare a simple variable called oxygen. You need to give it a value.  " + "\n" +
+      "10 seems to " +
       "be a good decision to accomplish your next tasks.",
 
       "Yeah! You rock! You increased your oxygen level. It can’t get any worse now.",
-      "Ouch! Something went wrong. Please check if you spelled everything in the right way, first. " +
-      "Your statement should contain 5 parts: the keyword to declare a variable, the identifier of the variable, " +
+      "Ouch! Something went wrong. " + "\n" +
+      "Please check if you spelled everything in the right way, first. " +
+      "Your statement should contain 5 parts: " + "\n" +
+      "The keyword to declare a variable, the identifier of the variable, " +
       "the assignment operator, the value of the variable as a number and the semicolon.",
 
       "You have set your oxygen level.",
