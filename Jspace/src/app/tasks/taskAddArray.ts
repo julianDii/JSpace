@@ -13,7 +13,7 @@ export class TaskAddArray extends Task {
             "object.element = value; " + "\n" +
             "An array might be a good choice for your backpack object.array = [];",
 
-            "It seems like you lost your backpack. Well then let us make you a new one.",
+            "It seems like you lost your backpack. Well then let us make you a new " + "\n" + "one.",
 
             "Done! We can now store all the items we need in our backpack.",
 
@@ -21,7 +21,7 @@ export class TaskAddArray extends Task {
 
             "Nice! This is your empty backpack.",
 
-            ["Error! Try it again and check if you really used the right keywords.The array must be empty!"]
+            ["Error! Try it again and check if you really used the right keywords." + "\n" + "The array must be empty!"]
         );
     }
 

@@ -10,9 +10,13 @@ export class TaskCopyArrayElement extends Task {
         super(
             7,
             "Again we use the “push”-keyword to do so." + "\n" +
-            "But this time we need to address the alien.backpack plus the index of the element that we want to copy! For instance: user.backpack.push(alien.backpack[index]);",
+            "But this time we need to address the alien.backpack plus the index of the element that we want to copy!" + "\n" + 
+            "For instance: user.backpack.push(alien.backpack[index]);",
 
-            "What a coincidence! The alien has a aluminium helmet in his backpack that we can use to repair our space ship! Since we move in a JavaScript-galaxy we can just easily copy the item to our backpack-array.",
+            "What a coincidence!" + "\n" + 
+            "The alien has a aluminium helmet in his backpack that we can use to repair our " + "\n" +
+            "space ship! Since we move in a JavaScript-galaxy we can just easily copy the " + "\n" +
+            "item to our backpack-array.",
 
             "Juhuu! We got the Super-aluminium.",
 
@@ -21,7 +25,8 @@ export class TaskCopyArrayElement extends Task {
             "Good job!" + "\n" +
             "We are one step closer for collecting all the necessary material for the reparation!",
 
-            ["Error occurred! >.< Be sure to address the right index! We only need the aluminium helmet."]
+            ["Error occurred! >.< Be sure to address the right index! We only need the " + "\n" + 
+            "aluminium helmet."]
         );
     }
 
