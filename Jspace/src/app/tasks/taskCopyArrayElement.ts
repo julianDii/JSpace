@@ -8,8 +8,8 @@ export class TaskCopyArrayElement extends Task {
 
     constructor() {
         super(
-            6,
-            "", "", "", "", "",
+            7,
+            "","","","","",
             [""]
         );
     }
