@@ -1,5 +1,5 @@
 import { Task } from './task';
-import { } from '../test-code/helpers';
+import { checkSemicolon, stringEqualsString } from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskPrintAlienObject extends Task {
@@ -23,18 +23,47 @@ export class TaskPrintAlienObject extends Task {
     }
 
     testTask(json: JSON) {
-        if (true) {
-            let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-            player.task = this.getTaskId() + 1;
-            this.localStorageService.saveToLocalStorage('player', player);
 
-            let alien = {backpack:[]};
-            alien.backpack.push('Super-aluminium');
-            this.localStorageService.saveToLocalStorage('alien', alien);
-            let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(alien.backpack);
-            this.setMessageCorrect(newMessage);
+        if (Object.keys(json).length === 12) {
+
+            let consoleStr = json[0].value;
+            let dot1 = json[1].value;
+            let log = json[2].value;
+            let openBracket1 = json[3].value;
+            let jsonText = json[4].value;
+            let dot2 = json[5].value;
+            let stringify = json[6].value;
+            let openBracket2 = json[7].value;
+            let alien = json[8].value;
+            let closeBracket1 = json[9].value;
+            let closeBracket2 = json[10].value;
+            let semicolon = json[11].value;
+
+            if ((stringEqualsString(consoleStr, "console") && stringEqualsString(dot1, ".") && stringEqualsString(log, "log")
+                && stringEqualsString(openBracket1, "(") && stringEqualsString(jsonText, "JSON") && stringEqualsString(dot2, ".")
+                && stringEqualsString(stringify, "stringify") && stringEqualsString(openBracket2, "(") && stringEqualsString(alien, "alien")
+                && stringEqualsString(closeBracket1, ")") && stringEqualsString(closeBracket2, ")") && checkSemicolon(semicolon))) {
+                
+                let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                player.task = this.getTaskId() + 1;
+                this.localStorageService.saveToLocalStorage('player', player);
+
+                let alien = { backpack: [] };
+                alien.backpack.push('Super-aluminium');
+                this.localStorageService.saveToLocalStorage('alien', alien);
+                let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(alien.backpack);
+                this.setMessageCorrect(newMessage);
+            }
+
+            return (stringEqualsString(consoleStr, "console") && stringEqualsString(dot1, ".") && stringEqualsString(log, "log")
+                && stringEqualsString(openBracket1, "(") && stringEqualsString(jsonText, "JSON") && stringEqualsString(dot2, ".")
+                && stringEqualsString(stringify, "stringify") && stringEqualsString(openBracket2, "(") && stringEqualsString(alien, "alien")
+                && stringEqualsString(closeBracket1, ")") && stringEqualsString(closeBracket2, ")") && checkSemicolon(semicolon));
+
+        } else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
+            return false;
         }
-
-        return true;
     }
+
 }
