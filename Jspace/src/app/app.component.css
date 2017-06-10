@@ -5,25 +5,31 @@ h2 {
   font-weight: bold;
   color: #ffffff;
   text-align: center;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 3vh;
 }
 
 .app-wrapper {
-  margin-top: 6.250em;
-  margin-left: 5%;
-  width: 90%;
+  margin: 5vh 8vw;
+  height: 90vh;
+  width: 84vw;
+  display: flex;
+  align-items: flex-end;
 }
 
 main {
   margin: auto;
+  width: 100%;
   display: flex;
+  align-items: flex-end;
 }
 
 #sectionForMentor {
-  align-self: flex-end;
-  margin-right: 5%;
+  margin-right: 7%;
   width: 45%;
 }
 
 #sectionForTerminals {
-  width: 55%;
+  width: 48%;
 }
