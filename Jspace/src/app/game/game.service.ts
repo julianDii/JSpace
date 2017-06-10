@@ -29,6 +29,7 @@ export class GameService {
   btnNextDisabled: boolean;
   btnNextHidden: boolean;
   btnRunHidden: boolean;
+  btnRunDisabled: boolean;
 
   private localStorageService = LocalStorageService.getInstance();
 
@@ -56,6 +57,7 @@ export class GameService {
     this.btnNextDisabled = true;
     this.btnNextHidden = false;
     this.btnRunHidden = false;
+    this.btnRunDisabled = false;
 
     this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
@@ -65,24 +67,27 @@ export class GameService {
   }
 
   validateCode() {
-    let textFromInput: string = this.aceInput.getStringFromEditor();
-    if (textFromInput.length === 0) {
-      this.aceOutput.setEditorValue('You forgot to type something :)')
-    } else {
-      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-        data => {
-          let testPassed = this.currentTask.testTask(data);
-          if (testPassed) {
-            this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
-            this.mentor.setImgSuccess();
-            this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
-            this.btnNextDisabled = false;
-          } else {
-            this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
-            this.mentor.setImgFailure();
-            this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
-          }
-        });
+    if (this.btnRunDisabled === false) {
+      let textFromInput: string = this.aceInput.getStringFromEditor();
+      if (textFromInput.length === 0) {
+        this.aceOutput.setEditorValue('You forgot to type something :)')
+      } else {
+        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+          data => {
+            let testPassed = this.currentTask.testTask(data);
+            if (testPassed) {
+              this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
+              this.mentor.setImgSuccess();
+              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
+              this.btnNextDisabled = false;
+              this.btnRunDisabled = true;
+            } else {
+              this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
+              this.mentor.setImgFailure();
+              this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
+            }
+          });
+      }
     }
   }
 
@@ -104,6 +109,7 @@ export class GameService {
     this.mentor.setImgMentor();
     this.aceInput.clearEditor();
     this.btnNextDisabled = true;
+    this.btnRunDisabled = false;
 
     console.log('current task', this.currentTask);
   }
