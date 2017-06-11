@@ -9,16 +9,20 @@ export class TaskPrintAlienObject extends Task {
     constructor() {
         super(
             6,
-            "Print out the Alien object.",
 
-            "The friendly alien offers us to look into his bag! " +
-            "We can make use of the " + "\n" + "stringify-function of JSON again." + "\n" +
-            "It is quite easy, you already used this function recently. Use it again " + "\n" + "to see what the alien-object has to offer.",
+            "We can make use of the stringify-function of JSON again." + "\n" +
+            "It is quite easy, you already used this function recently. Use it again to see what the alien-object has to offer.",
 
-            "Wohooo! The alien has some useful stuff that we can get!",
-            "Did you really used the command like before and with alien?",
-            "Great this is the alien bacckpack: ",
-            ["Wah! It didn’t work! Put the right object name into the brackets? " + "\n" + "Always check twice!"]
+            "The friendly alien has even more to offer! Let's take a look into his bag. " + "\n" +
+            "Print out the alien-object.",
+            
+            "Wohooo! The alien has an aluminium helmet, which might come in handy!",
+
+            "Don't forget to address the object and use the JSON.stringify-function!",
+
+            "Great this is what the alien has in his backpack: ",
+
+            ["Wah! It didn’t work! Make sure to put the right object name into the brackets! " + "\n" + "Always check twice!"]
         );
     }
 
@@ -49,7 +53,7 @@ export class TaskPrintAlienObject extends Task {
                 this.localStorageService.saveToLocalStorage('player', player);
 
                 let alien = { backpack: [] };
-                alien.backpack.push('Super-aluminium');
+                alien.backpack.push('aluminium-helmet');
                 this.localStorageService.saveToLocalStorage('alien', alien);
                 let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(alien.backpack);
                 this.setMessageCorrect(newMessage);

@@ -15,63 +15,155 @@ export class TaskLoopArray extends Task {
             "Statement 1 is executed before the loop (the code block) starts." + "\n" +
             "Statement 2 defines the condition for running the loop (the code block)." + "\n" +
             "Statement 3 is executed each time after the loop (the code block) has been executed." + "\n" +
-            "For instance:  " + "\n" + "for (var i = 0; i < user.backpack.length; i ++) { boardComputer.inventory.push(user.backpack[i]);}",
+            "For instance:  " + "\n" + "for (var i = 0; i < object.element.length; i ++) { object.element.push(object.element[i]);}" + "\n" + 
+            "Be aware that the array of the board computer is named 'inventory'.",
 
             "Time to transfer our items to the board computer." + "\n" +
             "So that it can calculate the amount of resources and time that we need to repair" + "\n" + "the ship." + "\n" +
             "Push the items from our backpack to the inventory of the board computer with a" + "\n" +
             "for-loop.",
 
-            "Transaction complete! All Materials collected.",
+            "Transaction complete! All Materials collected. Good job!",
 
-            "Transaction incomplete! Check your script.",
+            "Transaction incomplete! Make sure to address the user's backpack for the iteration!",
 
             "Yippieh! Time to repair the ship and leave the planet!",
 
-            ["Bzzzt! Try again and make sure to address the user’s backpack for the iteration!"]
+            ["Bzzzt! Error! What do you suggest, dear mentor?"]
         );
     }
 
    testTask(json: JSON) {
         if (Object.keys(json).length === 35) {
             //  for(var i = 0; i < user.backpack.length; i++) {
-            //      boardComputer.inventory.push(user.backpack[i]);
+            //      boardcomputer.inventory.push(user.backpack[i]);
             //  }
-            return (stringEqualsString(json[0].value, "for")
-                && stringEqualsString(json[1].value, "(")
-                && stringEqualsString(json[2].value, "var")
-                && stringEqualsString(json[3].value, "i")
-                && stringEqualsString(json[4].value, "=")
-                && stringEqualsString(json[5].value, "0")
-                && checkSemicolon(json[6].value)
-                && stringEqualsString(json[7].value, "i")
-                && stringEqualsString(json[8].value, "<")
-                && stringEqualsString(json[9].value, "user")
-                && stringEqualsString(json[10].value, ".")
-                && stringEqualsString(json[11].value, "backpack")
-                && stringEqualsString(json[12].value, ".")
-                && stringEqualsString(json[13].value, "length")
-                && checkSemicolon(json[14].value)
-                && stringEqualsString(json[15].value, "i")
-                && stringEqualsString(json[16].value, "+")
-                && stringEqualsString(json[17].value, "+")
-                && stringEqualsString(json[18].value, ")")
-                && stringEqualsString(json[19].value, "{")
-                && stringEqualsString(json[20].value, "boardComputer")
-                && stringEqualsString(json[21].value, ".")
-                && stringEqualsString(json[22].value, "inventory")
-                && stringEqualsString(json[23].value, ".")
-                && stringEqualsString(json[24].value, "push")
-                && stringEqualsString(json[25].value, "(")
-                && stringEqualsString(json[26].value, "user")
-                && stringEqualsString(json[27].value, ".")
-                && stringEqualsString(json[28].value, "backpack")
-                && stringEqualsString(json[29].value, "[")
-                && stringEqualsString(json[30].value, "i")
-                && stringEqualsString(json[31].value, "]")
-                && stringEqualsString(json[32].value, ")")
-                && checkSemicolon(json[33].value)
-                && stringEqualsString(json[34].value, "}"));
+            let forString = json[0].value;
+            let openingBracket1 = json[1].value;
+            let varString = json[2].value;
+            let firstI = json[3].value;
+            let equalSign = json[4].value;
+            let valueOfI = json[5].value;
+            let semicolon1 = json[6].value;
+            let secondI = json[7].value;
+            let smallerThanSign = json[8].value;
+            let user1 = json[9].value;
+            let dot1 = json[10].value;
+            let backpackUser1 = json[11].value;
+            let dot2 = json[12].value;
+            let lengthString = json[13].value;
+            let semicolon2 = json[14].value;
+            let thirdI = json[15].value;
+            let firstPlus = json[16].value;
+            let secondPlus = json[17].value;
+            let closingBracket1 = json[18].value;
+            let openingBracket2 = json[19].value;
+            let boardComputerString = json[20].value;
+            let dot3 = json[21].value;
+            let inventoryBoardComputer = json[22].value;
+            let dot4 = json[23].value;
+            let push = json[24].value;
+            let openingBracket3 = json[25].value;
+            let user2 = json[26].value;
+            let dot5 = json[27].value;
+            let backpackUser2 = json[28].value;
+            let openingBracket4 = json[29].value;
+            let index = json[30].value;
+            let closingBracket2 = json[31].value;
+            let closingBracket3 = json[32].value;
+            let semicolon3 = json[33].value;
+            let closingBracket4 = json[34].value;
+
+            if((stringEqualsString(forString, "for")&&
+                stringEqualsString(openingBracket1, "(") &&
+                stringEqualsString(varString, "var") &&
+                stringEqualsString(firstI, "i") && 
+                stringEqualsString(equalSign, "=") &&
+                stringEqualsString(valueOfI, "0") &&
+                checkSemicolon(semicolon1) &&
+                stringEqualsString(secondI, "i") &&
+                stringEqualsString(smallerThanSign, "<") &&
+                stringEqualsString(user1, "user") &&
+                stringEqualsString(dot1, ".") &&
+                stringEqualsString(backpackUser1, "backpack") &&
+                stringEqualsString(dot2, ".") &&
+                stringEqualsString(lengthString, "length") &&
+                checkSemicolon(semicolon2) &&
+                stringEqualsString(thirdI, "i") &&
+                stringEqualsString(firstPlus, "+") &&
+                stringEqualsString(secondPlus, "+") &&
+                stringEqualsString(closingBracket1, ")") &&
+                stringEqualsString(openingBracket2, "{") &&
+                stringEqualsString(boardComputerString, "boardcomputer") &&
+                stringEqualsString(dot3, ".") &&
+                stringEqualsString(inventoryBoardComputer, "inventory") &&
+                stringEqualsString(dot4, ".") &&
+                stringEqualsString(push, "push") &&
+                stringEqualsString(openingBracket3, "(") &&
+                stringEqualsString(user2, "user") &&
+                stringEqualsString(dot5, ".") &&
+                stringEqualsString(backpackUser2, "backpack") &&
+                stringEqualsString(openingBracket4, "[") &&
+                stringEqualsString(index, "i") &&
+                stringEqualsString(closingBracket2, "]") &&
+                stringEqualsString(closingBracket3, ")") &&
+                checkSemicolon(semicolon3) &&
+                stringEqualsString(closingBracket4, "}"))) {
+
+                    let boardcomputer = { inventory: [] }
+                    let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                    player.task = this.getTaskId() + 1;
+
+                    for (var i = 0; i < player.backpack.length; i++) {
+                        boardcomputer.inventory.push(player.backpack[i]);
+                    }
+                    player.backpack = [];
+                    this.localStorageService.saveToLocalStorage('player', player);
+                    this.localStorageService.saveToLocalStorage('boardcomputer', boardcomputer);
+
+                    let newMessage = this.getMessageCorrect()
+                    + "\n" + "BOARDCOMPUTER: " + JSON.stringify(boardcomputer.inventory);
+                   
+                    this.setMessageCorrect(newMessage);
+                    this.localStorageService.resetLocalStorageItem('player');
+
+                }
+
+            return (stringEqualsString(forString, "for")
+                && stringEqualsString(openingBracket1, "(")
+                && stringEqualsString(varString, "var")
+                && stringEqualsString(firstI, "i")
+                && stringEqualsString(equalSign, "=")
+                && stringEqualsString(valueOfI, "0")
+                && checkSemicolon(semicolon1)
+                && stringEqualsString(secondI, "i")
+                && stringEqualsString(smallerThanSign, "<")
+                && stringEqualsString(user1, "user")
+                && stringEqualsString(dot1, ".")
+                && stringEqualsString(backpackUser1, "backpack")
+                && stringEqualsString(dot2, ".")
+                && stringEqualsString(lengthString, "length")
+                && checkSemicolon(semicolon2)
+                && stringEqualsString(thirdI, "i")
+                && stringEqualsString(firstPlus, "+")
+                && stringEqualsString(secondPlus, "+")
+                && stringEqualsString(closingBracket1, ")")
+                && stringEqualsString(openingBracket2, "{")
+                && stringEqualsString(boardComputerString, "boardcomputer")
+                && stringEqualsString(dot3, ".")
+                && stringEqualsString(inventoryBoardComputer, "inventory")
+                && stringEqualsString(dot4, ".")
+                && stringEqualsString(push, "push")
+                && stringEqualsString(openingBracket3, "(")
+                && stringEqualsString(user2, "user")
+                && stringEqualsString(dot5, ".")
+                && stringEqualsString(backpackUser2, "backpack")
+                && stringEqualsString(openingBracket4, "[")
+                && stringEqualsString(index, "i")
+                && stringEqualsString(closingBracket2, "]")
+                && stringEqualsString(closingBracket3, ")")
+                && checkSemicolon(semicolon3)
+                && stringEqualsString(closingBracket4, "}"));
 
         } else {
             console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
