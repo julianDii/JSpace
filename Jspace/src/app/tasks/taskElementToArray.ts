@@ -1,5 +1,5 @@
 import { Task } from './task';
-import {checkSemicolon, stringEqualsString} from '../test-code/helpers';
+import {checkFirstLetter, checkSemicolon, stringEqualsString} from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskElementToArray extends Task {
@@ -32,7 +32,7 @@ export class TaskElementToArray extends Task {
         let closeBracket = json[7].value;
         let semicolon = json[8].value;
 
-        return (stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
+        return (checkFirstLetter(userString) && stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
         && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
         && (stringEqualsString(aluminiumShardString, "\"aluminium-shard\"") || stringEqualsString(aluminiumShardString, "'aluminium-shard'")) && stringEqualsString(closeBracket, ")") && checkSemicolon(semicolon));
       }
