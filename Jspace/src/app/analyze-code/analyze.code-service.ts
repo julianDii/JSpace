@@ -11,6 +11,11 @@ export class AnalyseCodeService {
     constructor(private http: Http) { }
 
     getTokenizedCode(code) {
+        console.log('code as string:', code);
+        code = code.trim();
+        code = code.replace(new RegExp('/', 'g'), '%2F');
+        console.log('code as string reformatted for url:', code);
+
         const url = `${this.tokenizeCodeEndpoint}/${code}`;
         console.log(url)
         return this.http.get(url)
