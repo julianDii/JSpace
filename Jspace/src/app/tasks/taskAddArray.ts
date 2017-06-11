@@ -1,5 +1,5 @@
 import { Task } from './task';
-import { } from '../test-code/helpers';
+import { checkSemicolon, stringEqualsString } from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskAddArray extends Task {
@@ -26,15 +26,18 @@ export class TaskAddArray extends Task {
     }
 
     testTask(json: JSON) {
-        if (true) {
-            let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-            player.task = this.getTaskId() + 1;
-            player['backpack'] = [];
-            this.localStorageService.saveToLocalStorage('player', player);
-            delete player.task;
-            let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
-            this.setMessageCorrect(newMessage);
+        if (Object.keys(json).length === 7) {
+            return (stringEqualsString(json[0].value, "user")
+                && stringEqualsString(json[1].value, ".")
+                && stringEqualsString(json[2].value, "backpack")
+                && stringEqualsString(json[3].value, "=")
+                && stringEqualsString(json[4].value, "[")
+                && stringEqualsString(json[5].value, "]")
+                && checkSemicolon(json[6].value));
+
+        } else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
+            return false;
         }
-        return true;
     }
 }

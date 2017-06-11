@@ -1,5 +1,5 @@
 import { Task } from './task';
-import { } from '../test-code/helpers';
+import { checkSemicolon, stringEqualsString } from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskPrintPlayerObject extends Task {
@@ -15,8 +15,8 @@ export class TaskPrintPlayerObject extends Task {
             "console.log(JSON.stringify(Object));" + "\n" +
             "Your Object, is stored within the Variable user.",
 
-            "I just made a system check and it seems like we need more aluminium to " + "\n" + "repair  our spaceship."+ "\n" +
-            "\n"+ "Please check if you still have your backpack - maybe it contains the " + "\n" + "required material.",
+            "I just made a system check and it seems like we need more aluminium to " + "\n" + "repair  our spaceship." + "\n" +
+            "\n" + "Please check if you still have your backpack - maybe it contains the " + "\n" + "required material.",
 
             "Fabulous! It worked. Move on to the next task.",
 
@@ -29,16 +29,23 @@ export class TaskPrintPlayerObject extends Task {
     }
 
     testTask(json: JSON) {
+        if (Object.keys(json).length === 12) {
+            return (stringEqualsString(json[0].value, "console")
+                && stringEqualsString(json[1].value, ".")
+                && stringEqualsString(json[2].value, "log")
+                && stringEqualsString(json[3].value, "(")
+                && stringEqualsString(json[4].value, "JSON")
+                && stringEqualsString(json[5].value, ".")
+                && stringEqualsString(json[6].value, "stringify")
+                && stringEqualsString(json[7].value, "(")
+                && stringEqualsString(json[8].value, "user")
+                && stringEqualsString(json[9].value, ")")
+                && stringEqualsString(json[10].value, ")")
+                && checkSemicolon(json[11].value));
 
-        // True has to be replaced with validation!
-        if (true) {
-            let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-            player.task = this.getTaskId() + 1;
-            this.localStorageService.saveToLocalStorage('player',player);
-            delete player.task;
-            let newMessage = this.getMessageCorrect() + JSON.stringify(player);
-            this.setMessageCorrect(newMessage);
+        } else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
+            return false;
         }
-        return true;
     }
 }
