@@ -1,5 +1,5 @@
 import { Task } from './task';
-import {checkSemicolon, stringEqualsString} from '../test-code/helpers';
+import {checkFirstLetter, checkSemicolon, stringEqualsString} from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskPrintAlienObject extends Task {
@@ -19,6 +19,8 @@ export class TaskPrintAlienObject extends Task {
 
       if (Object.keys(json).length === 12) {
 
+        //console.log(JSON.stringify(alien));
+
         let consoleStr = json[0].value;
         let dot1 = json[1].value;
         let log = json[2].value;
@@ -33,7 +35,9 @@ export class TaskPrintAlienObject extends Task {
         let semicolon = json[11].value;
 
 
-        return (stringEqualsString(consoleStr, "console") && stringEqualsString(dot1, ".") && stringEqualsString(log, "log")
+
+
+        return (checkFirstLetter(consoleStr) && stringEqualsString(consoleStr, "console") && stringEqualsString(dot1, ".") && stringEqualsString(log, "log")
             && stringEqualsString(openBracket1, "(") && stringEqualsString(jsonText, "JSON") && stringEqualsString(dot2, ".")
             && stringEqualsString(stringify, "stringify") && stringEqualsString(openBracket2, "(") && stringEqualsString(alien, "alien")
             && stringEqualsString(closeBracket1, ")") && stringEqualsString(closeBracket2, ")") && checkSemicolon(semicolon));
