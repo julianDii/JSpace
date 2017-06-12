@@ -11,7 +11,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     'chromeOptions': {
-    'args': ['--disable-web-security', '--user-data-dir=~/.e2e-chrome-profile']
+    'args': ['--disable-web-security']
   }
   },
   directConnect: true,
