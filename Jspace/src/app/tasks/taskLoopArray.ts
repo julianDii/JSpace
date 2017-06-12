@@ -121,7 +121,6 @@ export class TaskLoopArray extends Task {
                    
                     this.setMessageCorrect(newMessage);
                     this.localStorageService.resetLocalStorageItem('player');
-
                 }
 
             return (stringEqualsString(forString, "for")
@@ -158,7 +157,6 @@ export class TaskLoopArray extends Task {
                 && stringEqualsString(closingBracket3, ")")
                 && checkSemicolon(semicolon3)
                 && stringEqualsString(closingBracket4, "}"));
-
         } else {
             console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
             return false;
