@@ -254,12 +254,9 @@ describe('jspace App', () => {
     page.setInputText('var oxygen = 10;');
     runButton.click();
     nextButton.click();
-    browser.sleep(1000);
 
     page.setInputText('oxygen = peter*2;');
     runButton.click();
-
-    browser.sleep(3000);
 
     page.getOutputText().then(function (text) {
       var outputText = 'An error happened. Try to double up your oxygen level again.';
