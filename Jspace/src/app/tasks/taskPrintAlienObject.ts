@@ -15,7 +15,7 @@ export class TaskPrintAlienObject extends Task {
 
             "The friendly alien has even more to offer! Let's take a look into his bag. " + "\n" +
             "Print out the alien-object.",
-            
+
             "Wohooo! The alien has an aluminium helmet, which might come in handy!",
 
             "Don't forget to address the object and use the JSON.stringify-function!",
@@ -47,7 +47,7 @@ export class TaskPrintAlienObject extends Task {
                 && stringEqualsString(openBracket1, "(") && stringEqualsString(jsonText, "JSON") && stringEqualsString(dot2, ".")
                 && stringEqualsString(stringify, "stringify") && stringEqualsString(openBracket2, "(") && stringEqualsString(alien, "alien")
                 && stringEqualsString(closeBracket1, ")") && stringEqualsString(closeBracket2, ")") && checkSemicolon(semicolon))) {
-                
+
                 let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
                 player.task = this.getTaskId() + 1;
                 this.localStorageService.saveToLocalStorage('player', player);

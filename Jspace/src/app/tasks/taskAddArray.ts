@@ -18,8 +18,8 @@ export class TaskAddArray extends Task {
 
             "Done! We can now store all the items we need in our backpack.",
 
-            "Try again! Something went wrong with your code." + "\n" + 
-            "The array must be empty! A little more help?" + "\n" + 
+            "Try again! Something went wrong with your code." + "\n" +
+            "The array must be empty! A little more help?" + "\n" +
             "The input should look like this: " + "\n" + "object.element = []; (you need to replace object and element for sure)",
 
             "Nice! Now we have an empty backpack to store our stuff in.",
