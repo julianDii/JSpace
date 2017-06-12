@@ -233,6 +233,26 @@ describe('jspace App', () => {
     });
   });
 
+  it('taskOxygenDouble_validInput_isTrue3', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = oxygen + oxygen;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = 'You have doubled your oxygen level.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
   it('taskOxygenDouble_differentIdentifier_isFalse', function () {
     page.setInputText('julian');
     runButton.click();
@@ -240,9 +260,12 @@ describe('jspace App', () => {
     page.setInputText('var oxygen = 10;');
     runButton.click();
     nextButton.click();
+    browser.sleep(100);
 
     page.setInputText('oxygen = peter*2;');
     runButton.click();
+    browser.sleep(100);
+
 
     page.getOutputText().then(function (text) {
       var outputText = 'An error happened. Try to double up your oxygen level again.';
