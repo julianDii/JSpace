@@ -24,12 +24,17 @@ export abstract class Task {
   static setValueFromUserToMessages(valueFromUser: string, message: string) {
     return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
   }
+
+  setMessageCorrect(message: string) {
+    this.messageCorrect = message;
+  }
+
   getTaskId(): number {
     return this.id;
   }
 
   getMentorText(): string {
-    return this.mentorText;
+    return this.mentorText.replace(new RegExp('\n', 'g'), "<br/> <br/>");
   }
 
   getInstruction(): string {

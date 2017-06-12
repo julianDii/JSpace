@@ -9,8 +9,8 @@
       <ace-output-component></ace-output-component>
       <h2>{{titleInput}}</h2>
       <ace-input-component></ace-input-component>
-      <div class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
-      <button id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
+      <div [hidden]='game.btnRunHidden' class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
+      <button [hidden]='game.btnNextHidden' id="btnNext" (click)="game.goToNextTask()" [disabled]="game.btnNextDisabled">{{btnNext}}</button>
     </section>
   </main>
 </div>

@@ -19,6 +19,7 @@ export class LocalStorageService {
     }
 
     saveToLocalStorage(key: string, value) {
+        console.log("Saved to LocalStorage: " + key, value);
         localStorage.setItem(key, JSON.stringify(value));
     }
 

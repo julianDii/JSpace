@@ -25,10 +25,6 @@ RUN BUTTON CSS
  */
 
 .button {
-  height: 5.000em;
-  width: 11.250em;
-  cursor: pointer;
-  margin: 3.125em auto;
   font-family: "Nixie One";
 }
 
@@ -80,7 +76,6 @@ RUN BUTTON CSS
 
 .button .outer .height .inner {
   line-height: 2.8em;
-  font-size: 1.875em;
   letter-spacing: .05em;
   position: relative;
   height: 100%;

@@ -27,6 +27,8 @@ export class GameService {
   aceInput: AceInputComponent;
   aceOutput: AceOutputComponent;
   btnNextDisabled: boolean;
+  btnNextHidden: boolean;
+  btnRunHidden: boolean;
   btnRunDisabled: boolean;
 
   private localStorageService = LocalStorageService.getInstance();
@@ -44,7 +46,7 @@ export class GameService {
       console.log("Saved player: " + JSON.stringify(player));
       this.currentTaskNumber = player['task']
     } else {
-      console.log("First game...")
+      console.log("new game starting...")
       this.currentTaskNumber = 0;
     }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
@@ -53,6 +55,8 @@ export class GameService {
     this.aceInput = aceIn;
     this.aceOutput = aceOut;
     this.btnNextDisabled = true;
+    this.btnNextHidden = false;
+    this.btnRunHidden = false;
     this.btnRunDisabled = false;
 
     this.mentor.setMentorText(this.currentTask.getMentorText());
@@ -63,24 +67,27 @@ export class GameService {
   }
 
   validateCode() {
-    let textFromInput: string = this.aceInput.getStringFromEditor();
-    if (textFromInput.length === 0) {
-      this.aceOutput.setEditorValue('You forgot to type something :)')
-    } else {
-      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-        data => {
-          let testPassed = this.currentTask.testTask(data);
-          if (testPassed) {
-            this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
-            this.mentor.setImgSuccess();
-            this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
-            this.btnNextDisabled = false;
-          } else {
-            this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
-            this.mentor.setImgFailure();
-            this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
-          }
-        });
+    if (this.btnRunDisabled === false) {
+      let textFromInput: string = this.aceInput.getStringFromEditor();
+      if (textFromInput.length === 0) {
+        this.aceOutput.setEditorValue('You forgot to type something :)')
+      } else {
+        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+          data => {
+            let testPassed = this.currentTask.testTask(data);
+            if (testPassed) {
+              this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
+              this.mentor.setImgSuccess();
+              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
+              this.btnNextDisabled = false;
+              this.btnRunDisabled = true;
+            } else {
+              this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
+              this.mentor.setImgFailure();
+              this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
+            }
+          });
+      }
     }
   }
 
@@ -88,7 +95,8 @@ export class GameService {
     this.currentTaskNumber++;
 
     if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
-      this.btnRunDisabled = true;
+      this.btnRunHidden = true;
+      this.btnNextHidden = true;
       this.mentor.setMentorText('Good bye, old friend. May the Force be with you.');
       this.aceOutput.setEditorValue('GAME OVER');
     }
@@ -101,6 +109,7 @@ export class GameService {
     this.mentor.setImgMentor();
     this.aceInput.clearEditor();
     this.btnNextDisabled = true;
+    this.btnRunDisabled = false;
 
     console.log('current task', this.currentTask);
   }
