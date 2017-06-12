@@ -2,7 +2,7 @@
   background-color: #9DD8F7;
   border-radius: 0.938em;
   padding: 0.313em 1.250em;
-  font-family: "Raleway Light";
+  font-family: "Raleway Light", "Arial";
   max-height: 50vh;
   overflow: overlay;
 }

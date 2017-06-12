@@ -50,6 +50,9 @@ export class TaskOxygen extends Task {
   }
 
   testTask(json: JSON) {
+    console.log("Ich bin oben");
+    console.log(json);
+
     if (Object.keys(json).length === 5) {
       let expectedIdentifier = 'oxygen';
       let expectedMin = 0;

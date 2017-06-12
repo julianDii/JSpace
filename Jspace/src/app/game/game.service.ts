@@ -34,7 +34,7 @@ export class GameService {
   private localStorageService = LocalStorageService.getInstance();
 
   constructor(private tasksService: TasksService,
-    private analyseCodeService: AnalyseCodeService) {
+              private analyseCodeService: AnalyseCodeService) {
     console.log("game service injected")
   }
 
