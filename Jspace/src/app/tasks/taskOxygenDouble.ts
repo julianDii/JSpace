@@ -14,7 +14,7 @@ export class TaskOxygenDouble extends Task {
     super(
       2,
       "You can also calculate with JavaScript." + "\n" +
-      "To view the existing operators in JavaScript enter operators(). " + "\n" +
+      "JavaScript supports nearly all of the known operators like +, -, %(Modulo) or * and /." + "\n" +
       "Note that the calculated value has to be stored and that you don’t need the var-keyword. " + "\n" +
       "For example: x = x + 2;",
 

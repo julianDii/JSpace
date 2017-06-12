@@ -12,18 +12,19 @@ export class TaskElementToArray extends Task {
             "The push() method adds new items to the end of an array, and returns the new length." + "\n" +
             "Note: The new item(s) will be added at the end of the array. " + "\n" +
             " Note: This method changes the length of the array." + "\n" +
-            "An example could be: user.backpack.push(“Monster-Juice”);",
+            "An example could be: object.element.push(elementYouWant);",
 
             "Cool! We met some nice aliens who are willing to trade with us." + "\n" +
-            "Before we accept the great offer, we will first need to push a new " + "\n" +
-            "“Aluminium-shard”- element to the array." + "\n" +
-            "For this, we got to address the array first and push a new element " + "\n" + "to it.",
+            "Let's accept the offered 'aluminium-shard'. To do that, we will need to push it to our backpack-array." + "\n" +
+            "So go on, address the array first and push the 'aluminium-shard'-element to it.",
 
             "Well done! You now added an element to your array. Let’s move on.",
-            "Something went wrong when adding the element. Try again!",
-            "Nice! Here your backpack with the added element.",
-            ["Doh! Are you sure that you used the correct keyword? Remember that " + "\n" +
-                "we need an aluminium-shard element!"]
+
+            "Something went wrong while adding the element." + "\n" + "Take this example: user.backpack.push(“Monster-Juice”);" + "\n" + 
+            "Now try again!",
+
+            "Nice! Here, your backpack with the added element.",
+            ["Doh! Are you sure that you used the correct keyword? Remember that we need an aluminium-shard element!"]
         );
     }
 
