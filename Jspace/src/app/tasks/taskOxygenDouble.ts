@@ -2,7 +2,7 @@ import { Task } from './task';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 import {
-  checkEqualSign, checkIdentifier, checkNumber, checkOperator, checkSemicolon,
+  checkEqualSign, checkIdentifier, checkInputLength, checkNumber, checkOperator, checkSemicolon,
   validateIdentifier, validateNumber
 } from '../test-code/helpers';
 
@@ -29,57 +29,81 @@ export class TaskOxygenDouble extends Task {
   }
 
   testTask(json: JSON) {
-    if (Object.keys(json).length === 6) {
-      let expectedIdentifier = 'oxygen';
-      let expectedOperator = '*';
-      let expectedNumber = '2';
+    console.log('tokenized string:', json);
 
-      if (json[1].value === '*') {
-        var firstIdentifier = json[0].value;
-        var equalSign = json[2].value;
-        var secondIdentifier = firstIdentifier;
-        var multiplySign = json[1].value;
-        var number = json[3].value;
-        var semicolon = json[4].value;
-      }
-      if (json[2].value === expectedIdentifier) {
-        var firstIdentifier = json[0].value;
-        var equalSign = json[1].value;
-        var secondIdentifier = json[2].value;
-        var multiplySign = json[3].value;
-        var number = json[4].value;
-        var semicolon = json[5].value;
-      }
-      if (json[2].value === expectedNumber) {
-        var firstIdentifier = json[0].value;
-        var equalSign = json[1].value;
-        var secondIdentifier = json[4].value;
-        var multiplySign = json[3].value;
-        var number = json[2].value;
-        var semicolon = json[5].value;
-      }
+    let expectedIdentifier = "oxygen";
+    let expectedMultiplicator = "2";
+    let codeCorrect : boolean = false;
 
-      if(validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier)
-        && checkIdentifier(firstIdentifier, expectedIdentifier) && checkEqualSign(equalSign)
-        && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator)
-        && validateNumber(number) && checkNumber(number, expectedNumber) && checkSemicolon(semicolon)){
-
-          let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-          let level = player['oxygen'];
-          level = level * parseInt(expectedNumber);
-          player[expectedIdentifier] = level;
-          let task = this.getTaskId() + 1;
-          player['task'] = task;
-          this.localStorageService.saveToLocalStorage('player', player);
+    if (Object.keys(json).length >= 4) {
+      if (json[0].value !== "var") {
+        if (json[0].value === expectedIdentifier) {
+          if (json[1].value === '*=' && Object.keys(json).length === 4) {
+            if (json[2].value === expectedMultiplicator) {
+              if (json[3].value === ";") {
+                codeCorrect = true;
+              } else {
+                console.log('ERROR check the syntax');
+              }
+            } else {
+              console.log('ERROR the result oxygen level is not as expected');
+            }
+          }
+          else if (json[1].value === '=' && Object.keys(json).length === 6) {
+            if (json[2].value === expectedIdentifier) {
+              if (json[3].value === "*") {
+                if (json[4].value === expectedMultiplicator) {
+                  if (json[5].value === ";") {
+                    codeCorrect = true;
+                  } else {
+                    console.log('ERROR check the syntax');
+                  }
+                } else {
+                  console.log('ERROR the result oxygen level is not as expected');
+                }
+              } else {
+                console.log('ERROR are you multiplicating?');
+              }
+            } else if (json[2].value === expectedMultiplicator) {
+              if (json[3].value === "*") {
+                if (json[4].value === expectedIdentifier) {
+                  if (json[5].value === ";") {
+                    codeCorrect = true;
+                  } else {
+                    console.log('ERROR check the syntax');
+                  }
+                } else {
+                  console.log('ERROR are you really using your oxygen?');
+                }
+              } else {
+                console.log('ERROR are you multiplicating?');
+              }
+            } else {
+              console.log('ERROR the result oxygen level is not as expected');
+            }
+          }
+        } else {
+          console.log('ERROR are you really using your oxygen?');
         }
+      } else {
+        console.log('ERROR you should not use the keyword var at beginning');
+      }
 
-      return validateIdentifier(firstIdentifier) && validateIdentifier(secondIdentifier)
-        && checkIdentifier(firstIdentifier, expectedIdentifier) && checkEqualSign(equalSign)
-        && checkIdentifier(secondIdentifier, expectedIdentifier) && checkOperator(multiplySign, expectedOperator)
-        && validateNumber(number) && checkNumber(number, expectedNumber) && checkSemicolon(semicolon);
-    }
-    else {
-      console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
+      if (codeCorrect) {
+        let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+        let level = player['oxygen'];
+        level = level * parseInt(expectedMultiplicator);
+        player[expectedIdentifier] = level;
+        let task = this.getTaskId() + 1;
+        player['task'] = task;
+        this.localStorageService.saveToLocalStorage('player', player);
+        console.log('code correct');
+      } else {
+        console.log('ERROR code not correct');
+      }
+      return codeCorrect;
+    } else {
+      console.log('ERROR U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
       return false;
     }
   }
