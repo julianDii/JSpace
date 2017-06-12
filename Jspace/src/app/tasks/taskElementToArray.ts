@@ -32,8 +32,8 @@ export class TaskElementToArray extends Task {
 
   testTask(json: JSON) {
 
-    if (Object.keys(json).length === 9) {
-      let checkVersion = json[3].value;
+    if(Object.keys(json).length === 14) {
+      console.log("I bims am Start");
       let checkAlternative = json[6].value;
 
       //user.backpack.push(alien.backpack[0]);
@@ -71,8 +71,10 @@ export class TaskElementToArray extends Task {
         && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]") && stringEqualsString(closeBracket, ")")
         && stringEqualsString(semicolon, ";"));
       }
+    }
 
-
+    if (Object.keys(json).length === 9) {
+      let checkVersion = json[3].value;
       // user.backpack.push("aluminium-shard");
       if (checkVersion === ".") {
         let userString = json[0].value;
