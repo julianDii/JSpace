@@ -34,7 +34,6 @@ export class TaskLoopArray extends Task {
     }
 
    testTask(json: JSON) {
-       console.log(JSON.stringify(json) + " " +  Object.keys(json).length);
         if (Object.keys(json).length === 34) {
             let forString = json[0].value;
             let openingBracket1 = json[1].value;

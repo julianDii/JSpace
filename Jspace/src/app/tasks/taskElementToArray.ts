@@ -15,7 +15,7 @@ export class TaskElementToArray extends Task {
             "An example could be: object.element.push(elementYouWant);",
 
             "Cool! We met some nice aliens who are willing to trade with us." + "\n" +
-            "Let's accept the offered 'aluminium-shard'. To do that, we will need to push it to our backpack-array." + "\n" +
+            "Let's accept the offered 'aluminium-shard'." + "\n" + "To do that, we will need to push it to our backpack-array." + "\n" +
             "So go on, address the array first and push the 'aluminium-shard'-element to it.",
 
             "Well done! You now added an element to your array. Let’s move on.",
