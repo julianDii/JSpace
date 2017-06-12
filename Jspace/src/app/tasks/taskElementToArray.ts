@@ -33,7 +33,6 @@ export class TaskElementToArray extends Task {
   testTask(json: JSON) {
 
     if(Object.keys(json).length === 14) {
-      console.log("I bims am Start");
       let checkAlternative = json[6].value;
 
       //user.backpack.push(alien.backpack[0]);
@@ -69,6 +68,42 @@ export class TaskElementToArray extends Task {
         && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
         && stringEqualsString(alienString, "alien") && stringEqualsString(thirdDot, ".") && stringEqualsString(backpackString2, "backpack")
         && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]") && stringEqualsString(closeBracket, ")")
+        && stringEqualsString(semicolon, ";"));
+      }
+
+      //user.backpack[1] = alien.backpack[0];
+      if(checkAlternative === "=") {
+        let userString = json[0].value;
+        let firstDot = json[1].value;
+        let backpackString = json[2].value;
+        let bracket1 = json[3].value;
+        let num = json[4].value;
+        let bracket2 = json[5].value;
+        let equalSign = json[6].value;
+        let alienString = json[7].value;
+        let secondDot = json[8].value;
+        let backpackString2 = json[9].value;
+        let bracket3 = json[10].value;
+        let numZero = json[11].value;
+        let bracket4 = json[12].value;
+        let semicolon = json[13].value;
+
+        if ((stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
+          && stringEqualsString(bracket1, "[") && stringEqualsString(num, "1") && stringEqualsString(bracket2, "]")
+          && stringEqualsString(equalSign, "=") && stringEqualsString(alienString, "alien") && stringEqualsString(secondDot, ".")
+          && stringEqualsString(backpackString2, "backpack") && stringEqualsString(bracket3, "[") && stringEqualsString(numZero, "0") && stringEqualsString(bracket4, "]")
+          && stringEqualsString(semicolon, ";"))){
+          let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+          player.task = this.getTaskId() + 1;
+          player.backpack.push('aluminium-shard');
+          this.localStorageService.saveToLocalStorage('player', player);
+          let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
+          this.setMessageCorrect(newMessage);
+        }
+        return (stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
+        && stringEqualsString(bracket1, "[") && stringEqualsString(num, "1") && stringEqualsString(bracket2, "]")
+        && stringEqualsString(equalSign, "=") && stringEqualsString(alienString, "alien") && stringEqualsString(secondDot, ".")
+        && stringEqualsString(backpackString2, "backpack") && stringEqualsString(bracket3, "[") && stringEqualsString(numZero, "0") && stringEqualsString(bracket4, "]")
         && stringEqualsString(semicolon, ";"));
       }
     }
