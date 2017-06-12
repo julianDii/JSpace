@@ -11,7 +11,7 @@ export class TaskName extends Task {
       0,
       "Lucky devil! You are lost in a JavaScript world." + "\n" +
       "It seems like you need to reboot your terminal! Otherwise you won’t be able to send an emergency message! " +
-      "For that you need to login."  + "\n" +
+      "For that you need to login." + "\n" +
       "Remember:" + "\n" +
       "Identifiers are used to name variables, and functions. Their first character must be a letter, underscore or " +
       "dollar sign. Following may be letters, digits underscores or dollar signs.",
@@ -27,12 +27,12 @@ export class TaskName extends Task {
   }
 
   testTask(json: JSON) {
-    let input:string = json[0].value;
+    let input: string = json[0].value;
     let remove = removeQuotationMarks(input);
 
-    if(validateIdentifier(input)){
+    if (validateIdentifier(input)) {
       let taskNumber = this.getTaskId() + 1;
-      let player = {name: input,task: taskNumber};
+      let player = { name: input, task: taskNumber };
       this.localStorageService.saveToLocalStorage('player', player);
     }
 

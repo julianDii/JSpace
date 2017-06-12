@@ -1,7 +1,6 @@
-import {Task} from './task';
-
-import {checkSemicolon, stringEqualsString} from '../test-code/helpers';
-import {LocalStorageService} from '../storage/local.storage-service'
+import { Task } from './task';
+import { checkSemicolon, stringEqualsString } from '../test-code/helpers';
+import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskElementToArray extends Task {
 
@@ -32,7 +31,7 @@ export class TaskElementToArray extends Task {
 
   testTask(json: JSON) {
 
-    if(Object.keys(json).length === 14) {
+    if (Object.keys(json).length === 14) {
       let checkAlternative = json[6].value;
 
       //user.backpack.push(alien.backpack[0]);
@@ -56,7 +55,7 @@ export class TaskElementToArray extends Task {
           && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
           && stringEqualsString(alienString, "alien") && stringEqualsString(thirdDot, ".") && stringEqualsString(backpackString2, "backpack")
           && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]") && stringEqualsString(closeBracket, ")")
-          && stringEqualsString(semicolon, ";"))){
+          && stringEqualsString(semicolon, ";"))) {
           let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
           player.task = this.getTaskId() + 1;
           player.backpack.push('aluminium-shard');
@@ -65,14 +64,14 @@ export class TaskElementToArray extends Task {
           this.setMessageCorrect(newMessage);
         }
         return (stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
-        && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
-        && stringEqualsString(alienString, "alien") && stringEqualsString(thirdDot, ".") && stringEqualsString(backpackString2, "backpack")
-        && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]") && stringEqualsString(closeBracket, ")")
-        && stringEqualsString(semicolon, ";"));
+          && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
+          && stringEqualsString(alienString, "alien") && stringEqualsString(thirdDot, ".") && stringEqualsString(backpackString2, "backpack")
+          && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]") && stringEqualsString(closeBracket, ")")
+          && stringEqualsString(semicolon, ";"));
       }
 
       //user.backpack[1] = alien.backpack[0];
-      if(checkAlternative === "=") {
+      if (checkAlternative === "=") {
         let userString = json[0].value;
         let firstDot = json[1].value;
         let backpackString = json[2].value;
@@ -92,7 +91,7 @@ export class TaskElementToArray extends Task {
           && stringEqualsString(bracket1, "[") && stringEqualsString(num, "1") && stringEqualsString(bracket2, "]")
           && stringEqualsString(equalSign, "=") && stringEqualsString(alienString, "alien") && stringEqualsString(secondDot, ".")
           && stringEqualsString(backpackString2, "backpack") && stringEqualsString(bracket3, "[") && stringEqualsString(numZero, "0") && stringEqualsString(bracket4, "]")
-          && stringEqualsString(semicolon, ";"))){
+          && stringEqualsString(semicolon, ";"))) {
           let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
           player.task = this.getTaskId() + 1;
           player.backpack.push('aluminium-shard');
@@ -101,10 +100,10 @@ export class TaskElementToArray extends Task {
           this.setMessageCorrect(newMessage);
         }
         return (stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
-        && stringEqualsString(bracket1, "[") && stringEqualsString(num, "1") && stringEqualsString(bracket2, "]")
-        && stringEqualsString(equalSign, "=") && stringEqualsString(alienString, "alien") && stringEqualsString(secondDot, ".")
-        && stringEqualsString(backpackString2, "backpack") && stringEqualsString(bracket3, "[") && stringEqualsString(numZero, "0") && stringEqualsString(bracket4, "]")
-        && stringEqualsString(semicolon, ";"));
+          && stringEqualsString(bracket1, "[") && stringEqualsString(num, "1") && stringEqualsString(bracket2, "]")
+          && stringEqualsString(equalSign, "=") && stringEqualsString(alienString, "alien") && stringEqualsString(secondDot, ".")
+          && stringEqualsString(backpackString2, "backpack") && stringEqualsString(bracket3, "[") && stringEqualsString(numZero, "0") && stringEqualsString(bracket4, "]")
+          && stringEqualsString(semicolon, ";"));
       }
     }
 
@@ -133,8 +132,8 @@ export class TaskElementToArray extends Task {
           this.setMessageCorrect(newMessage);
         }
         return (stringEqualsString(userString, "user") && stringEqualsString(firstDot, ".") && stringEqualsString(backpackString, "backpack")
-        && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
-        && (stringEqualsString(aluminiumShardString, "\"aluminium-shard\"") || stringEqualsString(aluminiumShardString, "'aluminium-shard'")) && stringEqualsString(closeBracket, ")") && checkSemicolon(semicolon));
+          && stringEqualsString(secondDot, ".") && stringEqualsString(pushString, "push") && stringEqualsString(openBracket, "(")
+          && (stringEqualsString(aluminiumShardString, "\"aluminium-shard\"") || stringEqualsString(aluminiumShardString, "'aluminium-shard'")) && stringEqualsString(closeBracket, ")") && checkSemicolon(semicolon));
       }
 
       // user.backpack[0] = 'aluminium-shard';
@@ -162,9 +161,9 @@ export class TaskElementToArray extends Task {
           this.setMessageCorrect(newMessage);
         }
         return (stringEqualsString(userStr, "user") && stringEqualsString(dot1, ".") && stringEqualsString(backpackStr, "backpack")
-        && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]")
-        && stringEqualsString(equalSign, "=") && (stringEqualsString(aluminiumShardStr, "'aluminium-shard'") || stringEqualsString(aluminiumShardStr, "\"aluminium-shard\""))
-        && checkSemicolon(semicolon2));
+          && stringEqualsString(bracket1, "[") && stringEqualsString(zeroNum, "0") && stringEqualsString(bracket2, "]")
+          && stringEqualsString(equalSign, "=") && (stringEqualsString(aluminiumShardStr, "'aluminium-shard'") || stringEqualsString(aluminiumShardStr, "\"aluminium-shard\""))
+          && checkSemicolon(semicolon2));
       }
 
     } else {

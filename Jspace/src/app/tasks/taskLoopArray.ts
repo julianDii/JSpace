@@ -15,7 +15,7 @@ export class TaskLoopArray extends Task {
             "Statement 1 is executed before the loop (the code block) starts." + "\n" +
             "Statement 2 defines the condition for running the loop (the code block)." + "\n" +
             "Statement 3 is executed each time after the loop (the code block) has been executed." + "\n" +
-            "For instance:  " + "\n" + "for (var i = 0; i < object.element.length; i ++) { object.element.push(object.element[i]);}" + "\n" + 
+            "For instance:  " + "\n" + "for (var i = 0; i < object.element.length; i ++) { object.element.push(object.element[i]);}" + "\n" +
             "Be aware that the array of the board computer is named 'inventory'.",
 
             "Time to transfer our items to the board computer." + "\n" +
@@ -33,7 +33,7 @@ export class TaskLoopArray extends Task {
         );
     }
 
-   testTask(json: JSON) {
+    testTask(json: JSON) {
         if (Object.keys(json).length === 34) {
             let forString = json[0].value;
             let openingBracket1 = json[1].value;
@@ -70,10 +70,10 @@ export class TaskLoopArray extends Task {
             let semicolon3 = json[32].value;
             let closingBracket4 = json[33].value;
 
-            if((stringEqualsString(forString, "for")&&
+            if ((stringEqualsString(forString, "for") &&
                 stringEqualsString(openingBracket1, "(") &&
                 stringEqualsString(varString, "var") &&
-                stringEqualsString(firstI, "i") && 
+                stringEqualsString(firstI, "i") &&
                 stringEqualsString(equalSign, "=") &&
                 stringEqualsString(valueOfI, "0") &&
                 checkSemicolon(semicolon1) &&
@@ -104,24 +104,24 @@ export class TaskLoopArray extends Task {
                 stringEqualsString(closingBracket3, ")") &&
                 checkSemicolon(semicolon3) &&
                 stringEqualsString(closingBracket4, "}"))) {
-                    
-                    let boardcomputer = { inventory: [] }
-                    let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-                    player.task = this.getTaskId() + 1;
 
-                    for (var i = 0; i < player.backpack.length; i++) {
-                        boardcomputer.inventory.push(player.backpack[i]);
-                    }
-                    player.backpack = [];
-                    this.localStorageService.saveToLocalStorage('player', player);
-                    this.localStorageService.saveToLocalStorage('boardcomputer', boardcomputer);
+                let boardcomputer = { inventory: [] }
+                let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                player.task = this.getTaskId() + 1;
 
-                    let newMessage = this.getMessageCorrect()
-                    + "\n" + "BOARDCOMPUTER: " + JSON.stringify(boardcomputer.inventory);
-                   
-                    this.setMessageCorrect(newMessage);
-                    this.localStorageService.resetLocalStorageItem('player');
+                for (var i = 0; i < player.backpack.length; i++) {
+                    boardcomputer.inventory.push(player.backpack[i]);
                 }
+                player.backpack = [];
+                this.localStorageService.saveToLocalStorage('player', player);
+                this.localStorageService.saveToLocalStorage('boardcomputer', boardcomputer);
+
+                let newMessage = this.getMessageCorrect()
+                    + "\n" + "BOARDCOMPUTER: " + JSON.stringify(boardcomputer.inventory);
+
+                this.setMessageCorrect(newMessage);
+                this.localStorageService.resetLocalStorageItem('player');
+            }
 
             return (stringEqualsString(forString, "for")
                 && stringEqualsString(openingBracket1, "(")

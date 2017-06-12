@@ -33,7 +33,7 @@ export class TaskOxygenDouble extends Task {
 
     let expectedIdentifier = "oxygen";
     let expectedMultiplicator = "2";
-    let codeCorrect : boolean = false;
+    let codeCorrect: boolean = false;
 
     if (Object.keys(json).length >= 4) {
       if (json[0].value !== "var") {

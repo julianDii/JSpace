@@ -18,7 +18,7 @@ export class TaskOxygen extends Task {
       "In JS, statements end with semicolons. Big Error-source, so don't forget them." + "\n" +
       "JS ignores multiple spaces, so the following is equal:" + "\n" +
       "a = 10;" + "\n" +
-      "a = " + "&nbsp;&nbsp;&nbsp;" +  "10;" + "\n" +
+      "a = " + "&nbsp;&nbsp;&nbsp;" + "10;" + "\n" +
       "Since statements are separated by Semicolons you can also write them in one line, but you shouldn’t." + "\n" +
       "a = 5; b = 2; c = a + b;" + "\n" +
       "-----------------------------------------------------" + "\n" +
@@ -30,7 +30,7 @@ export class TaskOxygen extends Task {
       "x = 33;" + "\n" +
       "You can also assign a value to the variable when you declare it:" + "\n" +
       "var x = 33;" + "\n" +
-      "Now it’s your turn." + "\n" +  "Check what the board computer is saying!",
+      "Now it’s your turn." + "\n" + "Check what the board computer is saying!",
 
       "I am running on JavaScript." + "\n" + "To be able to wander around the planet safe and sound, we should slightly raise the oxygen level." + "\n" +
       "At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. " + "\n" +
