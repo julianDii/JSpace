@@ -45,18 +45,6 @@ describe('jspace App', () => {
     });
   });
 
-  it('taskName_leadingWhitespace_isFalse', () => {
-
-    page.setInputText('     julian');
-    runButton.click();
-    browser.sleep(100);
-
-    page.getOutputText().then(function (text) {
-      var wrongText = 'Sorry, this username does not seem to be a valid name. Please try to log in again!';
-      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(wrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
-    });
-  });
-
   it('taskName_enterCorrectName_isTrue', function () {
     page.setInputText('julian');
     runButton.click();
@@ -78,7 +66,6 @@ describe('jspace App', () => {
       var wrongText = 'Sorry, this username does not seem to be a valid name. Please try to log in again!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(wrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
-
 
   });
 
@@ -105,7 +92,6 @@ describe('jspace App', () => {
       var outputText = 'I am running on JavaScript.To be able to wander around the planet safe and sound, we should slightly raise the oxygen level.At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. 10 seems to be a good decision to accomplish your next tasks.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
-
 
   });
 
