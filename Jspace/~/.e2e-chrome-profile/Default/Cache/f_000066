@@ -1,0 +1,1504 @@
+webpackJsonp([1,4],{
+
+/***/ 11:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocalStorageService; });
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])();
+var LocalStorageService = (function () {
+    function LocalStorageService() {
+        if (LocalStorageService.instance) {
+            throw new Error("Error - use Singleton.getInstance()");
+        }
+        LocalStorageService.instance = this;
+    }
+    LocalStorageService.getInstance = function () {
+        LocalStorageService.instance = LocalStorageService.instance || new LocalStorageService();
+        return LocalStorageService.instance;
+    };
+    LocalStorageService.prototype.saveToLocalStorage = function (key, value) {
+        console.log("Saved to LocalStorage: " + key, value);
+        localStorage.setItem(key, JSON.stringify(value));
+    };
+    LocalStorageService.prototype.readLocalStorage = function (type) {
+        return localStorage.getItem(type);
+    };
+    LocalStorageService.prototype.resetLocalStorageItem = function (type) {
+        localStorage.removeItem(type);
+    };
+    return LocalStorageService;
+}());
+
+//# sourceMappingURL=local.storage-service.js.map
+
+/***/ }),
+
+/***/ 120:
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 120;
+
+
+/***/ }),
+
+/***/ 121:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(140);
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
+}
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 129:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__game_game_service__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tasks_tasks_service__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ace_output_ace_output_component__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ace_input_ace_input_component__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mentor_mentor_component__ = __webpack_require__(78);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var AppComponent = (function () {
+    function AppComponent(game) {
+        this.game = game;
+        this.title = '';
+        this.titleInput = 'Input terminal';
+        this.titleOutput = 'Output terminal';
+        this.btnRun = 'Run';
+        this.btnNext = 'Next';
+    }
+    AppComponent.prototype.ngOnInit = function () {
+        this.game.newGame(this.mentor, this.aceInput, this.aceOutput);
+    };
+    return AppComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_5__mentor_mentor_component__["a" /* MentorComponent */]),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__mentor_mentor_component__["a" /* MentorComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__mentor_mentor_component__["a" /* MentorComponent */]) === "function" && _a || Object)
+], AppComponent.prototype, "mentor", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4__ace_input_ace_input_component__["a" /* AceInputComponent */]),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ace_input_ace_input_component__["a" /* AceInputComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ace_input_ace_input_component__["a" /* AceInputComponent */]) === "function" && _b || Object)
+], AppComponent.prototype, "aceInput", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3__ace_output_ace_output_component__["a" /* AceOutputComponent */]),
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ace_output_ace_output_component__["a" /* AceOutputComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ace_output_ace_output_component__["a" /* AceOutputComponent */]) === "function" && _c || Object)
+], AppComponent.prototype, "aceOutput", void 0);
+AppComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
+        selector: 'app-root',
+        template: __webpack_require__(218),
+        styles: [__webpack_require__(204)],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__game_game_service__["a" /* GameService */], __WEBPACK_IMPORTED_MODULE_2__tasks_tasks_service__["a" /* TasksService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__game_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__game_game_service__["a" /* GameService */]) === "function" && _d || Object])
+], AppComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 130:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_ace_editor__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_ace_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng2_ace_editor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ace_input_ace_input_component__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ace_output_ace_output_component__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__game_game_service__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tasks_tasks_service__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__analyze_code_analyze_code_service__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__mentor_mentor_component__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
+AppModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_4_ng2_ace_editor__["AceEditorComponent"],
+            __WEBPACK_IMPORTED_MODULE_5__ace_input_ace_input_component__["a" /* AceInputComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__ace_output_ace_output_component__["a" /* AceOutputComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__mentor_mentor_component__["a" /* MentorComponent */]
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */]
+        ],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_8__game_game_service__["a" /* GameService */],
+            __WEBPACK_IMPORTED_MODULE_9__tasks_tasks_service__["a" /* TasksService */],
+            __WEBPACK_IMPORTED_MODULE_10__analyze_code_analyze_code_service__["a" /* AnalyseCodeService */],
+            __WEBPACK_IMPORTED_MODULE_12__storage_local_storage_service__["a" /* LocalStorageService */]
+        ],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
+    })
+], AppModule);
+
+//# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ 131:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskAddArray; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var TaskAddArray = (function (_super) {
+    __extends(TaskAddArray, _super);
+    function TaskAddArray() {
+        var _this = _super.call(this, 4, "You can add elements as variables to your object by simply assigning them." + "\n" +
+            "object.element = value; " + "\n" +
+            "An array might be a good choice for your backpack object.array = [];", "It seems like you lost your backpack. Well then let us make you a new " + "\n" + "one.", "Done! We can now store all the items we need in our backpack.", "Try again! Something went wrong with your code.", "Nice! This is your empty backpack.", ["Error! Try it again and check if you really used the right keywords." + "\n" + "The array must be empty!"]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskAddArray.prototype.testTask = function (json) {
+        if (true) {
+            var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+            player.task = this.getTaskId() + 1;
+            player['backpack'] = [];
+            this.localStorageService.saveToLocalStorage('player', player);
+            delete player.task;
+            var newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
+            this.setMessageCorrect(newMessage);
+        }
+        return true;
+    };
+    return TaskAddArray;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskAddArray.js.map
+
+/***/ }),
+
+/***/ 132:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskCopyArrayElement; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var TaskCopyArrayElement = (function (_super) {
+    __extends(TaskCopyArrayElement, _super);
+    function TaskCopyArrayElement() {
+        var _this = _super.call(this, 7, "Again we use the “push”-keyword to do so." + "\n" +
+            "But this time we need to address the alien.backpack plus the index of the element that we want to copy!" + "\n" +
+            "For instance: user.backpack.push(alien.backpack[index]);", "What a coincidence!" + "\n" +
+            "The alien has a aluminium helmet in his backpack that we can use to repair our " + "\n" +
+            "space ship! Since we move in a JavaScript-galaxy we can just easily copy the " + "\n" +
+            "item to our backpack-array.", "Juhuu! We got the Super-aluminium.", "Check your code! Something is wrong.", "Good job!" + "\n" +
+            "We are one step closer for collecting all the necessary material for the reparation!", ["Error occurred! >.< Be sure to address the right index! We only need the " + "\n" +
+                "aluminium helmet."]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskCopyArrayElement.prototype.testTask = function (json) {
+        if (true) {
+            var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+            player.task = this.getTaskId() + 1;
+            var alien = JSON.parse(this.localStorageService.readLocalStorage('alien'));
+            player.backpack[1] = alien.backpack[0];
+            this.localStorageService.saveToLocalStorage('player', player);
+            var newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
+            this.setMessageCorrect(newMessage);
+        }
+        return true;
+    };
+    return TaskCopyArrayElement;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskCopyArrayElement.js.map
+
+/***/ }),
+
+/***/ 133:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__test_code_helpers__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskElementToArray; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var TaskElementToArray = (function (_super) {
+    __extends(TaskElementToArray, _super);
+    function TaskElementToArray() {
+        var _this = _super.call(this, 5, "The push() method adds new items to the end of an array, and returns the new length." + "\n" +
+            "Note: The new item(s) will be added at the end of the array. " + "\n" +
+            " Note: This method changes the length of the array." + "\n" +
+            "An example could be: user.backpack.push(“Monster-Juice”);", "Cool! We met some nice aliens who are willing to trade with us." + "\n" +
+            "Before we accept the great offer, we will first need to push a new " + "\n" +
+            "“Aluminium-shard”- element to the array." + "\n" +
+            "For this, we got to address the array first and push a new element " + "\n" + "to it.", "Well done! You now added an element to your array. Let’s move on.", "Something went wrong when adding the element. Try again!", "Nice! Here your backpack with the added element.", ["Doh! Are you sure that you used the correct keyword? Remember that " + "\n" +
+                "we need an aluminium-shard element!"]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_2__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskElementToArray.prototype.testTask = function (json) {
+        if (Object.keys(json).length === 9) {
+            var checkVersion = json[3].value;
+            if (checkVersion === ".") {
+                var userString = json[0].value;
+                var firstDot = json[1].value;
+                var backpackString = json[2].value;
+                var secondDot = json[3].value;
+                var pushString = json[4].value;
+                var openBracket = json[5].value;
+                var aluminiumShardString = json[6].value;
+                var closeBracket = json[7].value;
+                var semicolon = json[8].value;
+                if ((__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(userString, "user") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(firstDot, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(backpackString, "backpack")
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(secondDot, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(pushString, "push") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(openBracket, "(")
+                    && (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardString, "\"aluminium-shard\"") || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardString, "'aluminium-shard'")) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(closeBracket, ")") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["b" /* checkSemicolon */])(semicolon))) {
+                    var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                    player.task = this.getTaskId() + 1;
+                    player.backpack.push('aluminium-shard');
+                    this.localStorageService.saveToLocalStorage('player', player);
+                    var newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
+                    this.setMessageCorrect(newMessage);
+                }
+                return (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(userString, "user") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(firstDot, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(backpackString, "backpack")
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(secondDot, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(pushString, "push") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(openBracket, "(")
+                    && (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardString, "\"aluminium-shard\"") || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardString, "'aluminium-shard'")) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(closeBracket, ")") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["b" /* checkSemicolon */])(semicolon));
+            }
+            if (checkVersion === "[") {
+                var userStr = json[0].value;
+                var dot1 = json[1].value;
+                var backpackStr = json[2].value;
+                var bracket1 = json[3].value;
+                var zeroNum = json[4].value;
+                var bracket2 = json[5].value;
+                var equalSign = json[6].value;
+                var aluminiumShardStr = json[7].value;
+                var semicolon2 = json[8].value;
+                if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(userStr, "user") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(dot1, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(backpackStr, "backpack")
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(bracket1, "[") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(zeroNum, "0") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(bracket2, "]")
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(equalSign, "=") && (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardStr, "'aluminium-shard'") || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardStr, "\"aluminium-shard\""))
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["b" /* checkSemicolon */])(semicolon2)) {
+                    var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                    player.task = this.getTaskId() + 1;
+                    player.backpack.push('aluminium-shard');
+                    this.localStorageService.saveToLocalStorage('player', player);
+                    var newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
+                    this.setMessageCorrect(newMessage);
+                }
+                return (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(userStr, "user") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(dot1, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(backpackStr, "backpack")
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(bracket1, "[") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(zeroNum, "0") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(bracket2, "]")
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(equalSign, "=") && (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardStr, "'aluminium-shard'") || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(aluminiumShardStr, "\"aluminium-shard\""))
+                    && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["b" /* checkSemicolon */])(semicolon2));
+            }
+        }
+        else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length);
+            return false;
+        }
+    };
+    return TaskElementToArray;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskElementToArray.js.map
+
+/***/ }),
+
+/***/ 134:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskLoopArray; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var TaskLoopArray = (function (_super) {
+    __extends(TaskLoopArray, _super);
+    function TaskLoopArray() {
+        var _this = _super.call(this, 8, "Despite having a lot of options for different loops, I will show you the for-loop. " + "\n" +
+            "It works as follows: " + "\n" +
+            "for (statement1; statement2; statement3) { code block to be executed } " + "\n" +
+            "Statement 1 is executed before the loop (the code block) starts." + "\n" +
+            "Statement 2 defines the condition for running the loop (the code block)." + "\n" +
+            "Statement 3 is executed each time after the loop (the code block) has been executed." + "\n" +
+            "For instance:  " + "\n" + "for (var i = 0; i < user.backpack.length; i ++) { boardComputer.inventory.push(user.backpack[i]);}", "Time to transfer our items to the board computer." + "\n" +
+            "So that it can calculate the amount of resources and time that we need to repair" + "\n" + "the ship." + "\n" +
+            "Push the items from our backpack to the inventory of the board computer with a" + "\n" +
+            "for-loop.", "Transaction complete! All Materials collected.", "Transaction incomplete! Check your script.", "Yippieh! Time to repair the ship and leave the planet!", ["Bzzzt! Try again and make sure to address the user’s backpack for the iteration!"]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskLoopArray.prototype.testTask = function (json) {
+        if (true) {
+            var boardcomputer = { inventory: [] };
+            var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+            player.task = this.getTaskId() + 1;
+            for (var i = 0; i < player.backpack.length; i++) {
+                boardcomputer.inventory.push(player.backpack[i]);
+            }
+            player.backpack = [];
+            this.localStorageService.saveToLocalStorage('player', player);
+            this.localStorageService.saveToLocalStorage('boardcomputer', boardcomputer);
+            var newMessage = this.getMessageCorrect()
+                + "\n" + "BOARDCOMPUTER: " + JSON.stringify(boardcomputer.inventory);
+            this.setMessageCorrect(newMessage);
+            this.localStorageService.resetLocalStorageItem('player');
+        }
+        return true;
+    };
+    return TaskLoopArray;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskLoopArray.js.map
+
+/***/ }),
+
+/***/ 135:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__test_code_helpers__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskName; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var TaskName = (function (_super) {
+    __extends(TaskName, _super);
+    function TaskName() {
+        var _this = _super.call(this, 0, "Lucky devil! You are lost in a JavaScript world." + "\n" +
+            "It seems like you need to reboot your terminal! Otherwise you won’t be able to send an emergency message! " +
+            "For that you need to login." + "\n" +
+            "Remember:" + "\n" +
+            "Identifiers are used to name variables, and functions. Their first character must be a letter, underscore or " +
+            "dollar sign. Following may be letters, digits underscores or dollar signs.", "Please type in your name below:", "Awesome, SUBTITUTETHISPLACE! It worked.", "Oh no, you have probably used some forbidden signs.", "You are logged in.", ["Sorry, this username does not seem to be a valid name. Please try to log in again!"]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_2__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskName.prototype.testTask = function (json) {
+        var input = json[0].value;
+        var remove = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["k" /* removeQuotationMarks */])(input);
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["c" /* validateIdentifier */])(input)) {
+            var taskNumber = this.getTaskId() + 1;
+            var player = { name: input, task: taskNumber };
+            this.localStorageService.saveToLocalStorage('player', player);
+        }
+        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["c" /* validateIdentifier */])(input);
+    };
+    return TaskName;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskName.js.map
+
+/***/ }),
+
+/***/ 136:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__test_code_helpers__ = __webpack_require__(28);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskOxygen; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var TaskOxygen = (function (_super) {
+    __extends(TaskOxygen, _super);
+    function TaskOxygen() {
+        var _this = _super.call(this, 1, "Let’s get started with the basics." + "\n" +
+            "Syntax:" + "\n" +
+            "A Program is a list of instructions to be executed by a machine. These instructions are called statements, " +
+            "in JS statements end with semicolons. Big Error-source, so don't forget them." + "\n" +
+            "JS ignores multiple spaces, so the following is equal:" + "\n" +
+            "a = 10;" + "\n" +
+            "a =   	10;" + "\n" +
+            "Since statements are separated by Semicolons you can also write them in one line, but you shouldn’t." + "\n" +
+            "a = 5; b = 2; c = a + b;" + "\n" +
+            "Variables:" + "\n" +
+            "Variables are containers for storing data values. You declare a JavaScript variable with the var keyword:" + "\n" +
+            "var x;" + "\n" +
+            "After the declaration, the variable has no value. (Technically it has the value of undefined.) " +
+            "To assign a value to the variable, use the equal sign:" + "\n" +
+            "x = 33;" + "\n" +
+            "You can also assign a value to the variable when you declare it:" + "\n" +
+            "var x = 33;" + "\n" +
+            "Now it’s your turn. To make sure that you can reboot the bordcomputer clearheaded and unafraid, " +
+            "you should raise and check your oxygen supply in the next step." + "\n" +
+            "One of the many wonders of the JavaScript world is that you can just create things, so go ahead and give " +
+            "yourself some oxygen.", "I am running on JavaScript. To get back on track, you need to program and reconfigure me. " + "\n" +
+            "Firstly it’s enough to declare a simple variable called oxygen. You need to give it a value.  " + "\n" +
+            "10 seems to " +
+            "be a good decision to accomplish your next tasks.", "Yeah! You rock! You increased your oxygen level. It can’t get any worse now.", "Ouch! Something went wrong. " + "\n" +
+            "Please check if you spelled everything in the right way, first. " +
+            "Your statement should contain 5 parts: " + "\n" +
+            "The keyword to declare a variable, the identifier of the variable, " +
+            "the assignment operator, the value of the variable as a number and the semicolon.", "You have set your oxygen level.", ["Try to set your oxygen level again."]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskOxygen.prototype.testTask = function (json) {
+        if (Object.keys(json).length === 5) {
+            var expectedIdentifier = 'oxygen';
+            var expectedMin = 0;
+            var expectedMax = 100;
+            var keyword = json[0].value;
+            var identifier = json[1].value;
+            var equalSign = json[2].value;
+            var number = json[3].value;
+            var semicolon = json[4].value;
+            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["i" /* checkKeyword */])(keyword) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["d" /* checkIdentifier */])(identifier, expectedIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["c" /* validateIdentifier */])(identifier)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["e" /* checkEqualSign */])(equalSign) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["g" /* validateNumber */])(number) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["j" /* checkInterval */])(number, expectedMin, expectedMax)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["b" /* checkSemicolon */])(semicolon)) {
+                var task = this.getTaskId() + 1;
+                var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                player[identifier] = number;
+                player['task'] = task;
+                this.localStorageService.saveToLocalStorage('player', player);
+            }
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["i" /* checkKeyword */])(keyword) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["d" /* checkIdentifier */])(identifier, expectedIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["c" /* validateIdentifier */])(identifier)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["e" /* checkEqualSign */])(equalSign) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["g" /* validateNumber */])(number) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["j" /* checkInterval */])(number, expectedMin, expectedMax)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["b" /* checkSemicolon */])(semicolon);
+        }
+        else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length);
+            return false;
+        }
+    };
+    return TaskOxygen;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskOxygen.js.map
+
+/***/ }),
+
+/***/ 137:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__test_code_helpers__ = __webpack_require__(28);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskOxygenDouble; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var TaskOxygenDouble = (function (_super) {
+    __extends(TaskOxygenDouble, _super);
+    function TaskOxygenDouble() {
+        var _this = _super.call(this, 2, "You can also calculate with JavaScript." + "\n" +
+            "To view the existing operators in JavaScript enter operators(). " + "\n" +
+            "Note that the calculated value has to be stored and that you don’t need the var-keyword. " + "\n" +
+            "For example: x = x + 2;", "Double up your oxygen level.", "Great! We are good to go now!", "Whoops! Check if you used the right operator and assigned the result to oxygen.", "You have doubled your oxygen level.", ["An error happened. Try to double up your oxygen level again."]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskOxygenDouble.prototype.testTask = function (json) {
+        if (Object.keys(json).length === 6) {
+            var expectedIdentifier = 'oxygen';
+            var expectedOperator = '*';
+            var expectedNumber = '2';
+            if (json[1].value === '*') {
+                var firstIdentifier = json[0].value;
+                var equalSign = json[2].value;
+                var secondIdentifier = firstIdentifier;
+                var multiplySign = json[1].value;
+                var number = json[3].value;
+                var semicolon = json[4].value;
+            }
+            if (json[2].value === expectedIdentifier) {
+                var firstIdentifier = json[0].value;
+                var equalSign = json[1].value;
+                var secondIdentifier = json[2].value;
+                var multiplySign = json[3].value;
+                var number = json[4].value;
+                var semicolon = json[5].value;
+            }
+            if (json[2].value === expectedNumber) {
+                var firstIdentifier = json[0].value;
+                var equalSign = json[1].value;
+                var secondIdentifier = json[4].value;
+                var multiplySign = json[3].value;
+                var number = json[2].value;
+                var semicolon = json[5].value;
+            }
+            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["c" /* validateIdentifier */])(firstIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["c" /* validateIdentifier */])(secondIdentifier)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["d" /* checkIdentifier */])(firstIdentifier, expectedIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["e" /* checkEqualSign */])(equalSign)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["d" /* checkIdentifier */])(secondIdentifier, expectedIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["f" /* checkOperator */])(multiplySign, expectedOperator)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["g" /* validateNumber */])(number) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["h" /* checkNumber */])(number, expectedNumber) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["b" /* checkSemicolon */])(semicolon)) {
+                var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                var level = player['oxygen'];
+                level = level * parseInt(expectedNumber);
+                player[expectedIdentifier] = level;
+                var task = this.getTaskId() + 1;
+                player['task'] = task;
+                this.localStorageService.saveToLocalStorage('player', player);
+            }
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["c" /* validateIdentifier */])(firstIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["c" /* validateIdentifier */])(secondIdentifier)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["d" /* checkIdentifier */])(firstIdentifier, expectedIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["e" /* checkEqualSign */])(equalSign)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["d" /* checkIdentifier */])(secondIdentifier, expectedIdentifier) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["f" /* checkOperator */])(multiplySign, expectedOperator)
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["g" /* validateNumber */])(number) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["h" /* checkNumber */])(number, expectedNumber) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__test_code_helpers__["b" /* checkSemicolon */])(semicolon);
+        }
+        else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length);
+            return false;
+        }
+    };
+    return TaskOxygenDouble;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskOxygenDouble.js.map
+
+/***/ }),
+
+/***/ 138:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__test_code_helpers__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskPrintAlienObject; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var TaskPrintAlienObject = (function (_super) {
+    __extends(TaskPrintAlienObject, _super);
+    function TaskPrintAlienObject() {
+        var _this = _super.call(this, 6, "Print out the Alien object.", "The friendly alien offers us to look into his bag! " +
+            "We can make use of the " + "\n" + "stringify-function of JSON again." + "\n" +
+            "It is quite easy, you already used this function recently. Use it again " + "\n" + "to see what the alien-object has to offer.", "Wohooo! The alien has some useful stuff that we can get!", "Did you really used the command like before and with alien?", "Great this is the alien bacckpack: ", ["Wah! It didn’t work! Put the right object name into the brackets? " + "\n" + "Always check twice!"]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_2__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskPrintAlienObject.prototype.testTask = function (json) {
+        if (Object.keys(json).length === 12) {
+            var consoleStr = json[0].value;
+            var dot1 = json[1].value;
+            var log = json[2].value;
+            var openBracket1 = json[3].value;
+            var jsonText = json[4].value;
+            var dot2 = json[5].value;
+            var stringify = json[6].value;
+            var openBracket2 = json[7].value;
+            var alien = json[8].value;
+            var closeBracket1 = json[9].value;
+            var closeBracket2 = json[10].value;
+            var semicolon = json[11].value;
+            if ((__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(consoleStr, "console") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(dot1, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(log, "log")
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(openBracket1, "(") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(jsonText, "JSON") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(dot2, ".")
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(stringify, "stringify") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(openBracket2, "(") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(alien, "alien")
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(closeBracket1, ")") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(closeBracket2, ")") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["b" /* checkSemicolon */])(semicolon))) {
+                var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                player.task = this.getTaskId() + 1;
+                this.localStorageService.saveToLocalStorage('player', player);
+                var alien_1 = { backpack: [] };
+                alien_1.backpack.push('Super-aluminium');
+                this.localStorageService.saveToLocalStorage('alien', alien_1);
+                var newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(alien_1.backpack);
+                this.setMessageCorrect(newMessage);
+            }
+            return (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(consoleStr, "console") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(dot1, ".") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(log, "log")
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(openBracket1, "(") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(jsonText, "JSON") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(dot2, ".")
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(stringify, "stringify") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(openBracket2, "(") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(alien, "alien")
+                && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(closeBracket1, ")") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["a" /* stringEqualsString */])(closeBracket2, ")") && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__test_code_helpers__["b" /* checkSemicolon */])(semicolon));
+        }
+        else {
+            console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length);
+            return false;
+        }
+    };
+    return TaskPrintAlienObject;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskPrintAlienObject.js.map
+
+/***/ }),
+
+/***/ 139:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__task__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskPrintPlayerObject; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var TaskPrintPlayerObject = (function (_super) {
+    __extends(TaskPrintPlayerObject, _super);
+    function TaskPrintPlayerObject() {
+        var _this = _super.call(this, 3, "Objects are variables. But objects can contain many values. Something like:" + "\n" +
+            "var spacecraft = {model:“Columbia“, weight:“3600kg“};" + "\n" +
+            "The easiest way to print an Object is:" + "\n" +
+            "console.log(JSON.stringify(Object));" + "\n" +
+            "Your Object, is stored within the Variable user.", "I just made a system check and it seems like we need more aluminium to " + "\n" + "repair  our spaceship." + "\n" +
+            "\n" + "Please check if you still have your backpack - maybe it contains the " + "\n" + "required material.", "Fabulous! It worked. Move on to the next task.", "Try to print your player object again", "This is the your pilot object: ", ["Ugh! A terrible error occurred. Check what the mentor is saying!"]) || this;
+        _this.localStorageService = __WEBPACK_IMPORTED_MODULE_1__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        return _this;
+    }
+    TaskPrintPlayerObject.prototype.testTask = function (json) {
+        // True has to be replaced with validation!
+        if (true) {
+            var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+            player.task = this.getTaskId() + 1;
+            this.localStorageService.saveToLocalStorage('player', player);
+            delete player.task;
+            var newMessage = this.getMessageCorrect() + JSON.stringify(player);
+            this.setMessageCorrect(newMessage);
+        }
+        return true;
+    };
+    return TaskPrintPlayerObject;
+}(__WEBPACK_IMPORTED_MODULE_0__task__["a" /* Task */]));
+
+//# sourceMappingURL=taskPrintPlayerObject.js.map
+
+/***/ }),
+
+/***/ 14:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Task; });
+/**
+ * Class Task represent a structure for one task. It has an id, instruction, message for correct answer and message for
+ * wrong answer
+ */
+var Task = (function () {
+    // TODO: find out how to show the values from user in messages
+    function Task(id, mentorText, instruction, mentorAnswerCorrect, mentorAnswerWrong, messageCorrect, messagesWrong) {
+        this.id = id;
+        this.mentorText = mentorText;
+        this.instruction = instruction;
+        this.mentorAnswerCorrect = mentorAnswerCorrect;
+        this.mentorAnswerWrong = mentorAnswerWrong;
+        this.messageCorrect = messageCorrect;
+        this.messagesWrong = messagesWrong;
+        console.log('id', this.id);
+    }
+    Task.setValueFromUserToMessages = function (valueFromUser, message) {
+        return message.replace(/SUBTITUTETHISPLACE/, valueFromUser);
+    };
+    Task.prototype.setMessageCorrect = function (message) {
+        this.messageCorrect = message;
+    };
+    Task.prototype.getTaskId = function () {
+        return this.id;
+    };
+    Task.prototype.getMentorText = function () {
+        return this.mentorText.replace(new RegExp('\n', 'g'), "<br/> <br/>");
+    };
+    Task.prototype.getInstruction = function () {
+        return this.instruction;
+    };
+    Task.prototype.getMentorAnswerCorrect = function (valueFromUser) {
+        if (valueFromUser === void 0) { valueFromUser = ""; }
+        return Task.setValueFromUserToMessages(valueFromUser, this.mentorAnswerCorrect);
+    };
+    Task.prototype.getMentorAnswerWrong = function () {
+        return this.mentorAnswerWrong;
+    };
+    Task.prototype.getMessageCorrect = function (valueFromUser) {
+        if (valueFromUser === void 0) { valueFromUser = ""; }
+        return Task.setValueFromUserToMessages(valueFromUser, this.messageCorrect);
+    };
+    Task.prototype.getMessageWrong = function (valueFromUser) {
+        if (valueFromUser === void 0) { valueFromUser = ""; }
+        return this.messagesWrong[0];
+    };
+    return Task;
+}());
+
+//# sourceMappingURL=task.js.map
+
+/***/ }),
+
+/***/ 140:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
+// The file contents for the current environment will overwrite these during build.
+var environment = {
+    production: false
+};
+//# sourceMappingURL=environment.js.map
+
+/***/ }),
+
+/***/ 198:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)();
+// imports
+
+
+// module
+exports.push([module.i, "/*\nNEXT BUTTON CSS\n */\n#btnNext {\n  border-radius: 0px;\n  font-family: \"Nixie One\";\n  color: #ffffff;\n  font-size: 16px;\n  padding: 0.625em 1.250em 0.625em 1.250em;\n  border: solid #432E64 1px;\n  text-decoration: none;\n  float: right;\n  background: #432E64;\n}\n\n#btnNext:hover {\n  background: #8b81d2;\n  text-decoration: none;\n}\n\n/*\nRUN BUTTON CSS\n */\n\n.button {\n  height: 9vh;\n  width: 13vw;\n  cursor: pointer;\n  margin: 4vh auto;\n  font-family: \"Nixie One\";\n}\n\n.button .outer {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  padding: 0.625em;\n  background: rgba(0,0,0,0.65);\n  border-radius: 0.875em;\n  -webkit-border-radius: 0.875em;\n  -moz-border-radius: 0.875em;\n  box-shadow: inset rgba(0,0,0,0.85) 0px 1px 5px;\n  -webkit-box-shadow: inset rgba(0,0,0,0.85) 0px 1px 5px;\n  -moz-box-shadow: inset rgba(0,0,0,0.85) 0px 1px 5px;\n  -webkit-transform: perspective(500px) rotateX(35deg);\n  -moz-transform: perspective(500px) rotateX(35deg);\n}\n\n.button .outer .height {\n  position: relative;\n  height: 100%;\n  margin-top: -0.938em;\n  padding-bottom: 0.938em;\n  background: #51387A;\n  border-radius: 1.000em;\n  -webkit-border-radius: 1.000em;\n  -moz-border-radius: 1.000em;\n  box-shadow: rgba(0,0,0,0.85) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 8px;\n  -webkit-box-shadow: rgba(0,0,0,0.85) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 8px;\n  -moz-box-shadow: rgba(0,0,0,0.85) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 8px;\n  -webkit-transition: all 0.1s ease-in-out;\n  -moz-transition: all 0.1s ease-in-out;\n}\n\n.button:hover .outer .height {\n  margin-top: -0.625em;\n  padding-bottom: 0.625em;\n  background: #51387A;\n  box-shadow: rgba(0,0,0,0.25) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 6px;\n  -webkit-box-shadow: rgba(0,0,0,0.25) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 6px;\n  -moz-box-shadow: rgba( 0,0,0,0.25) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 6px;\n}\n\n.button:active .outer .height {\n  margin-top: 0px;\n  padding-bottom: 0px;\n}\n\n.button .outer .height .inner {\n  line-height: 2.8em;\n  font-size: 3.4vh;\n  letter-spacing: .05em;\n  position: relative;\n  height: 100%;\n  text-align: center;\n  text-shadow: #B4A7D6 0px 0px 1px;\n  background: #432E64; /* FF3.6+ */ /* Chrome,Safari4+ */\n  background: -webkit-linear-gradient(top, #B4A7D6 0%,#432E64 100%); /* Chrome10+,Safari5.1+ */\n  border-radius: 0.750em;\n  -webkit-border-radius: 0.750em;\n  -moz-border-radius: 0.750em;\n  box-shadow: inset rgba(255,255,255,0.85) 0px 0px 1px;\n  -webkit-box-shadow: inset rgba(255,255,255,0.85) 0px 0px 1px;\n  -moz-box-shadow: inset rgba(255,255,255,0.85) 0px 0px 1px;\n  -webkit-transition: all 0.1s ease-in-out;\n  -moz-transition: all 0.1s ease-in-out;\n}\n\n.button:hover .outer .height .inner{\n  text-shadow: #B4A7D6 0px 0px 1px;\n  background: #432E64; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */\n  background: -webkit-linear-gradient(top, #432E64 0%,#8b81d2 100%); /* Chrome10+,Safari5.1+ */\n}\n\n.button:active .outer .height .inner{\n  text-shadow: #51387A 0px 1px 0px;\n  border-radius: 1.000em;\n  -webkit-border-radius: 1.000em;\n  -moz-border-radius: 1.000em;\n  box-shadow: inset rgba(0,0,0,0.9) 0px 0px 8px;\n  -webkit-box-shadow: inset rgba(0,0,0,0.9) 0px 0px 8px;\n  -moz-box-shadow: inset rgba(0,0,0,0.9) 0px 0px 8px;\n  background: #51387A; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */\n  background: -webkit-linear-gradient(top, #432E64 0%,#8B81D2 100%); /* Chrome10+,Safari5.1+ */\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 202:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)();
+// imports
+
+
+// module
+exports.push([module.i, "#ace-input {\n  height: 23vh;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 203:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)();
+// imports
+
+
+// module
+exports.push([module.i, "#ace-output {\n  height: 23vh;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 204:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)();
+// imports
+exports.i(__webpack_require__(198), "");
+
+// module
+exports.push([module.i, "h2 {\n  font-family: \"Tahoma\";\n  font-weight: bold;\n  color: #ffffff;\n  text-align: center;\n  margin-top: 2vh;\n  margin-bottom: 2vh;\n  font-size: 3vh;\n}\n\n.app-wrapper {\n  margin: 5vh 8vw;\n  height: 90vh;\n  width: 84vw;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n}\n\nmain {\n  margin: auto;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n}\n\n#sectionForMentor {\n  margin-right: 7%;\n  width: 45%;\n}\n\n#sectionForTerminals {\n  width: 48%;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 205:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)();
+// imports
+
+
+// module
+exports.push([module.i, "#mentorText {\n  background-color: #9DD8F7;\n  border-radius: 0.938em;\n  padding: 0.313em 1.250em;\n  font-family: \"Raleway Light\";\n  max-height: 50vh;\n  overflow: overlay;\n}\n\n#mentor img {\n  height: 40vh;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 216:
+/***/ (function(module, exports) {
+
+module.exports = "<ace-editor id=\"ace-input\" #inputEditor [(text)]=\"text\" [options]=\"options\"></ace-editor>"
+
+/***/ }),
+
+/***/ 217:
+/***/ (function(module, exports) {
+
+module.exports = "<ace-editor id=\"ace-output\" #outputEditor [(text)]=\"text\" [options]=\"options\"></ace-editor>"
+
+/***/ }),
+
+/***/ 218:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"app-wrapper\">\n    <h1>{{title}}</h1>\n  <main>\n    <section id=\"sectionForMentor\">\n      <mentor-component></mentor-component>\n    </section>\n    <section id=\"sectionForTerminals\">\n      <h2>{{titleOutput}}</h2>\n      <ace-output-component></ace-output-component>\n      <h2>{{titleInput}}</h2>\n      <ace-input-component></ace-input-component>\n      <div [hidden]='game.btnRunHidden' class=\"button\"><div class=\"outer\"><div class=\"height\"><div class=\"inner\" (click)=\"game.validateCode()\">{{btnRun}}</div></div></div></div>\n      <button [hidden]='game.btnNextHidden' id=\"btnNext\" (click)=\"game.goToNextTask()\" [disabled]=\"game.btnNextDisabled\">{{btnNext}}</button>\n    </section>\n  </main>\n</div>\n"
+
+/***/ }),
+
+/***/ 219:
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"mentorText\">\n  <p [innerHTML]=\"mentorText\"></p>\n</div>\n<div id=\"mentor\">\n  <img src={{imgPath}}/>\n</div>\n"
+
+/***/ }),
+
+/***/ 28:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["c"] = validateIdentifier;
+/* harmony export (immutable) */ __webpack_exports__["g"] = validateNumber;
+/* harmony export (immutable) */ __webpack_exports__["k"] = removeQuotationMarks;
+/* unused harmony export checkInputLength */
+/* unused harmony export checkFirstLetter */
+/* unused harmony export checkFollowingLetters */
+/* harmony export (immutable) */ __webpack_exports__["a"] = stringEqualsString;
+/* harmony export (immutable) */ __webpack_exports__["j"] = checkInterval;
+/* harmony export (immutable) */ __webpack_exports__["h"] = checkNumber;
+/* harmony export (immutable) */ __webpack_exports__["b"] = checkSemicolon;
+/* harmony export (immutable) */ __webpack_exports__["d"] = checkIdentifier;
+/* harmony export (immutable) */ __webpack_exports__["f"] = checkOperator;
+/* harmony export (immutable) */ __webpack_exports__["i"] = checkKeyword;
+/* harmony export (immutable) */ __webpack_exports__["e"] = checkEqualSign;
+function validateIdentifier(input) {
+    return checkInputLength(input) && checkFirstLetter(input) && checkFollowingLetters(input);
+}
+function validateNumber(number) {
+    return /^\d*$/.test(number);
+}
+function removeQuotationMarks(input) {
+    if (stringEqualsString(input[0], "\""))
+        input = input.replace("\"", "");
+    if (stringEqualsString(input[input.length - 1], "\""))
+        input = input.replace("\"", "");
+    return input;
+}
+function checkInputLength(input) {
+    return input.length <= 20;
+}
+function checkFirstLetter(input) {
+    var firstLetter = input[0];
+    return new RegExp(/[a-z]|_|\$/i).test(firstLetter);
+}
+function checkFollowingLetters(input) {
+    for (var i = 1; i < input.length; i++) {
+        var char = input[i];
+        var result = new RegExp(/[a-z]|_|\$|\d/i).test(char);
+        if (result === false)
+            return false;
+    }
+    return true;
+}
+function stringEqualsString(string1, string2) {
+    return string1 === string2;
+}
+function checkInterval(number, min, max) {
+    return number <= max && number > min;
+}
+function checkNumber(number, expectedNumber) {
+    return stringEqualsString(number, expectedNumber);
+}
+function checkSemicolon(semicolon) {
+    return stringEqualsString(semicolon, ";");
+}
+function checkIdentifier(identifier, expectedIdentifier) {
+    return stringEqualsString(identifier, expectedIdentifier);
+}
+function checkOperator(operator, expectedOperator) {
+    return stringEqualsString(operator, expectedOperator);
+}
+function checkKeyword(keyword) {
+    return stringEqualsString(keyword, "var");
+}
+function checkEqualSign(equalSign) {
+    return stringEqualsString(equalSign, "=");
+}
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ 282:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(124);
+module.exports = __webpack_require__(121);
+
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__taskName__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__taskOxygen__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__taskOxygenDouble__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__taskPrintPlayerObject__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__taskAddArray__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__taskElementToArray__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__taskPrintAlienObject__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__taskCopyArrayElement__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__taskLoopArray__ = __webpack_require__(134);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+/**
+ * TaskService manages all tasks in game and their validation
+ */
+var TasksService = (function () {
+    function TasksService() {
+        // TODO: find out how to show the values from user in messages
+        this.allTasks = [];
+        console.log('tasks service injected');
+        this.allTasks = this.getTasks();
+        console.log('list with all tasks created');
+    }
+    TasksService.prototype.getTask = function (taskNumber) {
+        return this.allTasks[taskNumber];
+    };
+    TasksService.prototype.getNumberOfAllTasks = function () {
+        return this.allTasks.length;
+    };
+    TasksService.prototype.getTasks = function () {
+        return [
+            new __WEBPACK_IMPORTED_MODULE_1__taskName__["a" /* TaskName */](),
+            new __WEBPACK_IMPORTED_MODULE_2__taskOxygen__["a" /* TaskOxygen */](),
+            new __WEBPACK_IMPORTED_MODULE_3__taskOxygenDouble__["a" /* TaskOxygenDouble */](),
+            new __WEBPACK_IMPORTED_MODULE_4__taskPrintPlayerObject__["a" /* TaskPrintPlayerObject */](),
+            new __WEBPACK_IMPORTED_MODULE_5__taskAddArray__["a" /* TaskAddArray */](),
+            new __WEBPACK_IMPORTED_MODULE_6__taskElementToArray__["a" /* TaskElementToArray */](),
+            new __WEBPACK_IMPORTED_MODULE_7__taskPrintAlienObject__["a" /* TaskPrintAlienObject */](),
+            new __WEBPACK_IMPORTED_MODULE_8__taskCopyArrayElement__["a" /* TaskCopyArrayElement */](),
+            new __WEBPACK_IMPORTED_MODULE_9__taskLoopArray__["a" /* TaskLoopArray */]()
+        ];
+    };
+    return TasksService;
+}());
+TasksService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], TasksService);
+
+//# sourceMappingURL=tasks.service.js.map
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AceInputComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AceInputComponent = (function () {
+    function AceInputComponent() {
+        this.text = "";
+    }
+    AceInputComponent.prototype.ngAfterViewInit = function () {
+        var inputEditor = this.inputEditor.getEditor();
+        inputEditor.setOptions({
+            mode: "ace/mode/javascript",
+            printMargin: false,
+            readOnly: false,
+            showGutter: true
+        });
+        inputEditor.renderer.setScrollMargin(10);
+    };
+    AceInputComponent.prototype.getStringFromEditor = function () {
+        return this.inputEditor.getEditor().getValue();
+    };
+    AceInputComponent.prototype.clearEditor = function () {
+        this.inputEditor.getEditor().setValue("");
+    };
+    AceInputComponent.prototype.setEditorValue = function (text) {
+        this.inputEditor.getEditor().setValue(text);
+    };
+    return AceInputComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* ViewChild */])('inputEditor'),
+    __metadata("design:type", Object)
+], AceInputComponent.prototype, "inputEditor", void 0);
+AceInputComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
+        selector: 'ace-input-component',
+        template: __webpack_require__(216),
+        styles: [__webpack_require__(202)]
+    })
+], AceInputComponent);
+
+//# sourceMappingURL=ace-input.component.js.map
+
+/***/ }),
+
+/***/ 75:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AceOutputComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AceOutputComponent = (function () {
+    function AceOutputComponent() {
+        this.text = "";
+    }
+    AceOutputComponent.prototype.ngAfterViewInit = function () {
+        var outputEditor = this.outputEditor.getEditor();
+        outputEditor.setOptions({
+            mode: "ace/mode/text",
+            printMargin: false,
+            readOnly: true,
+            showGutter: false,
+            highlightActiveLine: false,
+            wrapBehavioursEnabled: true,
+            wrap: "free"
+        });
+        outputEditor.renderer.setScrollMargin(10);
+    };
+    AceOutputComponent.prototype.setEditorValue = function (text) {
+        this.outputEditor.getEditor().setValue(text);
+        this.outputEditor.getEditor().navigateFileStart();
+    };
+    return AceOutputComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* ViewChild */])('outputEditor'),
+    __metadata("design:type", Object)
+], AceOutputComponent.prototype, "outputEditor", void 0);
+AceOutputComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
+        selector: 'ace-output-component',
+        template: __webpack_require__(217),
+        styles: [__webpack_require__(203)]
+    })
+], AceOutputComponent);
+
+//# sourceMappingURL=ace-output.component.js.map
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnalyseCodeService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AnalyseCodeService = (function () {
+    function AnalyseCodeService(http) {
+        this.http = http;
+        this.tokenizeCodeEndpoint = 'http://localhost:3000/api/user/tok';
+        this.parseCodeEndpoint = 'http://localhost:3000/api/user/parse';
+    }
+    AnalyseCodeService.prototype.getTokenizedCode = function (code) {
+        var url = this.tokenizeCodeEndpoint + "/" + code;
+        console.log(url);
+        return this.http.get(url)
+            .map(function (response) { return response.json(); });
+    };
+    return AnalyseCodeService;
+}());
+AnalyseCodeService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], AnalyseCodeService);
+
+var _a;
+//# sourceMappingURL=analyze.code-service.js.map
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tasks_tasks_service__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__analyze_code_analyze_code_service__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__storage_local_storage_service__ = __webpack_require__(11);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * GameService controls the game progress:
+ * - creates new game
+ * - shows task instructions in output editor
+ * - gets code from input editor
+ * - sends the code to validation
+ * - gets the answer from validation
+ * - and shows the answer in output editor, if the answer is correct gameService enables next button and shows
+ *   instructions of next task
+ */
+var GameService = (function () {
+    function GameService(tasksService, analyseCodeService) {
+        this.tasksService = tasksService;
+        this.analyseCodeService = analyseCodeService;
+        this.localStorageService = __WEBPACK_IMPORTED_MODULE_3__storage_local_storage_service__["a" /* LocalStorageService */].getInstance();
+        console.log("game service injected");
+    }
+    GameService.prototype.newGame = function (mentor, aceIn, aceOut) {
+        console.log('creating new game...');
+        if (this.localStorageService.readLocalStorage('player') != undefined) {
+            var player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+            console.log("Saved player: " + JSON.stringify(player));
+            this.currentTaskNumber = player['task'];
+        }
+        else {
+            console.log("new game starting...");
+            this.currentTaskNumber = 0;
+        }
+        this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
+        console.log('current task', this.currentTask);
+        this.mentor = mentor;
+        this.aceInput = aceIn;
+        this.aceOutput = aceOut;
+        this.btnNextDisabled = true;
+        this.btnNextHidden = false;
+        this.btnRunHidden = false;
+        this.btnRunDisabled = false;
+        this.mentor.setMentorText(this.currentTask.getMentorText());
+        this.aceOutput.setEditorValue(this.currentTask.getInstruction());
+        this.aceInput.clearEditor();
+        console.log('new game created');
+    };
+    GameService.prototype.validateCode = function () {
+        var _this = this;
+        if (this.btnRunDisabled === false) {
+            var textFromInput = this.aceInput.getStringFromEditor();
+            if (textFromInput.length === 0) {
+                this.aceOutput.setEditorValue('You forgot to type something :)');
+            }
+            else {
+                this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(function (data) {
+                    var testPassed = _this.currentTask.testTask(data);
+                    if (testPassed) {
+                        _this.mentor.setMentorText(_this.currentTask.getMentorAnswerCorrect());
+                        _this.mentor.setImgSuccess();
+                        _this.aceOutput.setEditorValue(_this.currentTask.getMessageCorrect());
+                        _this.btnNextDisabled = false;
+                        _this.btnRunDisabled = true;
+                    }
+                    else {
+                        _this.mentor.setMentorText(_this.currentTask.getMentorAnswerWrong());
+                        _this.mentor.setImgFailure();
+                        _this.aceOutput.setEditorValue(_this.currentTask.getMessageWrong());
+                    }
+                });
+            }
+        }
+    };
+    GameService.prototype.goToNextTask = function () {
+        this.currentTaskNumber++;
+        if (this.currentTaskNumber == this.tasksService.getNumberOfAllTasks()) {
+            this.btnRunHidden = true;
+            this.btnNextHidden = true;
+            this.mentor.setMentorText('Good bye, old friend. May the Force be with you.');
+            this.aceOutput.setEditorValue('GAME OVER');
+        }
+        else {
+            this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
+            this.mentor.setMentorText(this.currentTask.getMentorText());
+            this.aceOutput.setEditorValue(this.currentTask.getInstruction());
+        }
+        this.mentor.setImgMentor();
+        this.aceInput.clearEditor();
+        this.btnNextDisabled = true;
+        this.btnRunDisabled = false;
+        console.log('current task', this.currentTask);
+    };
+    return GameService;
+}());
+GameService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__tasks_tasks_service__["a" /* TasksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__tasks_tasks_service__["a" /* TasksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__analyze_code_analyze_code_service__["a" /* AnalyseCodeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__analyze_code_analyze_code_service__["a" /* AnalyseCodeService */]) === "function" && _b || Object])
+], GameService);
+
+var _a, _b;
+//# sourceMappingURL=game.service.js.map
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MentorComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MentorComponent = (function () {
+    function MentorComponent() {
+        this.mentorText = 'Here I am going to help you to repair your spaceship.';
+        this.imgPath = "./assets/img/mentor.png";
+    }
+    MentorComponent.prototype.ngOnInit = function () {
+    };
+    // TODO: devide text into paragraphs
+    MentorComponent.prototype.setMentorText = function (text) {
+        this.mentorText = text;
+    };
+    MentorComponent.prototype.setImgMentor = function () {
+        this.imgPath = "./assets/img/mentor.png";
+    };
+    MentorComponent.prototype.setImgSuccess = function () {
+        this.imgPath = "./assets/img/mentor_success.png";
+    };
+    MentorComponent.prototype.setImgFailure = function () {
+        this.imgPath = "./assets/img/mentor_failure.png";
+    };
+    return MentorComponent;
+}());
+MentorComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
+        selector: 'mentor-component',
+        template: __webpack_require__(219),
+        styles: [__webpack_require__(205)]
+    }),
+    __metadata("design:paramtypes", [])
+], MentorComponent);
+
+//# sourceMappingURL=mentor.component.js.map
+
+/***/ })
+
+},[282]);
+//# sourceMappingURL=main.bundle.js.map
