@@ -1,11 +1,17 @@
 import { browser, element, by } from 'protractor';
 
 export class JspacePage {
+
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getOutputText() {
+    return element(by.id('ace-output')).getText();
+
   }
+  setInputText(name) {
+    return element.all(by.className('ace_text-input')).last().sendKeys(name);
+  }
+
 }
