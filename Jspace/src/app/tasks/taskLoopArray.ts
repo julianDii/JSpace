@@ -34,10 +34,8 @@ export class TaskLoopArray extends Task {
     }
 
    testTask(json: JSON) {
-        if (Object.keys(json).length === 35) {
-            //  for(var i = 0; i < user.backpack.length; i++) {
-            //      boardcomputer.inventory.push(user.backpack[i]);
-            //  }
+       console.log(JSON.stringify(json) + " " +  Object.keys(json).length);
+        if (Object.keys(json).length === 34) {
             let forString = json[0].value;
             let openingBracket1 = json[1].value;
             let varString = json[2].value;
@@ -54,25 +52,24 @@ export class TaskLoopArray extends Task {
             let lengthString = json[13].value;
             let semicolon2 = json[14].value;
             let thirdI = json[15].value;
-            let firstPlus = json[16].value;
-            let secondPlus = json[17].value;
-            let closingBracket1 = json[18].value;
-            let openingBracket2 = json[19].value;
-            let boardComputerString = json[20].value;
-            let dot3 = json[21].value;
-            let inventoryBoardComputer = json[22].value;
-            let dot4 = json[23].value;
-            let push = json[24].value;
-            let openingBracket3 = json[25].value;
-            let user2 = json[26].value;
-            let dot5 = json[27].value;
-            let backpackUser2 = json[28].value;
-            let openingBracket4 = json[29].value;
-            let index = json[30].value;
-            let closingBracket2 = json[31].value;
-            let closingBracket3 = json[32].value;
-            let semicolon3 = json[33].value;
-            let closingBracket4 = json[34].value;
+            let plusPlus = json[16].value;
+            let closingBracket1 = json[17].value;
+            let openingBracket2 = json[18].value;
+            let boardComputerString = json[19].value;
+            let dot3 = json[20].value;
+            let inventoryBoardComputer = json[21].value;
+            let dot4 = json[22].value;
+            let push = json[23].value;
+            let openingBracket3 = json[24].value;
+            let user2 = json[25].value;
+            let dot5 = json[26].value;
+            let backpackUser2 = json[27].value;
+            let openingBracket4 = json[28].value;
+            let index = json[29].value;
+            let closingBracket2 = json[30].value;
+            let closingBracket3 = json[31].value;
+            let semicolon3 = json[32].value;
+            let closingBracket4 = json[33].value;
 
             if((stringEqualsString(forString, "for")&&
                 stringEqualsString(openingBracket1, "(") &&
@@ -90,8 +87,7 @@ export class TaskLoopArray extends Task {
                 stringEqualsString(lengthString, "length") &&
                 checkSemicolon(semicolon2) &&
                 stringEqualsString(thirdI, "i") &&
-                stringEqualsString(firstPlus, "+") &&
-                stringEqualsString(secondPlus, "+") &&
+                stringEqualsString(plusPlus, "++") &&
                 stringEqualsString(closingBracket1, ")") &&
                 stringEqualsString(openingBracket2, "{") &&
                 stringEqualsString(boardComputerString, "boardcomputer") &&
@@ -109,7 +105,7 @@ export class TaskLoopArray extends Task {
                 stringEqualsString(closingBracket3, ")") &&
                 checkSemicolon(semicolon3) &&
                 stringEqualsString(closingBracket4, "}"))) {
-
+                    
                     let boardcomputer = { inventory: [] }
                     let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
                     player.task = this.getTaskId() + 1;
@@ -126,7 +122,6 @@ export class TaskLoopArray extends Task {
                    
                     this.setMessageCorrect(newMessage);
                     this.localStorageService.resetLocalStorageItem('player');
-
                 }
 
             return (stringEqualsString(forString, "for")
@@ -145,8 +140,7 @@ export class TaskLoopArray extends Task {
                 && stringEqualsString(lengthString, "length")
                 && checkSemicolon(semicolon2)
                 && stringEqualsString(thirdI, "i")
-                && stringEqualsString(firstPlus, "+")
-                && stringEqualsString(secondPlus, "+")
+                && stringEqualsString(plusPlus, "++")
                 && stringEqualsString(closingBracket1, ")")
                 && stringEqualsString(openingBracket2, "{")
                 && stringEqualsString(boardComputerString, "boardcomputer")
@@ -164,7 +158,6 @@ export class TaskLoopArray extends Task {
                 && stringEqualsString(closingBracket3, ")")
                 && checkSemicolon(semicolon3)
                 && stringEqualsString(closingBracket4, "}"));
-
         } else {
             console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
             return false;
