@@ -26,10 +26,8 @@ export class GameService {
   mentor: MentorComponent;
   aceInput: AceInputComponent;
   aceOutput: AceOutputComponent;
-  btnNextDisabled: boolean;
   btnNextHidden: boolean;
   btnRunHidden: boolean;
-  btnRunDisabled: boolean;
 
   private localStorageService = LocalStorageService.getInstance();
 
@@ -54,10 +52,8 @@ export class GameService {
     this.mentor = mentor;
     this.aceInput = aceIn;
     this.aceOutput = aceOut;
-    this.btnNextDisabled = true;
-    this.btnNextHidden = false;
+    this.btnNextHidden = true;
     this.btnRunHidden = false;
-    this.btnRunDisabled = false;
 
     this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
@@ -67,7 +63,6 @@ export class GameService {
   }
 
   validateCode() {
-    if (this.btnRunDisabled === false) {
       let textFromInput: string = this.aceInput.getStringFromEditor();
       if (textFromInput.length === 0) {
         this.aceOutput.setEditorValue('You forgot to type something :)')
@@ -79,8 +74,8 @@ export class GameService {
               this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
               this.mentor.setImgSuccess();
               this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
-              this.btnNextDisabled = false;
-              this.btnRunDisabled = true;
+              this.btnNextHidden = false;
+              this.btnRunHidden = true;
             } else {
               this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
               this.mentor.setImgFailure();
@@ -88,7 +83,6 @@ export class GameService {
             }
           });
       }
-    }
   }
 
   goToNextTask() {
@@ -104,12 +98,12 @@ export class GameService {
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
+      this.btnRunHidden = false;
+      this.btnNextHidden = true;
     }
 
     this.mentor.setImgMentor();
     this.aceInput.clearEditor();
-    this.btnNextDisabled = true;
-    this.btnRunDisabled = false;
 
     console.log('current task', this.currentTask);
   }
