@@ -61,8 +61,16 @@ export class TaskOxygenDouble extends Task {
                 } else {
                   console.log('ERROR the result oxygen level is not as expected');
                 }
+              } else if (json[3].value === "+") {
+                if (json[4].value === expectedIdentifier) {
+                  if (json[5].value === ";") {
+                    codeCorrect = true;
+                  } else {
+                    console.log('ERROR check the syntax');
+                  }
+                }
               } else {
-                console.log('ERROR are you multiplicating?');
+                console.log('ERROR are you multiplicating or adding?');
               }
             } else if (json[2].value === expectedMultiplicator) {
               if (json[3].value === "*") {

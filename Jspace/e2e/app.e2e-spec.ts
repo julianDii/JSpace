@@ -233,17 +233,17 @@ describe('jspace App', () => {
     });
   });
 
-  it('taskOxygenDouble_validInput_isTrue3', function () {
-    page.setInputText('julian');
+  it('taskOxygenDouble_validInput3_isTrue', function () {
+    page.setInputText('jana');
     runButton.click();
     nextButton.click();
 
-    page.setInputText('var oxygen = oxygen + oxygen;');
+    page.setInputText('var oxygen = 84;');
     runButton.click();
     nextButton.click();
     browser.sleep(100);
 
-    page.setInputText('oxygen = oxygen*2;');
+    page.setInputText('oxygen = oxygen + oxygen;');
     runButton.click();
     browser.sleep(100);
 
