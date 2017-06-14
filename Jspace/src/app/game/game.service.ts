@@ -45,7 +45,7 @@ export class GameService {
       this.currentTaskNumber = player['task']
     } else {
       console.log("new game starting...")
-      this.currentTaskNumber = 1;
+      this.currentTaskNumber = 0;
     }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);
