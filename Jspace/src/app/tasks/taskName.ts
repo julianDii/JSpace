@@ -1,5 +1,8 @@
 import { Task } from './task';
-import { removeQuotationMarks, validateIdentifier } from '../test-code/helpers';
+import {
+  checkFirstLetter, checkFollowingLetters, checkInputLength, removeQuotationMarks,
+  validateIdentifier
+} from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
 
 export class TaskName extends Task {
@@ -26,16 +29,34 @@ export class TaskName extends Task {
     );
   }
 
+  private possibleWrongMentorMessages = ["Oh no, you have probably used some forbidden signs.", "Oh no, your is too long, " +
+  "it can have only maximal 20 signs."];
+
   testTask(json: JSON) {
     let input: string = json[0].value;
     let remove = removeQuotationMarks(input);
+    let codeCorrect = false;
 
-    if (validateIdentifier(input)) {
+    if(checkInputLength(input)) {
+      if (checkFirstLetter(input)) {
+        if (checkFollowingLetters(input)) {
+          codeCorrect = true;
+        } else {
+          this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+        }
+      } else {
+        this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+      }
+    } else {
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
+    }
+
+    if (codeCorrect) {
       let taskNumber = this.getTaskId() + 1;
       let player = { name: input, task: taskNumber };
       this.localStorageService.saveToLocalStorage('player', player);
     }
 
-    return validateIdentifier(input);
+    return codeCorrect;
   }
 }

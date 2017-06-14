@@ -29,6 +29,10 @@ export abstract class Task {
     this.messageCorrect = message;
   }
 
+  setMentorAnswerWrong(message: string) {
+    this.mentorAnswerWrong = message;
+  }
+
   getTaskId(): number {
     return this.id;
   }
