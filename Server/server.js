@@ -4,7 +4,9 @@ var esprima = require('esprima');
 
 // endpoint for code analyse requests
 app.get('/api/user/tok/:code', function(req, res) {
+    console.log("yo");
     if(isNaN(req.params.code.charAt(0))){
+        
         res.json(esprima.tokenize(req.params.code));
     } else {
         console.log("error_leadingnumber")
