@@ -19,6 +19,288 @@ describe('jspace App', () => {
     browser.executeScript('window.localStorage.clear();');
   })
 
+  it('goTo_taskOxygen', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+  });
+
+  it('goTo_taskOxygenDouble', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = 'Double up your oxygen level.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('goTo_TaskPrintPlayerObject', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = 'I just made a system check and it seems like we need more aluminium to repair our spaceship.Please check if you still have your backpack - maybe it contains the required material.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_TaskTaskAddArray', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = 'It seems like you lost your backpack. Well then let us make you a new one.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_TaskElementToArray', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "Cool! We met some nice aliens who are willing to trade with us.Let's accept the offered 'aluminium-shard'.To do that, we will need to push it to our backpack-array.So go on, address the array first and push the 'aluminium-shard'-element to it.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_TaskPrintAlienObject', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "The friendly alien has even more to offer! Let's take a look into his bag.Print out the alien-object.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_taskCopyArrayElement', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("console.log(JSON.stringify(alien));");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "Since we move in a JavaScript-galaxy we can just easily copy the item to our backpack-array.Now go on and copy the aluminium-helmet to our backpack-array!";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_TaskLoopArray', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("console.log(JSON.stringify(alien));");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("user.backpack.push(alien.backpack[0]);");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "Time to transfer our items to the board computer.So that it can calculate the amount of resources and time that we need to repairthe ship.Push the items from our backpack to the inventory of the board computer with afor-loop.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_EndGame', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("console.log(JSON.stringify(alien));");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(100);
+
+    page.setInputText("user.backpack.push(alien.backpack[0]);");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(200);
+
+    page.setInputText("for(var i = 0; i < user.backpack.length; i ++) {boardcomputer.inventory.push(user.backpack[i]);}");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(200);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "GAME OVER";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
   it('taskName_nameWithleadingNumbers_isFalse', () => {
 
     page.setInputText('33kkk');
@@ -29,7 +311,6 @@ describe('jspace App', () => {
       var wrongText = 'Sorry, this username does not seem to be a valid name. Please try to log in again!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(wrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
-
 
   });
 
@@ -96,12 +377,6 @@ describe('jspace App', () => {
 
   });
 
-  it('taskName_goToTaskTwo', function () {
-    page.setInputText('julian');
-    runButton.click();
-    nextButton.click();
-  });
-
   it('taskOxygen_validInput_isTrue', function () {
     page.setInputText('julian');
     runButton.click();
@@ -161,7 +436,7 @@ describe('jspace App', () => {
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
-  it('taskOxygen_tohighNumeric_isFalse', function () {
+  it('taskOxygen_toHighNumeric_isFalse', function () {
     page.setInputText('julian');
     runButton.click();
     nextButton.click();
@@ -172,23 +447,6 @@ describe('jspace App', () => {
 
     page.getOutputText().then(function (text) {
       var outputText = 'Try to set your oxygen level again.';
-      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
-    });
-  });
-
-  it('taskOxygen_goToTaskThree', function () {
-    page.setInputText('julian');
-    runButton.click();
-    nextButton.click();
-
-    page.setInputText('var oxygen = 10;');
-    runButton.click();
-
-    nextButton.click();
-    browser.sleep(100);
-
-    page.getOutputText().then(function (text) {
-      var outputText = 'Double up your oxygen level.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -271,8 +529,7 @@ describe('jspace App', () => {
     page.getOutputText().then(function (text) {
       var outputText = 'An error happened. Try to double up your oxygen level again.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
-
-      browser.sleep(5000);
     });
   });
+
 });

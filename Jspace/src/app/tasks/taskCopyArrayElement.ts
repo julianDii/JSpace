@@ -18,7 +18,7 @@ export class TaskCopyArrayElement extends Task {
 
             "Juhuu! We got the aluminium-helmet!",
 
-            "Check your code! Something is wrong." + "\n" + 
+            "Check your code! Something is wrong." + "\n" +
             "Be sure to address the right index!",
 
             "Good job!" + "\n" +
@@ -26,7 +26,7 @@ export class TaskCopyArrayElement extends Task {
             "This is what we have in our backpack now: ",
 
             ["Error occurred! >.<" + "\n" +
-            "Look! The mentor is saying something!"]
+                "Look! The mentor is saying something!"]
         );
     }
 
@@ -47,7 +47,7 @@ export class TaskCopyArrayElement extends Task {
             let closingBracket2 = json[12].value;
             let semicolon = json[13].value;
 
-            if((stringEqualsString(user, "user") &&
+            if ((stringEqualsString(user, "user") &&
                 stringEqualsString(dot1, ".") &&
                 stringEqualsString(backpackUser, "backpack") &&
                 stringEqualsString(dot2, ".") &&
@@ -62,15 +62,15 @@ export class TaskCopyArrayElement extends Task {
                 stringEqualsString(closingBracket2, ")") &&
                 checkSemicolon(semicolon))) {
 
-                    let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-                    player.task = this.getTaskId() + 1;
-                    let alien = JSON.parse(this.localStorageService.readLocalStorage('alien'));
-                    player.backpack[1] = alien.backpack[0];
-                    this.localStorageService.saveToLocalStorage('player', player);
-                    let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
-                    this.setMessageCorrect(newMessage);
+                let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+                player.task = this.getTaskId() + 1;
+                let alien = JSON.parse(this.localStorageService.readLocalStorage('alien'));
+                player.backpack.push(alien.backpack[0]);
+                this.localStorageService.saveToLocalStorage('player', player);
+                let newMessage = this.getMessageCorrect() + "\n" + JSON.stringify(player.backpack);
+                this.setMessageCorrect(newMessage);
 
-                }
+            }
 
             return (stringEqualsString(user, "user") &&
                 stringEqualsString(dot1, ".") &&
