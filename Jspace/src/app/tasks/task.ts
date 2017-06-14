@@ -14,7 +14,7 @@ export abstract class Task {
     private mentorAnswerCorrect: string,
     private mentorAnswerWrong: string,
     private messageCorrect: string,
-    private messagesWrong: string[]
+    private messagesWrong: string
   ) {
     console.log('id', this.id)
   }
@@ -58,6 +58,6 @@ export abstract class Task {
   }
 
   getMessageWrong(valueFromUser: string = ""): string {
-    return this.messagesWrong[0];
+    return this.messagesWrong;
   }
 }

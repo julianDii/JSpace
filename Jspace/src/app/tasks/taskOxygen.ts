@@ -45,11 +45,16 @@ export class TaskOxygen extends Task {
       "the assignment operator, the value of the variable as a number and the semicolon.",
 
       "You have set your oxygen level.",
-      ["Try to set your oxygen level again."]
+      "Try to set your oxygen level again."
     );
   }
 
+  private possibleWrongMentorMessages = ["syntax -> semicolon", "outside interval", "value is not number", "syntax -> equal sign",
+  "identifier not oxygen", "at beginning is not var"];
+
   testTask(json: JSON) {
+    let codeCorrect = false;
+
     if (Object.keys(json).length === 5) {
       let expectedIdentifier = 'oxygen';
       let expectedMin = 0;
@@ -60,23 +65,43 @@ export class TaskOxygen extends Task {
       let number = json[3].value;
       let semicolon = json[4].value;
 
-      if (checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
-        && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
-        && checkSemicolon(semicolon)) {
-
-        let task = this.getTaskId() + 1;
-        let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-        player[identifier] = number;
-        player['task'] = task;
-        this.localStorageService.saveToLocalStorage('player', player);
+      if (checkKeyword(keyword)) {
+        if (checkIdentifier(identifier, expectedIdentifier)) {
+          //if (validateIdentifier(identifier)) {
+            if (checkEqualSign(equalSign)) {
+              if (validateNumber(number)) {
+                if (checkInterval(number, expectedMin, expectedMax)) {
+                  if (checkSemicolon(semicolon)) {
+                    codeCorrect = true;
+                  } else {
+                    this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+                  }
+                } else {
+                  this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
+                }
+              } else {
+                this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
+              }
+            } else {
+              this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
+            }
+          //}
+        } else {
+          this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
+        }
+      } else {
+        this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
       }
 
-      return checkKeyword(keyword) && checkIdentifier(identifier, expectedIdentifier) && validateIdentifier(identifier)
-        && checkEqualSign(equalSign) && validateNumber(number) && checkInterval(number, expectedMin, expectedMax)
-        && checkSemicolon(semicolon);
+      if (codeCorrect) {
+        let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+        player[identifier] = number;
+        player['task'] = this.getTaskId() + 1;
+        this.localStorageService.saveToLocalStorage('player', player);
+      }
     } else {
-      console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
-      return false;
+      console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length);
     }
+    return codeCorrect;
   }
 }

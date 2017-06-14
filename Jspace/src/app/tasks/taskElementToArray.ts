@@ -24,7 +24,7 @@ export class TaskElementToArray extends Task {
       "Now try again!",
 
       "Nice! Here, your backpack with the added element.",
-      ["Doh! Are you sure that you used the correct keyword? Remember that we need an aluminium-shard element!"]
+      "Doh! Are you sure that you used the correct keyword? Remember that we need an aluminium-shard element!"
     );
   }
 

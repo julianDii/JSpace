@@ -22,7 +22,7 @@ export class TaskPrintAlienObject extends Task {
 
             "Great this is what the alien has in his backpack: ",
 
-            ["Wah! It didn’t work! Make sure to put the right object name into the brackets! " + "\n" + "Always check twice!"]
+            "Wah! It didn’t work! Make sure to put the right object name into the brackets! " + "\n" + "Always check twice!"
         );
     }
 

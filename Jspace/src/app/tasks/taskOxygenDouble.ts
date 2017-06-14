@@ -24,7 +24,7 @@ export class TaskOxygenDouble extends Task {
       "Whoops! Check if you used the right operator and assigned the result to oxygen.",
 
       "You have doubled your oxygen level.",
-      ["An error happened. Try to double up your oxygen level again."]
+      "An error happened. Try to double up your oxygen level again."
     );
   }
 

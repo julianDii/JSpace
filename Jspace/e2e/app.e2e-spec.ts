@@ -114,7 +114,7 @@ describe('jspace App', () => {
     page.setInputText('user.backpack = [];');
     runButton.click();
     nextButton.click();
-    browser.sleep(100);
+    browser.sleep(200);
 
     page.getOutputText().then(function (text) {
       var outputText = "Cool! We met some nice aliens who are willing to trade with us.Let's accept the offered 'aluminium-shard'.To do that, we will need to push it to our backpack-array.So go on, address the array first and push the 'aluminium-shard'-element to it.";
@@ -312,6 +312,42 @@ describe('jspace App', () => {
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(wrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
 
+  });
+
+  it('taskName_nameWithMoreThenTwenty_setsPreciseWrongMentorMessage', () => {
+
+    page.setInputText('sakdjalskDJASLKdjASLKDJalskdjalsKDJASLKDJASKJD676');
+    runButton.click();
+    browser.sleep(100);
+
+    page.getMentorText().then(function (text) {
+      var mentorWrongText = "Oh no, your name is too long,it can have only maximal 20 signs.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(mentorWrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskName_usingForbiddenSighns_setsPreciseWrongMentorMessage', () => {
+
+    page.setInputText('!');
+    runButton.click();
+    browser.sleep(100);
+
+    page.getMentorText().then(function (text) {
+      var mentorWrongText = "Oh no, you have probably used some forbidden signs.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(mentorWrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskName_leadingNumbers_setsPreciseWrongMentorMessage', () => {
+
+    page.setInputText('5julian');
+    runButton.click();
+    browser.sleep(100);
+
+    page.getMentorText().then(function (text) {
+      var mentorWrongText = "Leading numbers are not allowed.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(mentorWrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
   });
 
   it('taskName_nameWithMoreThenTwenty_isFalse', () => {

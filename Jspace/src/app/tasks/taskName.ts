@@ -1,6 +1,6 @@
 import { Task } from './task';
 import {
-  checkFirstLetter, checkFollowingLetters, checkInputLength, removeQuotationMarks,
+  checkFirstLetter, checkFollowingLetters, checkForLeadingNumber, checkInputLength, removeQuotationMarks,
   validateIdentifier
 } from '../test-code/helpers';
 import { LocalStorageService } from '../storage/local.storage-service'
@@ -21,34 +21,39 @@ export class TaskName extends Task {
 
       "Please type in your name below:",
 
-      "Awesome, SUBTITUTETHISPLACE! It worked.",
+      "Awesome! It worked.",
       "Oh no, you have probably used some forbidden signs.",
 
       "You are logged in.",
-      ["Sorry, this username does not seem to be a valid name. Please try to log in again!"]
+      "Sorry, this username does not seem to be a valid name. Please try to log in again!"
     );
   }
 
-  private possibleWrongMentorMessages = ["Oh no, you have probably used some forbidden signs.", "Oh no, your is too long, " +
-  "it can have only maximal 20 signs."];
+  private possibleWrongMentorMessages = ["Oh no, you have probably used some forbidden signs.", "Oh no, your name is too long, " +
+  "it can have only maximal 20 signs.", "Leading numbers are not allowed."];
 
   testTask(json: JSON) {
+    console.log('tokenized string:', json);
     let input: string = json[0].value;
     let remove = removeQuotationMarks(input);
     let codeCorrect = false;
 
-    if(checkInputLength(input)) {
-      if (checkFirstLetter(input)) {
-        if (checkFollowingLetters(input)) {
-          codeCorrect = true;
+    if (checkForLeadingNumber(input)) {
+      if (checkInputLength(input)) {
+        if (checkFirstLetter(input)) {
+          if (checkFollowingLetters(input)) {
+            codeCorrect = true;
+          } else {
+            this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+          }
         } else {
           this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
         }
       } else {
-        this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+        this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
       }
     } else {
-      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
     }
 
     if (codeCorrect) {
