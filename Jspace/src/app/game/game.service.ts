@@ -45,7 +45,7 @@ export class GameService {
       this.currentTaskNumber = player['task']
     } else {
       console.log("new game starting...")
-      this.currentTaskNumber = 0;
+      this.currentTaskNumber = 1;
     }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);
@@ -63,7 +63,7 @@ export class GameService {
   }
 
   validateCode() {
-      let textFromInput: string = this.aceInput.getStringFromEditor();
+      let textFromInput: string = this.aceInput.getStringFromEditor().trim();
       if (textFromInput.length === 0) {
         this.aceOutput.setEditorValue('You forgot to type something :)')
       } else {

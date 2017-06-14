@@ -50,58 +50,53 @@ export class TaskOxygen extends Task {
   }
 
   private possibleWrongMentorMessages = ["syntax -> semicolon", "outside interval", "value is not number", "syntax -> equal sign",
-  "identifier not oxygen", "at beginning is not var"];
+  "identifier not oxygen", "at beginning is not var", "There is something in your code which should not be there. It should contain exactly 5 elements."];
 
   testTask(json: JSON) {
     let codeCorrect = false;
 
-    if (Object.keys(json).length === 5) {
-      let expectedIdentifier = 'oxygen';
-      let expectedMin = 0;
-      let expectedMax = 100;
-      let keyword = json[0].value;
-      let identifier = json[1].value;
-      let equalSign = json[2].value;
-      let number = json[3].value;
-      let semicolon = json[4].value;
+    let expectedIdentifier = 'oxygen';
+    let expectedMin = 0;
+    let expectedMax = 100;
 
-      if (checkKeyword(keyword)) {
-        if (checkIdentifier(identifier, expectedIdentifier)) {
-          //if (validateIdentifier(identifier)) {
-            if (checkEqualSign(equalSign)) {
-              if (validateNumber(number)) {
-                if (checkInterval(number, expectedMin, expectedMax)) {
-                  if (checkSemicolon(semicolon)) {
-                    codeCorrect = true;
-                  } else {
-                    this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
-                  }
+    if (Object.keys(json).length > 5) {
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[6]);
+      return false;
+    }
+
+    if (Object.keys(json).length >= 1 && checkKeyword(json[0].value)) {
+      if (Object.keys(json).length >= 2 && checkIdentifier(json[1].value, expectedIdentifier)) {
+          if (Object.keys(json).length >= 3 && checkEqualSign(json[2].value)) {
+            if (Object.keys(json).length >= 4 && validateNumber(json[3].value)) {
+              if (Object.keys(json).length >= 4 && checkInterval(json[3].value, expectedMin, expectedMax)) {
+                if (Object.keys(json).length >= 5 && checkSemicolon(json[4].value)) {
+                  codeCorrect = true;
                 } else {
-                  this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
+                  this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
                 }
               } else {
-                this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
+                this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
               }
             } else {
-              this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
+              this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
             }
-          //}
-        } else {
-          this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
-        }
+          } else {
+            this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
+          }
       } else {
-        this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
-      }
-
-      if (codeCorrect) {
-        let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-        player[identifier] = number;
-        player['task'] = this.getTaskId() + 1;
-        this.localStorageService.saveToLocalStorage('player', player);
+        this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
       }
     } else {
-      console.log('U might forgot something. The elements you typed in are only ' + Object.keys(json).length);
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
     }
+
+    if (codeCorrect) {
+      let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+      player[expectedIdentifier] = json[3].value;
+      player['task'] = this.getTaskId() + 1;
+      this.localStorageService.saveToLocalStorage('player', player);
+    }
+
     return codeCorrect;
   }
 }
