@@ -5,8 +5,8 @@ describe('jspace App', () => {
   let page: JspacePage;
   let divInput = element(by.id('ace-input'));
   let inputElm = element.all(by.className('ace_text-input')).last();
-  let runButton = element(by.css('.button'));
-  let nextButton = element(by.id('btnNext'));
+  let runButton = element(by.id('run'));
+  let nextButton = element(by.id('next'));
 
   beforeEach(() => {
     // If true, Protractor will not attempt to synchronize with the page before performing actions
@@ -59,19 +59,18 @@ describe('jspace App', () => {
   it('taskName_AfterWrongName_btnNext_isDisabled', function () {
     page.setInputText('23kjkkjk');
     runButton.click();
-    nextButton.click();
     browser.sleep(100);
 
     page.getOutputText().then(function (text) {
       var wrongText = 'Sorry, this username does not seem to be a valid name. Please try to log in again!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(wrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
-
+    expect(runButton.isDisplayed()).toBeTruthy();
+    expect(nextButton.isDisplayed()).toBeFalsy();
   });
 
-  it('taskName_afterEnterCorrektNameRunisDisabled', function () {
+  it('taskName_afterEnterCorrectNameRunisDisabled', function () {
     page.setInputText('julian');
-    runButton.click();
     runButton.click();
     browser.sleep(100);
 
@@ -79,6 +78,8 @@ describe('jspace App', () => {
       let trueText = 'You are logged in.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(trueText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
+    expect(runButton.isDisplayed()).toBeFalsy();
+    expect(nextButton.isDisplayed()).toBeTruthy();
   });
 
   it('taskName_appStartsCorrectAfterBrowserRefresh_AtStartOfTaskTwo', function () {
