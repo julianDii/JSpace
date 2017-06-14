@@ -19,6 +19,7 @@ export class AceOutputComponent {
       showGutter: false,
       highlightActiveLine: false,
       wrapBehavioursEnabled: true,
+      focus: true,
       wrap: "free"
     });
     outputEditor.renderer.setScrollMargin(10);
