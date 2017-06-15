@@ -25,8 +25,8 @@ export class TaskCopyArrayElement extends Task {
             "We are one step closer for collecting all the necessary material for the reparation!" + "\n" +
             "This is what we have in our backpack now: ",
 
-            ["Error occurred! >.<" + "\n" +
-                "Look! The mentor is saying something!"]
+            "Error occurred! >.<" + "\n" +
+                "Look! The mentor is saying something!"
         );
     }
 

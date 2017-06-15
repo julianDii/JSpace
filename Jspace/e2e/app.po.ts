@@ -14,4 +14,7 @@ export class JspacePage {
     return element.all(by.className('ace_text-input')).last().sendKeys(name);
   }
 
+  getMentorText() {
+    return element(by.id('mentorText')).getText();
+  }
 }

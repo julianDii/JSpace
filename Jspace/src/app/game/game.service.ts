@@ -63,7 +63,7 @@ export class GameService {
   }
 
   validateCode() {
-      let textFromInput: string = this.aceInput.getStringFromEditor();
+      let textFromInput: string = this.aceInput.getStringFromEditor().trim();
       if (textFromInput.length === 0) {
         this.aceOutput.setEditorValue('You forgot to type something :)')
       } else {
