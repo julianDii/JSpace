@@ -55,6 +55,7 @@ export class GameService {
     this.btnNextHidden = true;
     this.btnRunHidden = false;
 
+    this.aceInput.setEditorFocus();
     this.mentor.setMentorText(this.currentTask.getMentorText());
     this.aceOutput.setEditorValue(this.currentTask.getInstruction());
     this.aceInput.clearEditor();
@@ -95,6 +96,7 @@ export class GameService {
       this.aceOutput.setEditorValue('GAME OVER');
     }
     else {
+      this.aceInput.setEditorFocus();
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());

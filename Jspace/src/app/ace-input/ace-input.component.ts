@@ -10,15 +10,14 @@ export class AceInputComponent {
   text: string = "";
 
   ngAfterViewInit() {
-    var inputEditor = this.inputEditor.getEditor();
-
+    let inputEditor = this.inputEditor.getEditor();
+    inputEditor.focus();
     inputEditor.setOptions({
       mode: "ace/mode/javascript",
       printMargin: false,
       readOnly: false,
-      showGutter: true
+      showGutter: true,
     });
-
     inputEditor.renderer.setScrollMargin(10);
   }
 
@@ -32,5 +31,10 @@ export class AceInputComponent {
 
   setEditorValue(text) {
     this.inputEditor.getEditor().setValue(text);
+  }
+
+  setEditorFocus() {
+    let inputEditor = this.inputEditor.getEditor();
+    inputEditor.focus();
   }
 }
