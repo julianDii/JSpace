@@ -1,3 +1,6 @@
+export function checkForLeadingNumber(input: string) {
+  return !stringEqualsString(input,"LeadingNumbers");
+}
 
 export function validateIdentifier(input: string) {
   return checkInputLength(input) && checkFirstLetter(input) && checkFollowingLetters(input);

@@ -63,7 +63,7 @@ export class GameService {
   }
 
   validateCode() {
-    let textFromInput: string = this.aceInput.getStringFromEditor();
+    let textFromInput: string = this.aceInput.getStringFromEditor().trim();
     if (this.normalizeText(textFromInput)) {
       this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
         data => {

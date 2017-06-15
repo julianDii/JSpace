@@ -12,7 +12,7 @@ app.get('/api/user/tok/:code', function (req, res) {
             [
                 {
                     "type": "error",
-                    "value": "Leading numbers are not allowed"
+                    "value": "LeadingNumbers"
                 }
             ])
     }

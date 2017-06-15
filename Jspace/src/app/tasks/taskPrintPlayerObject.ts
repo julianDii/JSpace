@@ -24,7 +24,7 @@ export class TaskPrintPlayerObject extends Task {
 
             "This is the pilot object: " + "\n",
 
-            ["Ugh! A terrible error occurred. Check what the mentor is saying!"]
+            "Ugh! A terrible error occurred. Check what the mentor is saying!"
         );
     }
 

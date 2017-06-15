@@ -24,7 +24,7 @@ export class TaskAddArray extends Task {
 
             "Nice! Now we have an empty backpack to store our stuff in.",
 
-            ["Error! Try it again and check if you really used the right keywords." + "\n" + "Maybe the mentor knows more?"]
+            "Error! Try it again and check if you really used the right keywords." + "\n" + "Maybe the mentor knows more?"
         );
     }
 

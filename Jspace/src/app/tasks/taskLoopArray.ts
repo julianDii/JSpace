@@ -29,7 +29,7 @@ export class TaskLoopArray extends Task {
 
             "Yippieh! Time to repair the ship and leave the planet!",
 
-            ["Bzzzt! Error! What do you suggest, dear mentor?"]
+            "Bzzzt! Error! What do you suggest, dear mentor?"
         );
     }
 

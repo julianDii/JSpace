@@ -15,7 +15,7 @@ export class TaskOxygenDouble extends Task {
       2,
       "You can also calculate with JavaScript." + "\n" +
       "JavaScript supports nearly all of the known operators like +, -, %(Modulo) or * and /." + "\n" +
-      "Note that the calculated value has to be stored and that you don’t need the var-keyword. " + "\n" +
+      "Note that the calculated value has to be stored and that you don’t need the var-keyword again. " + "\n" +
       "For example: x = x + 2;",
 
       "Double up your oxygen level.",
@@ -24,9 +24,17 @@ export class TaskOxygenDouble extends Task {
       "Whoops! Check if you used the right operator and assigned the result to oxygen.",
 
       "You have doubled your oxygen level.",
-      ["An error happened. Try to double up your oxygen level again."]
+      "An error happened. Try to double up your oxygen level again."
     );
   }
+
+  private possibleWrongMentorMessages = ["you should not use the keyword var at beginning",
+    "identifier not oxygen - > are you really using your oxygen?",
+    "syntax -> semicolon",
+    "not multiplicating by 2 -> the result oxygen level is not as expected",
+    "no + or * in code -> are you multiplicating or adding?",
+    "There is something in your code which should not be there. It should contain max 6 elements."
+  ];
 
   testTask(json: JSON) {
     console.log('tokenized string:', json);
@@ -35,66 +43,79 @@ export class TaskOxygenDouble extends Task {
     let expectedMultiplicator = "2";
     let codeCorrect: boolean = false;
 
-    if (Object.keys(json).length >= 4) {
-      if (json[0].value !== "var") {
-        if (json[0].value === expectedIdentifier) {
-          if (json[1].value === '*=' && Object.keys(json).length === 4) {
-            if (json[2].value === expectedMultiplicator) {
-              if (json[3].value === ";") {
-                codeCorrect = true;
-              } else {
-                console.log('ERROR check the syntax');
-              }
-            } else {
-              console.log('ERROR the result oxygen level is not as expected');
-            }
-          }
-          else if (json[1].value === '=' && Object.keys(json).length === 6) {
-            if (json[2].value === expectedIdentifier) {
-              if (json[3].value === "*") {
-                if (json[4].value === expectedMultiplicator) {
-                  if (json[5].value === ";") {
-                    codeCorrect = true;
-                  } else {
-                    console.log('ERROR check the syntax');
-                  }
-                } else {
-                  console.log('ERROR the result oxygen level is not as expected');
-                }
-              } else if (json[3].value === "+") {
-                if (json[4].value === expectedIdentifier) {
-                  if (json[5].value === ";") {
-                    codeCorrect = true;
-                  } else {
-                    console.log('ERROR check the syntax');
-                  }
-                }
-              } else {
-                console.log('ERROR are you multiplicating or adding?');
-              }
-            } else if (json[2].value === expectedMultiplicator) {
-              if (json[3].value === "*") {
-                if (json[4].value === expectedIdentifier) {
-                  if (json[5].value === ";") {
-                    codeCorrect = true;
-                  } else {
-                    console.log('ERROR check the syntax');
-                  }
-                } else {
-                  console.log('ERROR are you really using your oxygen?');
-                }
-              } else {
-                console.log('ERROR are you multiplicating?');
-              }
-            } else {
-              console.log('ERROR the result oxygen level is not as expected');
-            }
+    if (Object.keys(json).length < 4) {
+      let message = "Whoops! You have forgotten something. The elements you typed in are only " + Object.keys(json).length + "." +
+        "\n" + "Check if you used the right operator and assigned the result to oxygen.";
+      this.setMentorAnswerWrong(message);
+      return false;
+    }
+
+    if (Object.keys(json).length > 6) {
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
+      return false;
+    }
+
+    if (json[0].value === "var") {
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+      return false;
+    }
+
+    if (json[0].value !== expectedIdentifier) {
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
+      return false;
+    }
+
+      if (json[1].value === '*=' && Object.keys(json).length === 4) {
+        if (json[2].value === expectedMultiplicator) {
+          if (json[3].value === ";") {
+            codeCorrect = true;
+          } else {
+            this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
           }
         } else {
-          console.log('ERROR are you really using your oxygen?');
+          this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
         }
-      } else {
-        console.log('ERROR you should not use the keyword var at beginning');
+      }
+      else if (json[1].value === '=' && Object.keys(json).length === 6) {
+        if (json[2].value === expectedIdentifier) {
+          if (json[3].value === "*") {
+            if (json[4].value === expectedMultiplicator) {
+              if (json[5].value === ";") {
+                codeCorrect = true;
+              } else {
+                this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
+              }
+            } else {
+              this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
+            }
+          } else if (json[3].value === "+") {
+            if (json[4].value === expectedIdentifier) {
+              if (json[5].value === ";") {
+                codeCorrect = true;
+              } else {
+                this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
+              }
+            }
+          } else {
+            this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
+          }
+        } else if (json[2].value === expectedMultiplicator) {
+          if (json[3].value === "*") {
+            if (json[4].value === expectedIdentifier) {
+              if (json[5].value === ";") {
+                codeCorrect = true;
+              } else {
+                this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
+              }
+            } else {
+              this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
+            }
+          } else {
+            this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
+          }
+        } else {
+          this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
+        }
       }
 
       if (codeCorrect) {
@@ -109,10 +130,7 @@ export class TaskOxygenDouble extends Task {
       } else {
         console.log('ERROR code not correct');
       }
+
       return codeCorrect;
-    } else {
-      console.log('ERROR U might forgot something. The elements you typed in are only ' + Object.keys(json).length)
-      return false;
-    }
   }
 }
