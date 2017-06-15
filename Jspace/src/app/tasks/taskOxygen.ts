@@ -32,10 +32,9 @@ export class TaskOxygen extends Task {
       "var x = 33;" + "\n" +
       "Now it’s your turn." + "\n" + "Check what the board computer is saying!",
 
-      "I am running on JavaScript." + "\n" + "To be able to wander around the planet safe and sound, we should slightly raise the oxygen level." + "\n" +
+      "I am running on JavaScript." + "\n" + "To be able to wander around the planet safe and sound, we should slightly raise the oxygen level." + "\n" + "\n" +
       "At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. " + "\n" +
-      "10 seems to " +
-      "be a good decision to accomplish your next tasks.",
+      "Something between 1 and 100 seems to be a good decision to accomplish your next tasks.",
 
       "Yeah! You rock! You increased your oxygen level. It can’t get any worse now.",
       "Ouch! Something went wrong. " + "\n" +
@@ -49,8 +48,14 @@ export class TaskOxygen extends Task {
     );
   }
 
-  private possibleWrongMentorMessages = ["syntax -> semicolon", "outside interval", "value is not number", "syntax -> equal sign",
-  "identifier not oxygen", "at beginning is not var", "There is something in your code which should not be there. It should contain exactly 5 elements."];
+  private possibleWrongMentorMessages = ["syntax -> semicolon",
+    "outside interval",
+    "value is not number",
+    "syntax -> equal sign",
+    "identifier not oxygen",
+    "at beginning is not var",
+    "There is something in your code which should not be there. It should contain exactly 5 elements."
+  ];
 
   testTask(json: JSON) {
     let codeCorrect = false;

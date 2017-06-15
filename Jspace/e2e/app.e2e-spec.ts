@@ -408,7 +408,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getOutputText().then(function (text) {
-      var outputText = 'I am running on JavaScript.To be able to wander around the planet safe and sound, we should slightly raise the oxygen level.At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. 10 seems to be a good decision to accomplish your next tasks.';
+      var outputText = 'I am running on JavaScript.To be able to wander around the planet safe and sound, we should slightly raise the oxygen level.At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. Something between 1 and 100 seems to be a good decision to accomplish your next tasks.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
 

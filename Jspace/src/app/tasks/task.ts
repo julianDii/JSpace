@@ -50,7 +50,7 @@ export abstract class Task {
   }
 
   getMentorAnswerWrong(): string {
-    return this.mentorAnswerWrong;
+    return this.mentorAnswerWrong.replace(new RegExp('\n', 'g'), "<br/> <br/>");
   }
 
   getMessageCorrect(valueFromUser: string = ""): string {
