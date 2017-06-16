@@ -4,5 +4,10 @@ general:
 machine:
   node:
     version: 7
+
+test:
+  override:
+    - ../Server/node server.js
+   
   
 
