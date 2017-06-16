@@ -8,7 +8,7 @@ machine:
 dependencies:
   pre:
     - npm install npm@latest -g # Should fix bug in ng test
-    - npm install -g @angular/cli
+    - npm install @angular/cli
     - npm install webpack -g
 
 test:  
