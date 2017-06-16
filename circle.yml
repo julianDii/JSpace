@@ -8,7 +8,6 @@ machine:
 dependencies:
   pre:
     - npm install -g @angular/cli
-    - npm i -S ng2-ace-editor
     - npm install tslib
    
 test:  
