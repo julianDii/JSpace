@@ -3,7 +3,7 @@ import { browser, element, by } from 'protractor';
 
 describe('jspace App', () => {
   let page: JspacePage;
-  let delay = 300;
+  let delay = 800;
   let divInput = element(by.id('ace-input'));
   let inputElm = element.all(by.className('ace_text-input')).last();
   let runButton = element(by.id('run'));
