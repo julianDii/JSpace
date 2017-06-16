@@ -7,7 +7,7 @@ machine:
 
 test:
   override:
-    - cd Server/node server.js
+    - node server.js
    
   
 
