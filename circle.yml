@@ -14,7 +14,4 @@ test:
   override:
     # Circle by default will run npm test command,sdasdsad
     # We want to override it so we can generate coverage as-well.
-    - cd Jspace && ng serve && ng e2e
-    - ng serve
-    - ng e2e
-    - cd JSpace && cd Jspace && ng test
+    - pwd
