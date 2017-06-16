@@ -8,10 +8,13 @@ machine:
 dependencies:
   pre:
     - npm install npm@latest -g # Should fix bug in ng test
-    - npm install angular-cli@latest -g
+    - npm install -g @angular/cli
 
 test:  
   override:
     # Circle by default will run npm test command,sdasdsad
     # We want to override it so we can generate coverage as-well.
     - pwd
+    - ng serve
+    - ng test
+    - ng e2e
