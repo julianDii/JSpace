@@ -3,6 +3,6 @@ general:
 
 machine:
   node:
-    version: latest
+    version: 7
   
 
