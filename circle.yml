@@ -1,4 +1,8 @@
 general:
   build_dir: Jspace
-node:
-    version: latest
+
+machine:
+  node:
+    version: 7
+  
+
