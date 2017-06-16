@@ -1,4 +1,4 @@
 general:
-  build_dir: api
+  build_dir: Jspace
 node:
     version: latest
