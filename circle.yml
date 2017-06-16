@@ -1,8 +1,2 @@
 general:
   build_dir: app
-
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init
-
