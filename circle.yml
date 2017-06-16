@@ -15,4 +15,5 @@ test:
     # Circle by default will run npm test command,sdasdsad
     # We want to override it so we can generate coverage as-well.
     - ng test --single-run
+    - ng e2e
     
