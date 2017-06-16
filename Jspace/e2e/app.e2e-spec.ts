@@ -10,6 +10,7 @@ describe('jspace App', () => {
   let nextButton = element(by.id('next'));
 
   beforeEach(() => {
+    browser.driver.manage().window().maximize();
     // If true, Protractor will not attempt to synchronize with the page before performing actions
     browser.ignoreSynchronization = true;
     browser.get('/');
