@@ -4,6 +4,13 @@ general:
 machine:
   node:
     version: 7
-
+test:
+  pre:
+    - ng serve:
+        background: true
+    - sleep 5
+  override:
+    - ng test
+    - ng e2e
   
 
