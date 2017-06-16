@@ -12,7 +12,7 @@ dependencies:
 
 test:  
   override:
-    # Circle by default will run npm test command,
+    # Circle by default will run npm test command,sdasdsad
     # We want to override it so we can generate coverage as-well.
     - cd Jspace && ng test --code-coverage --single-run
 
