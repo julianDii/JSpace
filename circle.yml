@@ -1,2 +1,4 @@
+general:
+  build_dir: api
 node:
     version: latest
