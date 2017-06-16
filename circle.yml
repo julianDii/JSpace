@@ -7,10 +7,7 @@ machine:
 
 test:
   override:
-    - cd -
-    - cd - 
-    - cd Server 
-    - node server.js
+   - ng e2e
    
   
 
