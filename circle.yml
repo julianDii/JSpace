@@ -1,2 +1,4 @@
 general:
   build_dir: Jspace
+node:
+    version: stable
