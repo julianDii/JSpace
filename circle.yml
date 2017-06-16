@@ -7,10 +7,8 @@ machine:
 
 dependencies:
   pre:
-    - npm install npm@latest -g # Should fix bug in ng test
-    - npm install @angular/cli
-    - npm install webpack -g
-
+    - npm install -g @angular/cli
+   
 test:  
   override:
     # Circle by default will run npm test command,sdasdsad
