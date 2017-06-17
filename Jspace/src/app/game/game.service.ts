@@ -81,6 +81,7 @@ export class GameService {
               this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
               this.mentor.setImgFailure();
               this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
+              this.aceInput.setEditorFocus();
             }
           });
       }
