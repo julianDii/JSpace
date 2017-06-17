@@ -20,7 +20,7 @@ export class TaskPrintPlayerObject extends Task {
 
             "Fabulous! It worked. Move on to the next task.",
 
-            "Check if you are using console.log and JSON.stringify correctly and if you are printing the object 'user'.",
+            "Check if you are using console.log and JSON.stringify correctly and if you are printing the object user.",
 
             "This is the pilot object: " + "\n",
 
@@ -29,58 +29,62 @@ export class TaskPrintPlayerObject extends Task {
         );
     }
 
-    private possibleWrongMentorMessages = ["no console.log at the beginning or not correctly spelled",
-      "missing opening bracket after console.log",
-      "JSON.stringify missing or not correctly spelled",
-      "missing opening bracket after JSON.stringify",
-      "probably not printing the object 'user'",
-      "user written as string in '', not as object",
-      "closing brackets or semicolon missing at the end",
-      "There is something in your code which should not be there. It should contain max 12 elements."
+    private possibleWrongMentorMessages = ["no console.log at the beginning or not correctly spelled", // 0
+      "missing opening bracket after console.log", // 1
+      "JSON.stringify missing or not correctly spelled", // 2
+      "missing opening bracket after JSON.stringify", // 3
+      "probably not printing the object user", // 4
+      "user written as string in '', not as object", // 5
+      "closing brackets or semicolon missing at the end", // 6
+      "There is something in your code which should not be there. It should contain exactly 12 elements.", // 7
+      "Check if you are using console.log and JSON.stringify correctly and if you are printing the object user."// 8
     ];
 
     testTask(json: JSON) {
       console.log('tokenized string:', json);
+      this.setMentorAnswerWrong(this.possibleWrongMentorMessages[6]);
 
       let codeCorrect = false;
       let expectedIdentifier = "user";
 
       if (Object.keys(json).length < 3) {
         let message = "Whoops! You have forgotten something. The elements you typed in are only " + Object.keys(json).length + "." +
-          "\n" + "Check if you used console.log and JSON.stringify.";
+          "\n" + "You should use console.log and JSON.stringify.";
         this.setMentorAnswerWrong(message);
         return false;
       }
 
-      if (Object.keys(json).length >= 3 &&
-        !(stringEqualsString(json[0].value, "console") &&
-        stringEqualsString(json[1].value, ".") &&
-        stringEqualsString(json[2].value, "log"))) {
+      if (!this.checkConsoleLog(json)) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
         return false;
       }
 
-      if (Object.keys(json).length >= 4 &&
+      if (Object.keys(json).length === 3 &&
+        this.checkConsoleLog(json) ||
+        Object.keys(json).length >= 4 &&
         !stringEqualsString(json[3].value, "(")) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[1]);
         return false;
       }
 
-      if (Object.keys(json).length >= 7 &&
-        !(stringEqualsString(json[4].value, "JSON") &&
-        stringEqualsString(json[5].value, ".") &&
-        stringEqualsString(json[6].value, "stringify"))) {
+      if (Object.keys(json).length === 4 &&
+        stringEqualsString(json[3].value, "(") ||
+        !this.checkJSONstringify(json)) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[2]);
         return false;
       }
 
-      if (Object.keys(json).length >= 8 &&
+      if (Object.keys(json).length === 7 &&
+        this.checkJSONstringify(json) ||
+        Object.keys(json).length >= 8 &&
         !stringEqualsString(json[7].value, "(")) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[3]);
         return false;
       }
 
-      if (Object.keys(json).length >= 9) {
+      if (Object.keys(json).length === 8 &&
+        stringEqualsString(json[7].value, "(") ||
+        Object.keys(json).length >= 9) {
         if (stringEqualsString(json[8].value, "'user'")) {
           this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
           return false;
@@ -113,5 +117,19 @@ export class TaskPrintPlayerObject extends Task {
       }
 
       return codeCorrect;
+    }
+
+    private checkConsoleLog(json) {
+      return Object.keys(json).length >= 3 &&
+        stringEqualsString(json[0].value, "console") &&
+        stringEqualsString(json[1].value, ".") &&
+        stringEqualsString(json[2].value, "log");
+    }
+
+    private checkJSONstringify(json) {
+      return Object.keys(json).length >= 7 &&
+      stringEqualsString(json[4].value, "JSON") &&
+      stringEqualsString(json[5].value, ".") &&
+      stringEqualsString(json[6].value, "stringify");
     }
 }
