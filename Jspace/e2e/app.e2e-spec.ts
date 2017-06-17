@@ -1,17 +1,16 @@
 import { JspacePage } from './app.po';
-import { browser, element, by } from 'protractor';
+import { browser, element, by, $ } from 'protractor';
+import { protractor } from "protractor/built/ptor";
 
 describe('jspace App', () => {
   let page: JspacePage;
-  let delay = 2000;
+  let delay = 200;
   let divInput = element(by.id('ace-input'));
   let inputElm = element.all(by.className('ace_text-input')).last();
   let runButton = element(by.id('run'));
   let nextButton = element(by.id('next'));
 
   beforeEach(() => {
-    browser.driver.manage().window().maximize();
-    // If true, Protractor will not attempt to synchronize with the page before performing actions
     browser.ignoreSynchronization = true;
     browser.get('/');
     page = new JspacePage();
@@ -22,6 +21,8 @@ describe('jspace App', () => {
   })
 
   it('goTo_taskOxygen', function () {
+    var EC = protractor.ExpectedConditions;
+    browser.wait(EC.visibilityOf($('#ace-output')), 5000);
     page.setInputText('julian');
     runButton.click();
     nextButton.click();

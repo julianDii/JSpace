@@ -10,6 +10,7 @@ dependencies:
     - npm install -g @angular/cli
     - npm install tslib
     - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
+    - npm install protractor
    
 test:  
   override:
