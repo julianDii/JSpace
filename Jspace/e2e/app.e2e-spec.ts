@@ -1,6 +1,5 @@
 import { JspacePage } from './app.po';
-import { browser, element, by, $ } from 'protractor';
-import { protractor } from "protractor/built/ptor";
+import { browser, element, by } from 'protractor';
 
 describe('jspace App', () => {
   let page: JspacePage;
