@@ -1,0 +1,18 @@
+general:
+  build_dir: Jspace
+
+machine:
+  node:
+    version: 7
+
+dependencies:
+  pre:
+    - npm install -g @angular/cli
+    - npm install tslib
+    - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
+   
+test:  
+  override:
+    - ng test --single-run
+    #- ng e2e
+    
