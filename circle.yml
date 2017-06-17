@@ -8,14 +8,10 @@ machine:
 dependencies:
   pre:
     - npm install -g @angular/cli
-    - npm install tslib
     - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
-    - npm install protractor
    
 test:  
   override:
-    # Circle by default will run npm test command,sdasdsad
-    # We want to override it so we can generate coverage as-well.
     - ng test --single-run
-    - ng e2e
+    #- ng e2e
     
