@@ -21,8 +21,6 @@ describe('jspace App', () => {
   })
 
   it('goTo_taskOxygen', function () {
-    var EC = protractor.ExpectedConditions;
-    browser.wait(EC.visibilityOf($('#ace-output')), 5000);
     page.setInputText('julian');
     runButton.click();
     nextButton.click();
