@@ -9,6 +9,7 @@ export class MentorComponent implements OnInit {
 
   mentorText: string = 'Here I am going to help you to repair your spaceship.';
   imgPath: string = "./assets/img/mentor.png";
+  imgPath2: string = "./assets/img/computer.png";
 
   constructor() { }
 
@@ -31,5 +32,9 @@ export class MentorComponent implements OnInit {
 
   setImgFailure() {
     this.imgPath = "./assets/img/mentor_failure.png";
+  }
+
+  setImgComputer() {
+    this.imgPath2 = "./assets/img/computer.png";
   }
 }

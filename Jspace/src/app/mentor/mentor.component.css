@@ -8,5 +8,10 @@
 }
 
 #mentor img {
+  position: absolute;
   height: 40vh;
+}
+
+#computer img {
+  margin-left: 40vw;
 }
