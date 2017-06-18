@@ -23,6 +23,11 @@ describe('jspace App', () => {
     page.setInputText('julian');
     runButton.click();
     nextButton.click();
+
+    page.getOutputText().then(function (text) {
+      var outputText = 'I am running on JavaScript.To be able to wander around the planet safe and sound, we should slightly raise the oxygen level.At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. Something between 1 and 100 seems to be a good decision to accomplish your next tasks.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
   });
 
   it('goTo_taskOxygenDouble', function () {
@@ -311,7 +316,6 @@ describe('jspace App', () => {
       var wrongText = 'Sorry, this username does not seem to be a valid name. Please try to log in again!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(wrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
-
   });
 
   it('taskName_nameWithMoreThenTwenty_setsPreciseWrongMentorMessage', () => {
@@ -326,7 +330,7 @@ describe('jspace App', () => {
     });
   });
 
-  it('taskName_usingForbiddenSighns_setsPreciseWrongMentorMessage', () => {
+  it('taskName_usingForbiddenSighnsExclamation_setsPreciseWrongMentorMessage', () => {
 
     page.setInputText('!');
     runButton.click();
@@ -410,7 +414,6 @@ describe('jspace App', () => {
       var outputText = 'I am running on JavaScript.To be able to wander around the planet safe and sound, we should slightly raise the oxygen level.At first it’s enough to declare a simple variable called oxygen. You also need to give it a value. Something between 1 and 100 seems to be a good decision to accomplish your next tasks.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
-
   });
 
   it('taskOxygen_validInput_isTrue', function () {
@@ -472,6 +475,7 @@ describe('jspace App', () => {
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
+
   it('taskOxygen_toHighNumeric_isFalse', function () {
     page.setInputText('julian');
     runButton.click();
@@ -483,6 +487,66 @@ describe('jspace App', () => {
 
     page.getOutputText().then(function (text) {
       var outputText = 'Try to set your oxygen level again.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygen_missingEqualSighn_leadsToCorrectMentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen  10;');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'syntax -> equal sign';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygen_toHighNumeric_leadsToCorrectMentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10000000;');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'outside interval';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygen_missingsymicolon_leadsToCorrectMentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 100');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'syntax -> semicolon';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygen_missingIdentififierWithAllOther_leadsToCorrectMentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var = 100;');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'identifier not oxygen';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -548,6 +612,87 @@ describe('jspace App', () => {
     });
   });
 
+  it('taskOxygenDouble_justOxygen_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'Whoops! You have forgotten something. The elements you typed in are only 1.Check if you used the right operator and assigned the result to oxygen.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygenDouble_wrongIdetifier_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('peter = oxygen*2;');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'identifier not oxygen - > are you really using your oxygen?';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygenDouble_multiplyWithNoNumber_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*sdkfjs;');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'not multiplicating by 2 -> the result oxygen level is not as expected';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygenDouble_justThreeElements_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'Whoops! You have forgotten something. The elements you typed in are only 3.Check if you used the right operator and assigned the result to oxygen.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+
   it('taskOxygenDouble_differentIdentifier_isFalse', function () {
     page.setInputText('julian');
     runButton.click();
@@ -561,9 +706,100 @@ describe('jspace App', () => {
     runButton.click();
     browser.sleep(delay);
 
-
     page.getOutputText().then(function (text) {
       var outputText = 'An error happened. Try to double up your oxygen level again.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskPrintPlayerObject_wrongFirstThreeElementsleadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('var user=');
+    runButton.click();
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'no console.log at the beginning or not correctly spelled';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskPrintPlayerObject_justConsoleLog_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log')
+    runButton.click();
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'missing opening bracket after console.log';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskPrintPlayerObject_missingStringify_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+    
+    page.setInputText('console.log(user)')
+    runButton.click();
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'JSON.stringify missing or not correctly spelled';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskPrintPlayerObject_printingNotUser_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(alien);')
+    runButton.click();
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'probably not printing the object user';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
