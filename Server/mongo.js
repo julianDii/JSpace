@@ -9,4 +9,4 @@ var userSchema = {
     "oxygen": Number
 };
 
-module.exports = mongoose.model('userLogin', userSchema);
+module.exports = mongoose.model('userScores', userSchema);
