@@ -4,11 +4,19 @@
   "description": "This is the server for JSpace",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jade": "^1.11.0",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.10.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
