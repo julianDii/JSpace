@@ -1,8 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { GameService } from './game.service';
 
-describe('GameService', () => {
+describe('Service: GameService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [GameService]
