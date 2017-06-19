@@ -64,26 +64,24 @@ export class GameService {
   }
 
   validateCode() {
-      let textFromInput: string = this.aceInput.getStringFromEditor().trim();
-      if (textFromInput.length === 0) {
-        this.aceOutput.setEditorValue('You forgot to type something :)')
-      } else {
-        this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
-          data => {
-            let testPassed = this.currentTask.testTask(data);
-            if (testPassed) {
-              this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
-              this.mentor.setImgSuccess();
-              this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
-              this.btnNextHidden = false;
-              this.btnRunHidden = true;
-            } else {
-              this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
-              this.mentor.setImgFailure();
-              this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
-            }
-          });
-      }
+    let textFromInput: string = this.aceInput.getStringFromEditor().trim();
+    if (this.normalizeText(textFromInput)) {
+      this.analyseCodeService.getTokenizedCode(textFromInput).subscribe(
+        data => {
+          let testPassed = this.currentTask.testTask(data);
+          if (testPassed) {
+            this.mentor.setMentorText(this.currentTask.getMentorAnswerCorrect());
+            this.mentor.setImgSuccess();
+            this.aceOutput.setEditorValue(this.currentTask.getMessageCorrect());
+            this.btnNextHidden = false;
+            this.btnRunHidden = true;
+          } else {
+            this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
+            this.mentor.setImgFailure();
+            this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
+          }
+        });
+    }
   }
 
   goToNextTask() {
@@ -108,5 +106,22 @@ export class GameService {
     this.aceInput.clearEditor();
 
     console.log('current task', this.currentTask);
+  }
+
+  normalizeText(textFromInput: string) {
+    if (textFromInput.length === 0) {
+      this.aceOutput.setEditorValue('You forgot to type something :)')
+    } else {
+      if (textFromInput.charAt(0) == "?") {
+        this.mentor.mentorText = "No Questionmarks at the beginning of your name pls."
+      } else {
+        if (textFromInput.match(/^\s+$/)) {
+          this.mentor.mentorText = "Your name can not be just Whitespace:)"
+        }
+        else {
+          return true;
+        }
+      }
+    }
   }
 }
