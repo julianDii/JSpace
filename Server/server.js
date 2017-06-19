@@ -18,7 +18,7 @@ router.route("/highscores")
             } else {
                 response = { "error": false, "message": data };
             }
-            res.json(response);
+            res.send(response);
         });
     })
 
