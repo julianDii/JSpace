@@ -1,3 +1,8 @@
 #ace-output {
   height: 23vh;
+  width: 94%;
+  margin:0 auto;
+  position: absolute;
+  top:10%;
+  left:3%;
 }

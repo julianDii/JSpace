@@ -5,9 +5,12 @@
     <section id="sectionForMentor">
       <mentor-component></mentor-component>
     </section>
-    <section id="sectionForComputer">
-      <section id="sectionForTerminals">
+    <section id="sectionForTerminals" style="/*background-image: url('./assets/img/computer.png')*/">
+      <div id="outputpart">
         <ace-output-component></ace-output-component>
+      </div>
+      <div id="buttonpart">
+        <img src="./assets/img/Knüppel.png">
         <div [hidden]='game.btnRunHidden' id="run" class="button">
           <div class="outer">
             <div class="height">
@@ -22,8 +25,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div id="inputpart">
         <ace-input-component></ace-input-component>
-      </section>
+      </div>
     </section>
   </main>
 </div>
