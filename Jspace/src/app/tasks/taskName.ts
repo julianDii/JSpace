@@ -33,7 +33,6 @@ export class TaskName extends Task {
   "it can have only maximal 20 signs.", "Leading numbers are not allowed."];
 
   testTask(json: JSON) {
-    console.log('tokenized string:', json);
     let input: string = json[0].value;
     let remove = removeQuotationMarks(input);
     let codeCorrect = false;

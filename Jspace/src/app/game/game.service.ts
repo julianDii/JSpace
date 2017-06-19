@@ -84,7 +84,6 @@ export class GameService {
             this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
             this.mentor.setImgFailure();
             this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
-            console.log("completeTries:  " + this.completeTries);
           }
           this.completeTries = this.completeTries + 1;
           let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
