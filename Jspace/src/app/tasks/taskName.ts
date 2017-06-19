@@ -60,6 +60,9 @@ export class TaskName extends Task {
       let taskNumber = this.getTaskId() + 1;
       let player = { name: input, task: taskNumber };
       this.localStorageService.saveToLocalStorage('player', player);
+    } else {
+      let player = { name: "", task: this.getTaskId() };
+      this.localStorageService.saveToLocalStorage('player', player);
     }
 
     return codeCorrect;
