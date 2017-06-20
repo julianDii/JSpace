@@ -110,9 +110,6 @@ export class GameService {
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
-
-      //this.dBDDataService.getUserHighscoreData().subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data, null, "\t")));
-
       this.btnRunHidden = false;
       this.btnNextHidden = true;
     }
