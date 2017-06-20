@@ -41,6 +41,20 @@ router.route("/highscores")
         });
     });
 
+// endpoint to get/post scores of all users
+router.route("/highscores/specific")
+    .get(function (req, res) {
+        var response = {};
+        mongoOp.find({},'name task completeTries -_id ', function (err, data) {
+            if (err) {
+                response = { "error": true, "message": "Error fetching name,task,completeTries" };
+            } else {
+                response = { "error": false, "message": data };
+            }
+            res.json(response);
+        }).sort({completeTries:'desc',task:'desc'});
+    });
+
 // endpoint for code analyse requests
 app.get('/api/user/tok/:code', function (req, res) {
     if (isNaN(req.params.code.charAt(0))) {
