@@ -11,6 +11,7 @@ import { TasksService } from './tasks/tasks.service';
 import { AnalyseCodeService } from './analyze-code/analyze.code-service';
 import { MentorComponent } from './mentor/mentor.component';
 import { LocalStorageService } from './storage/local.storage-service'
+import { DBDataService } from './database-helper/database.data-service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LocalStorageService } from './storage/local.storage-service'
     GameService,
     TasksService,
     AnalyseCodeService,
-    LocalStorageService
+    LocalStorageService,
+    DBDataService
   ],
   bootstrap: [AppComponent]
 })
