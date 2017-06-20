@@ -5,7 +5,8 @@ import { AceInputComponent } from '../ace-input/ace-input.component';
 import { AceOutputComponent } from '../ace-output/ace-output.component';
 import { AnalyseCodeService } from '../analyze-code/analyze.code-service'
 import { MentorComponent } from '../mentor/mentor.component';
-import { LocalStorageService } from '../storage/local.storage-service'
+import { LocalStorageService } from '../storage/local.storage-service';
+import { DBDataService } from '../database-helper/database.data-service';
 
 /**
  * GameService controls the game progress:
@@ -33,7 +34,8 @@ export class GameService {
   private localStorageService = LocalStorageService.getInstance();
 
   constructor(private tasksService: TasksService,
-    private analyseCodeService: AnalyseCodeService) {
+    private analyseCodeService: AnalyseCodeService,
+    private dBDDataService: DBDataService) {
     console.log("game service injected")
   }
 
@@ -84,12 +86,12 @@ export class GameService {
             this.mentor.setMentorText(this.currentTask.getMentorAnswerWrong());
             this.mentor.setImgFailure();
             this.aceOutput.setEditorValue(this.currentTask.getMessageWrong());
-            console.log("completeTries:  " + this.completeTries);
           }
           this.completeTries = this.completeTries + 1;
           let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
           player.completeTries = this.completeTries;
           this.localStorageService.saveToLocalStorage('player', player);
+          this.dBDDataService.addPlayerToHighscores(player).subscribe();
         });
     }
   }
@@ -101,13 +103,16 @@ export class GameService {
       this.btnRunHidden = true;
       this.btnNextHidden = true;
       this.mentor.setMentorText('Good bye, old friend. May the Force be with you.');
-      this.aceOutput.setEditorValue('GAME OVER');
+      this.dBDDataService.getUserHighscoreData().subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data, null, "\t")));
     }
     else {
       this.aceInput.setEditorFocus();
       this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
       this.mentor.setMentorText(this.currentTask.getMentorText());
       this.aceOutput.setEditorValue(this.currentTask.getInstruction());
+
+      //this.dBDDataService.getUserHighscoreData().subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data, null, "\t")));
+
       this.btnRunHidden = false;
       this.btnNextHidden = true;
     }
