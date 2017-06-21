@@ -42,16 +42,16 @@ export class GameService {
   newGame(mentor: MentorComponent, aceIn: AceInputComponent, aceOut: AceOutputComponent) {
     console.log('creating new game...');
 
-    // if (this.localStorageService.readLocalStorage('player') != undefined) {
-    //   let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
-    //   console.log("Saved player: " + JSON.stringify(player));
-    //   this.currentTaskNumber = player['task'];
-    //   this.completeTries = player['completeTries'];
-    // } else {
+    if (this.localStorageService.readLocalStorage('player') != undefined) {
+      let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
+      console.log("Saved player: " + JSON.stringify(player));
+      this.currentTaskNumber = player['task'];
+      this.completeTries = player['completeTries'];
+    } else {
       console.log("new game starting...")
-      this.currentTaskNumber = 6;
+      this.currentTaskNumber = 0;
       this.completeTries = 0;
-    // }
+    }
     this.currentTask = this.tasksService.getTask(this.currentTaskNumber);
     console.log('current task', this.currentTask);
     this.mentor = mentor;
