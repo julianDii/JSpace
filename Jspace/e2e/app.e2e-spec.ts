@@ -325,7 +325,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var mentorWrongText = "Oh no, your name is too long,it can have only maximal 20 signs.";
+      var mentorWrongText = "It seems like your name is too long! It shouldn’t contain more than 20 literals.";
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(mentorWrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -349,7 +349,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var mentorWrongText = "Leading numbers are not allowed.";
+      var mentorWrongText = "A leading number in your name is not allowed! Even R2D2 knows that.";
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(mentorWrongText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -501,7 +501,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'syntax -> equal sign';
+      var outputText = 'How do we assign a value to a statement? Check what you forgot!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -516,7 +516,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'outside interval';
+      var outputText = 'The oxygen tank can’t be filled with more than 100. And since we want to survive outside, you shouldn’t go out with 0 oxygen!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -531,7 +531,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'syntax -> semicolon';
+      var outputText = 'Something is missing in your input. Do you remember what we learned to put at the end of every command?';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -546,7 +546,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'identifier not oxygen';
+      var outputText = 'I think you spelled oxygen wrong or it is not even there. Otherwise I can’t tell why the compiler tells us that the identifier is incorrect.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -632,6 +632,26 @@ describe('jspace App', () => {
     });
   });
 
+  it('taskOxygenDouble_varAtBeginning_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('var oxygen = oxygen *2');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'Well, this time we do not need var at the beginning.';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
   it('taskOxygenDouble_wrongIdetifier_leadsToCorrect_MentorMessage', function () {
     page.setInputText('julian');
     runButton.click();
@@ -647,7 +667,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'identifier not oxygen - > are you really using your oxygen?';
+      var outputText = 'You might have misspelled the identifier or it is not even there!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -667,7 +687,27 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'not multiplicating by 2 -> the result oxygen level is not as expected';
+      var outputText = 'You gotta double your oxygen level. Everything else than the doubled value is going end up in an error!';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskOxygenDouble_wrongOperators_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen-2;');
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = 'To raise the level of your oxygen you’re only allowed to use two operators to do so. That’s either + for addition or * for multiplication.';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -691,7 +731,6 @@ describe('jspace App', () => {
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
-
 
   it('taskOxygenDouble_differentIdentifier_isFalse', function () {
     page.setInputText('julian');
@@ -730,7 +769,7 @@ describe('jspace App', () => {
     runButton.click();
 
     page.getMentorText().then(function (text) {
-      var outputText = 'no console.log at the beginning or not correctly spelled';
+      var outputText = 'As said before you need to use the console.log-command to print out an object. Spelling is important!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -753,7 +792,7 @@ describe('jspace App', () => {
     runButton.click();
 
     page.getMentorText().then(function (text) {
-      var outputText = 'missing opening bracket after console.log';
+      var outputText = 'Everything that you want to log has to be in brackets. Might you have forgotten some?';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -776,7 +815,7 @@ describe('jspace App', () => {
     runButton.click();
 
     page.getMentorText().then(function (text) {
-      var outputText = 'JSON.stringify missing or not correctly spelled';
+      var outputText = 'The JSON.stringify function helps to read the given object way easier. This time it did not work. Check the spelling!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -799,7 +838,7 @@ describe('jspace App', () => {
     runButton.click();
 
     page.getMentorText().then(function (text) {
-      var outputText = 'probably not printing the object user';
+      var outputText = 'Did you forgot which object we want to print out?';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });

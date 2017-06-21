@@ -28,11 +28,11 @@ export class TaskOxygenDouble extends Task {
     );
   }
 
-  private possibleWrongMentorMessages = ["you should not use the keyword var at beginning",
-    "identifier not oxygen - > are you really using your oxygen?",
-    "syntax -> semicolon",
-    "not multiplicating by 2 -> the result oxygen level is not as expected",
-    "no + or * in code -> are you multiplicating or adding?",
+  private possibleWrongMentorMessages = ["Well, this time we do not need var at the beginning.",
+    "You might have misspelled the identifier or it is not even there!",
+    "Again, with which sign do we tell our compiler that the command ends?",
+    "You gotta double your oxygen level. Everything else than the doubled value is going end up in an error!",
+    "To raise the level of your oxygen you’re only allowed to use two operators to do so. That’s either + for addition or * for multiplication.",
     "There is something in your code which should not be there. It should contain max 6 elements."
   ];
 

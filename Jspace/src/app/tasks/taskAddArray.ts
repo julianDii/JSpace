@@ -30,11 +30,11 @@ export class TaskAddArray extends Task {
     );
   }
 
-  private possibleWrongMentorMessages = ["user.backpack misspelled or other identifiers used", // 0
-    "= probably missing", // 1
+  private possibleWrongMentorMessages = ["There’s something wrong at the beginning of your command. misspelled or used the wrong identifier? Check it.", // 0
+    "Already forgot how to assign values? It is missing here!", // 1
     "opening squared bracket probably missing", // 2
     "closing squared bracket probably missing or the brackets are not empty", // 3
-    "syntax -> semicolon", // 4
+    "This mistake will happen from time to time. You forgot our little friend that we put at the end of every command.", // 4
     "There is something in your code which should not be there. It should contain exactly 7 elements.", // 5
     "Try again! Something went wrong with your code." + "\n" + // 6
     "The array must be empty! A little more help?" + "\n" +

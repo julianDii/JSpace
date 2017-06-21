@@ -29,8 +29,8 @@ export class TaskName extends Task {
     );
   }
 
-  private possibleWrongMentorMessages = ["Oh no, you have probably used some forbidden signs.", "Oh no, your name is too long, " +
-  "it can have only maximal 20 signs.", "Leading numbers are not allowed."];
+  private possibleWrongMentorMessages = ["Oh no, you have probably used some forbidden signs.",
+  "It seems like your name is too long! It shouldn’t contain more than 20 literals.", "A leading number in your name is not allowed! Even R2D2 knows that."];
 
   testTask(json: JSON) {
     console.log('tokenized string:', json);

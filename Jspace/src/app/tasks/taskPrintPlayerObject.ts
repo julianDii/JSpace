@@ -29,11 +29,11 @@ export class TaskPrintPlayerObject extends Task {
         );
     }
 
-    private possibleWrongMentorMessages = ["no console.log at the beginning or not correctly spelled", // 0
-      "missing opening bracket after console.log", // 1
-      "JSON.stringify missing or not correctly spelled", // 2
-      "missing opening bracket after JSON.stringify", // 3
-      "probably not printing the object user", // 4
+    private possibleWrongMentorMessages = ["As said before you need to use the console.log-command to print out an object. Spelling is important!", // 0
+      "Everything that you want to log has to be in brackets. Might you have forgotten some?", // 1
+      "The JSON.stringify function helps to read the given object way easier. This time it did not work. Check the spelling!", // 2
+      "The JSON.stringify also awaits an object in brackets.", // 3
+      "Did you forgot which object we want to print out?", // 4
       "user written as string in '', not as object", // 5
       "closing brackets or semicolon missing at the end", // 6
       "There is something in your code which should not be there. It should contain exactly 12 elements.", // 7
