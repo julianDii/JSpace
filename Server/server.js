@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var esprima = require('esprima');
 var bodyParser = require("body-parser");
-var mongoOp = require("./mongo");
+//var mongoOp = require("./mongo");
 var router = express.Router();
 
 app.use(bodyParser.json());
@@ -76,7 +76,7 @@ app.get('/api/user/parse/:code', function (req, res) {
     res.send(esprima.parse(req.params.code));
 });
 
-app.use('/', router);
+//app.use('/', router);
 
 app.listen(3000);
 console.log("Listening to PORT 3000");

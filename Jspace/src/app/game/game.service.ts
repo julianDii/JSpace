@@ -91,7 +91,7 @@ export class GameService {
           let player = JSON.parse(this.localStorageService.readLocalStorage('player'));
           player.completeTries = this.completeTries;
           this.localStorageService.saveToLocalStorage('player', player);
-          this.dBDDataService.addPlayerToHighscores(player).subscribe();
+          //this.dBDDataService.addPlayerToHighscores(player).subscribe();
         });
     }
   }
@@ -103,7 +103,9 @@ export class GameService {
       this.btnRunHidden = true;
       this.btnNextHidden = true;
       this.mentor.setMentorText('Good bye, old friend. May the Force be with you.');
-      this.dBDDataService.getUserHighscoreData().subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data, null, "\t")));
+      this.aceOutput.setEditorValue('GAME OVER');
+      //this.dBDDataService.getUserHighscoreData().subscribe(data => this.aceOutput.setEditorValue(JSON.stringify(data, null, "\t")));
+      this.localStorageService.resetLocalStorace();
     }
     else {
       this.aceInput.setEditorFocus();

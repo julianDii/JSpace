@@ -30,4 +30,8 @@ export class LocalStorageService {
     resetLocalStorageItem(type:string) {
         localStorage.removeItem(type);
     }
+    
+    resetLocalStorace() {
+        localStorage.clear();
+    }
 }

@@ -112,15 +112,12 @@ export class TaskLoopArray extends Task {
                 for (var i = 0; i < player.backpack.length; i++) {
                     boardcomputer.inventory.push(player.backpack[i]);
                 }
-                player.backpack = [];
-                this.localStorageService.saveToLocalStorage('player', player);
                 this.localStorageService.saveToLocalStorage('boardcomputer', boardcomputer);
 
                 let newMessage = this.getMessageCorrect()
                     + "\n" + "BOARDCOMPUTER: " + JSON.stringify(boardcomputer.inventory);
-
+                    
                 this.setMessageCorrect(newMessage);
-                this.localStorageService.resetLocalStorageItem('player');
             }
 
             return (stringEqualsString(forString, "for")
