@@ -843,4 +843,221 @@ describe('jspace App', () => {
     });
   });
 
+  it('taskAddArray_missingUser_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('backpack = [];')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "There’s something wrong at the beginning of your command. misspelled or used the wrong identifier? Check it.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('taskAddArray_notAssigning_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack[];')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "Already forgot how to assign values? It is missing here!";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('taskAddArray_missingOpeningBrackets_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = ];')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "opening squared bracket probably missing";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('taskAddArray_missingClosingBrackets_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [;')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "closing squared bracket probably missing or the brackets are not empty";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('taskAddArray_missingClosingBrackets_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = []')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "This mistake will happen from time to time. You forgot our little friend that we put at the end of every command.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('taskAddArray_wrongAmountOfElements_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [];uiuiuiui')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "There is something in your code which should not be there. It should contain exactly 7 elements.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('taskAddArray_notEmptyArray_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [uiuiuiui];')
+    runButton.click();
+    browser.sleep(delay);
+
+    page.getMentorText().then(function (text) {
+      var outputText = "closing squared bracket probably missing or the brackets are not empty";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
 });
