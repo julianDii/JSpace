@@ -48,12 +48,12 @@ export class TaskOxygen extends Task {
     );
   }
 
-  private possibleWrongMentorMessages = ["syntax -> semicolon",
-    "outside interval",
-    "value is not number",
-    "syntax -> equal sign",
-    "identifier not oxygen",
-    "at beginning is not var",
+  private possibleWrongMentorMessages = ["Something is missing in your input. Do you remember what we learned to put at the end of every command?",
+    "The oxygen tank can’t be filled with more than 100. And since we want to survive outside, you shouldn’t go out with 0 oxygen!",
+    "I know, we may be in a JavaScript world, but raising our oxygen level with letters or signs different than numbers sounds quite awkward, right?",
+    "How do we assign a value to a statement? Check what you forgot!",
+    "I think you spelled oxygen wrong or it is not even there. Otherwise I can’t tell why the compiler tells us that the identifier is incorrect.",
+    "The system tells me that you forgot a “vary” important word at the very beginning of the command!",
     "There is something in your code which should not be there. It should contain exactly 5 elements."
   ];
 
