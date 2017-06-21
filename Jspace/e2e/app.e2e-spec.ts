@@ -642,7 +642,7 @@ describe('jspace App', () => {
     nextButton.click();
     browser.sleep(delay);
 
-    page.setInputText('var oxygen = oxygen *2;');
+    page.setInputText('var oxygen = oxygen *2');
     runButton.click();
     browser.sleep(delay);
 
