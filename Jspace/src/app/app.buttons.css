@@ -5,7 +5,7 @@ NEXT BUTTON CSS
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0px;
-  font-family: "Nixie One";
+  font-family: "Courier New";
   color: #ffffff;
   font-size: 16px;
   padding: 0.625em 1.250em 0.625em 1.250em;
@@ -27,9 +27,9 @@ RUN BUTTON CSS
 .button {
   height: 9vh;
   width: 13vw;
+  margin-left: 13vw;
   cursor: pointer;
-  margin: 4vh auto;
-  font-family: "Nixie One";
+  font-family: "Courier New";
 }
 
 .button .outer {
