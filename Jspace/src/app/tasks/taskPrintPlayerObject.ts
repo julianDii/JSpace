@@ -34,8 +34,8 @@ export class TaskPrintPlayerObject extends Task {
       "The JSON.stringify function helps to read the given object way easier. This time it did not work. Check the spelling!", // 2
       "The JSON.stringify also awaits an object in brackets.", // 3
       "Did you forgot which object we want to print out?", // 4
-      "user written as string in '', not as object", // 5
-      "closing brackets or semicolon missing at the end", // 6
+      "You can not write your object in ''. In that case it would be intepreted as string, not object.", // 5
+      "Let’s make this quick… look at the end of your command… You should always check closing brackets or semicolon.", // 6
       "There is something in your code which should not be there. It should contain exactly 12 elements.", // 7
       "Check if you are using console.log and JSON.stringify correctly and if you are printing the object user."// 8
     ];

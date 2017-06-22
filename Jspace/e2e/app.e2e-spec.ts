@@ -3,7 +3,7 @@ import { browser, element, by } from 'protractor';
 
 describe('jspace App', () => {
   let page: JspacePage;
-  let delay = 200;
+  let delay = 100;
   let divInput = element(by.id('ace-input'));
   let inputElm = element.all(by.className('ace_text-input')).last();
   let runButton = element(by.id('run'));
@@ -667,7 +667,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'You might have misspelled the identifier or it is not even there!';
+      var outputText = 'You might have misspelled the identifier or it is missing!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -810,7 +810,7 @@ describe('jspace App', () => {
     runButton.click();
     nextButton.click();
     browser.sleep(delay);
-    
+
     page.setInputText('console.log(user)')
     runButton.click();
 

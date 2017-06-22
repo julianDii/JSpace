@@ -44,7 +44,6 @@ export class TaskAddArray extends Task {
   testTask(json: JSON) {
     console.log('tokenized string:', json);
     this.setMentorAnswerWrong(this.possibleWrongMentorMessages[6]);
-    console.log(this.getMentorAnswerWrong());
 
     let expectedIdentifier1 = "user";
     let expectedIdentifier2 = "backpack";
@@ -88,7 +87,7 @@ export class TaskAddArray extends Task {
 
     if (Object.keys(json).length === 6 &&
       stringEqualsString(json[5].value, "]") ||
-      Object.keys(json).length >= 7 &&
+      Object.keys(json).length === 7 &&
       !checkSemicolon(json[6].value)) {
       this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
       return false;

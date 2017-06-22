@@ -32,8 +32,8 @@ export class TaskPrintAlienObject extends Task {
       "The JSON.stringify function helps to read the given object way easier. This time it did not work. Check the spelling!", // 2
       "The JSON.stringify also awaits an object in brackets.", // 3
       "Did you forgot which object we want to print out?", // 4
-      "alien written as string in '', not as object", // 5
-      "closing brackets or semicolon missing at the end", // 6
+      "You can not write your object in ''. In that case it would be intepreted as string, not object.", // 5
+      "Let’s make this quick… look at the end of your command… You should always check closing brackets or semicolon.", // 6
       "There is something in your code which should not be there. It should contain exactly 12 elements.", // 7
       "Check if you are using console.log and JSON.stringify correctly and if you are printing the object alien."// 8
     ];
@@ -43,7 +43,7 @@ export class TaskPrintAlienObject extends Task {
     this.setMentorAnswerWrong(this.possibleWrongMentorMessages[6]);
 
     let codeCorrect = false;
-    let expectedIdentifier = "user";
+    let expectedIdentifier = "alien";
 
     if (Object.keys(json).length < 3) {
       let message = "Whoops! You have forgotten something. The elements you typed in are only " + Object.keys(json).length + "." +
@@ -83,11 +83,11 @@ export class TaskPrintAlienObject extends Task {
     if (Object.keys(json).length === 8 &&
       stringEqualsString(json[7].value, "(") ||
       Object.keys(json).length >= 9) {
-      if (stringEqualsString(json[8].value, "'user'")) {
+      if (stringEqualsString(json[8].value, "'alien'")) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
         return false;
       }
-      if (!stringEqualsString(json[8].value, "user")) {
+      if (!stringEqualsString(json[8].value, "alien")) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
         return false;
       }
