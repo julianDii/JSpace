@@ -5,12 +5,12 @@
     <section id="sectionForMentor">
       <mentor-component></mentor-component>
     </section>
-    <section id="sectionForTerminals" style="/*background-image: url('./assets/img/computer.png')*/">
+    <section id="sectionForTerminals">
       <div id="outputpart">
         <ace-output-component></ace-output-component>
       </div>
       <div id="buttonpart">
-        <img src="./assets/img/Knüppel.png">
+        <img src={{imgPath}}/>
         <div [hidden]='game.btnRunHidden' id="run" class="button">
           <div class="outer">
             <div class="height">
