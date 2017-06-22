@@ -21,23 +21,25 @@ export class TaskOxygenDouble extends Task {
       "Double up your oxygen level.",
 
       "Great! We are good to go now!",
-      "Whoops! Check if you used the right operator and assigned the result to oxygen.",
+      "Whoops! Check if you used the right operator and assigned the result to oxygen. Syntax checking in input terminal might also be of help.",
 
       "You have doubled your oxygen level.",
       "An error happened. Try to double up your oxygen level again."
     );
   }
 
-  private possibleWrongMentorMessages = ["Well, this time we do not need var at the beginning.",
-    "You might have misspelled the identifier or it is not even there!",
-    "Again, with which sign do we tell our compiler that the command ends?",
-    "You gotta double your oxygen level. Everything else than the doubled value is going end up in an error!",
-    "To raise the level of your oxygen you’re only allowed to use two operators to do so. That’s either + for addition or * for multiplication.",
-    "There is something in your code which should not be there. It should contain max 6 elements."
+  private possibleWrongMentorMessages = ["Well, this time we do not need var at the beginning.", // 0
+    "You might have misspelled the identifier or it is missing!", // 1
+    "Again, with which sign do we tell our compiler that the command ends?", // 2
+    "You gotta double your oxygen level. Everything else than the doubled value is going end up in an error!", // 3
+    "To raise the level of your oxygen you’re only allowed to use two operators to do so. That’s either + for addition or * for multiplication.", // 4
+    "There is something in your code which should not be there. It should contain max 6 elements.", // 5
+    "Whoops! Check if you used the right operator and assigned the result to oxygen. Syntax checking in input terminal might also be of help." // 6
   ];
 
   testTask(json: JSON) {
     console.log('tokenized string:', json);
+    this.setMentorAnswerWrong(this.possibleWrongMentorMessages[6]);
 
     let expectedIdentifier = "oxygen";
     let expectedMultiplicator = "2";

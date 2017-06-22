@@ -667,7 +667,7 @@ describe('jspace App', () => {
     browser.sleep(delay);
 
     page.getMentorText().then(function (text) {
-      var outputText = 'You might have misspelled the identifier or it is not even there!';
+      var outputText = 'You might have misspelled the identifier or it is missing!';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
     });
   });
@@ -810,7 +810,7 @@ describe('jspace App', () => {
     runButton.click();
     nextButton.click();
     browser.sleep(delay);
-    
+
     page.setInputText('console.log(user)')
     runButton.click();
 

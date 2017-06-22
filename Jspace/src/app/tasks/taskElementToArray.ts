@@ -20,7 +20,7 @@ export class TaskElementToArray extends Task {
 
       "Well done! You now added an element to your array. Let’s move on.",
 
-      "Something went wrong while adding the element." + "\n" + "Take this example: user.backpack.push(“Monster-Juice”);" + "\n" +
+      "Something went wrong while adding the element." + "\n" + "Take this example: user.backpack.push(“monster-juice”);" + "\n" +
       "Now try again!",
 
       "Nice! Here, your backpack with the added element.",

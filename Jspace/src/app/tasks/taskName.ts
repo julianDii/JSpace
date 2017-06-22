@@ -30,10 +30,13 @@ export class TaskName extends Task {
   }
 
   private possibleWrongMentorMessages = ["Oh no, you have probably used some forbidden signs.",
-  "It seems like your name is too long! It shouldn’t contain more than 20 literals.", "A leading number in your name is not allowed! Even R2D2 knows that."];
+  "It seems like your name is too long! It shouldn’t contain more than 20 literals.",
+    "A leading number in your name is not allowed! Even R2D2 knows that.",];
 
   testTask(json: JSON) {
     console.log('tokenized string:', json);
+    this.setMentorAnswerWrong(this.possibleWrongMentorMessages[0]);
+
     let input: string = json[0].value;
     let remove = removeQuotationMarks(input);
     let codeCorrect = false;

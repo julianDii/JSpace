@@ -48,18 +48,24 @@ export class TaskOxygen extends Task {
     );
   }
 
-  private possibleWrongMentorMessages = ["Something is missing in your input. Do you remember what we learned to put at the end of every command?",
-    "The oxygen tank can’t be filled with more than 100. And since we want to survive outside, you shouldn’t go out with 0 oxygen!",
-    "I know, we may be in a JavaScript world, but raising our oxygen level with letters or signs different than numbers sounds quite awkward, right?",
-    "How do we assign a value to a statement? Check what you forgot!",
-    "I think you spelled oxygen wrong or it is not even there. Otherwise I can’t tell why the compiler tells us that the identifier is incorrect.",
-    "The system tells me that you forgot a “vary” important word at the very beginning of the command!",
-    "There is something in your code which should not be there. It should contain exactly 5 elements."
+  private possibleWrongMentorMessages = ["Something is missing in your input. Do you remember what we learned to put at the end of every command?", // 0
+    "The oxygen tank can’t be filled with more than 100. And since we want to survive outside, you shouldn’t go out with 0 oxygen!", // 1
+    "I know, we may be in a JavaScript world, but raising our oxygen level with letters or signs different than numbers sounds quite awkward, right?", // 2
+    "How do we assign a value to a statement? Check what you forgot!", // 3
+    "I think you spelled oxygen wrong or it is not even there. Otherwise I can’t tell why the compiler tells us that the identifier is incorrect.", // 4
+    "The system tells me that you forgot a “vary” important word at the very beginning of the command!", // 5
+    "There is something in your code which should not be there. It should contain exactly 5 elements.", // 6
+    "Ouch! Something went wrong. " + "\n" + // 7
+    "Please check if you spelled everything in the right way, first. " +
+    "Your statement should contain 5 parts: " + "\n" +
+    "The keyword to declare a variable, the identifier of the variable, " +
+    "the assignment operator, the value of the variable as a number and the semicolon."
   ];
 
   testTask(json: JSON) {
-    let codeCorrect = false;
+    this.setMentorAnswerWrong(this.possibleWrongMentorMessages[7]);
 
+    let codeCorrect = false;
     let expectedIdentifier = 'oxygen';
     let expectedMin = 0;
     let expectedMax = 100;
