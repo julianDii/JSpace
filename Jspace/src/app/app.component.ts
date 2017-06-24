@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   titleOutput = 'Output terminal';
   btnRun = 'Run';
   btnNext = 'Next';
+  imgPath: string = "./assets/img/joystick.png";
 
   @ViewChild(MentorComponent) mentor: MentorComponent;
   @ViewChild(AceInputComponent) aceInput: AceInputComponent;

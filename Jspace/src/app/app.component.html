@@ -1,16 +1,34 @@
 <div class="app-wrapper">
-    <h1>{{title}}</h1>
+  <h1>{{title}}</h1>
+
   <main>
     <section id="sectionForMentor">
       <mentor-component></mentor-component>
     </section>
     <section id="sectionForTerminals">
-      <h2>{{titleOutput}}</h2>
-      <ace-output-component></ace-output-component>
-      <h2>{{titleInput}}</h2>
-      <ace-input-component></ace-input-component>
-      <div [hidden]='game.btnRunHidden' id="run" class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.validateCode()">{{btnRun}}</div></div></div></div>
-      <div [hidden]='game.btnNextHidden' id="next" class="button"><div class="outer"><div class="height"><div class="inner" (click)="game.goToNextTask()">{{btnNext}}</div></div></div></div>
+      <div id="outputpart">
+        <ace-output-component></ace-output-component>
+      </div>
+      <div id="buttonpart">
+        <img src={{imgPath}}/>
+        <div [hidden]='game.btnRunHidden' id="run" class="button">
+          <div class="outer">
+            <div class="height">
+              <div class="inner" (click)="game.validateCode()">{{btnRun}}</div>
+            </div>
+          </div>
+        </div>
+        <div [hidden]='game.btnNextHidden' id="next" class="button">
+          <div class="outer">
+            <div class="height">
+              <div class="inner" (click)="game.goToNextTask()">{{btnNext}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="inputpart">
+        <ace-input-component></ace-input-component>
+      </div>
     </section>
   </main>
 </div>

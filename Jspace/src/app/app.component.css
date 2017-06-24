@@ -32,3 +32,36 @@ main {
 #sectionForTerminals {
   width: 48%;
 }
+
+#sectionForTerminals #outputpart{
+  position: relative;
+  background-color: #FF6633;
+  border: 10px solid #FFFF66;
+  border-bottom: none;
+  height:30vh;
+}
+
+#sectionForTerminals #buttonpart{
+  position: relative;
+  background-color: #FF6633;
+  border: 10px solid #FFFF66;
+  border-bottom: none;
+  border-top: none;
+  height:15vh;
+  perspective: 600px;
+}
+
+#sectionForTerminals #inputpart{
+  position: relative;
+  background-color: #FF6633;
+  border: 10px solid #FFFF66;
+  border-top: none;
+  height:20vh;
+}
+
+#sectionForTerminals img {
+  width: 8%;
+  position: absolute;
+  top: 3%;
+  left: 8%;
+}
