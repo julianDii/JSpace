@@ -7,9 +7,10 @@ machine:
 
 dependencies:
   pre:
-    - cd .. && cd Server &&  npm install express && npm install esprima && npm install body-parser 
-    - cd .. && cd Server && node server.js:
-      backgound: true
+    - cd .. && cd Server && npm install
+    #- cd .. && cd Server &&  npm install express && npm install esprima && npm install body-parser 
+    #- cd .. && cd Server && node server.js:
+    #  backgound: true
     - npm install -g @angular/cli
     - npm install tslib
     - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
