@@ -306,6 +306,7 @@ describe('jspace App', () => {
     });
   });
 
+
   it('taskName_nameWithleadingNumbers_isFalse', () => {
 
     page.setInputText('33kkk');
@@ -837,6 +838,44 @@ describe('jspace App', () => {
     page.setInputText('console.log(JSON.stringify(alien);')
     runButton.click();
 
+    page.getMentorText().then(function (text) {
+      var outputText = 'Did you forgot which object we want to print out?';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskPrintAlienObject_printingNotAlien_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));')
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("console.log(JSON.stringify(user));");
+    runButton.click();
+    
     page.getMentorText().then(function (text) {
       var outputText = 'Did you forgot which object we want to print out?';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
