@@ -9,7 +9,7 @@ dependencies:
   pre:
     
     - cd .. && cd Server &&  npm install express && npm install esprima && npm install body-parser 
-    - cd .. && cd Server && node Server.js
+    - cd .. && cd Server && node server.js
     - npm install -g @angular/cli
     - npm install tslib
     - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
@@ -17,6 +17,6 @@ dependencies:
 test:  
   override:
     - ng test --single-run
-    - cd .. && cd Server && node Server.js
+    - cd .. && cd Server && node server.js
     - ng e2e
     
