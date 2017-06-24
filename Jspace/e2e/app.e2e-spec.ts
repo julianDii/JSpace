@@ -165,8 +165,6 @@ describe('jspace App', () => {
     });
   });
 
-  
-
   it('taskName_nameWithleadingNumbers_isFalse', () => {
 
     page.setInputText('33kkk');

@@ -17,5 +17,6 @@ dependencies:
 test:  
   override:
     - ng test --single-run
+    - cd .. node Server.js
     - ng e2e
     
