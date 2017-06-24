@@ -32,4 +32,5 @@ export class MentorComponent implements OnInit {
   setImgFailure() {
     this.imgPath = "./assets/img/mentor_failure.png";
   }
+
 }

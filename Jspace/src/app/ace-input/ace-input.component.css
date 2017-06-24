@@ -1,3 +1,8 @@
 #ace-input {
-  height: 23vh;
+  height: 15vh;
+  width: 94%;
+  margin:0 auto;
+  position: absolute;
+  top:10%;
+  left:3%;
 }

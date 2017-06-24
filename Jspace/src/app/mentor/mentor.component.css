@@ -8,5 +8,7 @@
 }
 
 #mentor img {
+  position: absolute;
   height: 40vh;
 }
+
