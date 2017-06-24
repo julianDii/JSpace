@@ -2,8 +2,6 @@ general:
   build_dir: Jspace
 
 machine:
-  services:
-    - node
   node:
     version: 7
 
