@@ -15,7 +15,7 @@ dependencies:
    
 test:
   pre:
-    - npm start:
+    - cd .. && cd Server && npm start:
         background: true
     - sleep 5  
   override:
