@@ -7,8 +7,7 @@ machine:
 
 dependencies:
   pre:
-    - cd .. && npm install
-    #- cd .. && cd Server &&  npm install express && npm install esprima && npm install body-parser 
+    - cd .. && cd Server &&  npm install express && npm install esprima && npm install body-parser 
     - cd .. && cd Server && node server.js:
       backgound: true
     - npm install -g @angular/cli
