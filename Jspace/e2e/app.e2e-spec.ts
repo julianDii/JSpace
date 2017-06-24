@@ -230,22 +230,22 @@ describe('jspace App', () => {
     page.setInputText('user.backpack = [];');
     runButton.click();
     nextButton.click();
-    browser.sleep(delay);
+    browser.sleep(600);
 
     page.setInputText("user.backpack.push('aluminium-shard');");
     runButton.click();
     nextButton.click();
-    browser.sleep(delay);
+    browser.sleep(600);
 
     page.setInputText("console.log(JSON.stringify(alien));");
     runButton.click();
     nextButton.click();
-    browser.sleep(delay);
+    browser.sleep(600);
 
     page.setInputText("user.backpack.push(alien.backpack[0]);");
     runButton.click();
     nextButton.click();
-    browser.sleep(delay);
+    browser.sleep(600);
 
     page.getOutputText().then(function (text) {
       var outputText = "Time to transfer our items to the board computer.So that it can calculate the amount of resources and time that we need to repairthe ship.Push the items from our backpack to the inventory of the board computer with afor-loop.";
