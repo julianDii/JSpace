@@ -7,6 +7,7 @@ machine:
 
 dependencies:
   pre:
+    - ../ && cd Server && node server.js
     - npm install -g @angular/cli
     - npm install tslib
     - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
@@ -14,5 +15,5 @@ dependencies:
 test:  
   override:
     - ng test --single-run
-    #- ng e2e
+    - ng e2e
     
