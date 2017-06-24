@@ -7,7 +7,7 @@ machine:
 
 dependencies:
   pre:
-    - ../ && cd Server && node server.js
+    - cd../ && cd Server && node server.js
     - npm install -g @angular/cli
     - npm install tslib
     - curl -s https://raw.githubusercontent.com/chronogolf/circleci-google-chrome/master/use_chrome_stable_version.sh | bash
