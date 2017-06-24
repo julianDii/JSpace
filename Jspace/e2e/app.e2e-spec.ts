@@ -165,6 +165,148 @@ describe('jspace App', () => {
     });
   });
 
+  it('goTo_taskCopyArrayElement', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("console.log(JSON.stringify(alien));");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "Since we move in a JavaScript-galaxy we can just easily copy the item to our backpack-array.Now go on and copy the aluminium-helmet to our backpack-array!";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_TaskLoopArray', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("console.log(JSON.stringify(alien));");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push(alien.backpack[0]);");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "Time to transfer our items to the board computer.So that it can calculate the amount of resources and time that we need to repairthe ship.Push the items from our backpack to the inventory of the board computer with afor-loop.";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+  it('goTo_EndGame', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("console.log(JSON.stringify(alien));");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push(alien.backpack[0]);");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(200);
+
+    page.setInputText("for(var i = 0; i < user.backpack.length; i ++) {boardcomputer.inventory.push(user.backpack[i]);}");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(200);
+
+    page.getOutputText().then(function (text) {
+      var outputText = "GAME OVER";
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+
+    });
+  });
+
+
   it('taskName_nameWithleadingNumbers_isFalse', () => {
 
     page.setInputText('33kkk');
@@ -669,7 +811,7 @@ describe('jspace App', () => {
     runButton.click();
     nextButton.click();
     browser.sleep(delay);
-    
+
     page.setInputText('console.log(user)')
     runButton.click();
 
@@ -696,6 +838,44 @@ describe('jspace App', () => {
     page.setInputText('console.log(JSON.stringify(alien);')
     runButton.click();
 
+    page.getMentorText().then(function (text) {
+      var outputText = 'Did you forgot which object we want to print out?';
+      expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
+    });
+  });
+
+  it('taskPrintAlienObject_printingNotAlien_leadsToCorrect_MentorMessage', function () {
+    page.setInputText('julian');
+    runButton.click();
+    nextButton.click();
+    page.setInputText('var oxygen = 10;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('oxygen = oxygen*2;');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('console.log(JSON.stringify(user));')
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText('user.backpack = [];');
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("user.backpack.push('aluminium-shard');");
+    runButton.click();
+    nextButton.click();
+    browser.sleep(delay);
+
+    page.setInputText("console.log(JSON.stringify(user));");
+    runButton.click();
+    
     page.getMentorText().then(function (text) {
       var outputText = 'Did you forgot which object we want to print out?';
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));

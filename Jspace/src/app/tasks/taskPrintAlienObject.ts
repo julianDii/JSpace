@@ -43,7 +43,7 @@ export class TaskPrintAlienObject extends Task {
     this.setMentorAnswerWrong(this.possibleWrongMentorMessages[6]);
 
     let codeCorrect = false;
-    let expectedIdentifier = "user";
+    let expectedIdentifier = "alien";
 
     if (Object.keys(json).length < 3) {
       let message = "Whoops! You have forgotten something. The elements you typed in are only " + Object.keys(json).length + "." +
@@ -83,11 +83,11 @@ export class TaskPrintAlienObject extends Task {
     if (Object.keys(json).length === 8 &&
       stringEqualsString(json[7].value, "(") ||
       Object.keys(json).length >= 9) {
-      if (stringEqualsString(json[8].value, "'user'")) {
+      if (stringEqualsString(json[8].value, "'alien'")) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[5]);
         return false;
       }
-      if (!stringEqualsString(json[8].value, "user")) {
+      if (!stringEqualsString(json[8].value, "alien")) {
         this.setMentorAnswerWrong(this.possibleWrongMentorMessages[4]);
         return false;
       }

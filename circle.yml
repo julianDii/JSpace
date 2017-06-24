@@ -18,9 +18,7 @@ test:
     - cd .. && cd Server && npm start:
         background: true
     - sleep 5  
+    
   override:
-
     - ng test --single-run
-    
     - ng e2e
-    
