@@ -299,8 +299,8 @@ describe('jspace App', () => {
     nextButton.click();
     browser.sleep(200);
 
-    page.getOutputText().then(function (text) {
-      var outputText = "GAME OVER";
+    page.getMentorText().then(function (text) {
+      var outputText = "Good bye, old friend. May the Force be with you.";
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
 
     });

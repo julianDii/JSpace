@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var esprima = require('esprima');
 var bodyParser = require("body-parser");
-//var mongoOp = require("./mongo");
+var mongoOp = require("./mongo");
 var router = express.Router();
 
 app.use(bodyParser.json());
@@ -41,18 +41,33 @@ router.route("/highscores")
         });
     });
 
+// endpoint updates existing user if name is exsisting
+router.route("/highscores/player")
+    .post(function (req, res) {
+        var db = new mongoOp();
+        var response = {};
+
+        var query = { 'name': req.body.name };
+        db.name = req.body.name;
+
+        mongoOp.findOneAndUpdate(query, req.body, { upsert: true }, function (err, doc) {
+            if (err) return res.send(500, { error: err });
+            return res.send("succesfully saved");
+        });
+    })
+
 // endpoint to get/post scores of all users
 router.route("/highscores/specific")
     .get(function (req, res) {
         var response = {};
-        mongoOp.find({},'name task completeTries -_id ', function (err, data) {
+        mongoOp.find({}, 'name task completeTries -_id ', function (err, data) {
             if (err) {
                 response = { "error": true, "message": "Error fetching name,task,completeTries" };
             } else {
                 response = { "error": false, "message": data };
             }
             res.json(response);
-        }).sort({completeTries:'desc',task:'desc'});
+        }).sort({ completeTries: 'desc', task: 'desc' });
     });
 
 // endpoint for code analyse requests
@@ -76,7 +91,7 @@ app.get('/api/user/parse/:code', function (req, res) {
     res.send(esprima.parse(req.params.code));
 });
 
-//app.use('/', router);
+app.use('/', router);
 
 app.listen(3000);
 console.log("Listening to PORT 3000");
