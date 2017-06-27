@@ -292,12 +292,12 @@ describe('jspace App', () => {
     page.setInputText("user.backpack.push(alien.backpack[0]);");
     runButton.click();
     nextButton.click();
-    browser.sleep(200);
+    browser.sleep(delay);
 
     page.setInputText("for(var i = 0; i < user.backpack.length; i ++) {boardcomputer.inventory.push(user.backpack[i]);}");
     runButton.click();
     nextButton.click();
-    browser.sleep(200);
+    browser.sleep(300);
 
     page.getMentorText().then(function (text) {
       var outputText = "Good bye, old friend. May the Force be with you.";
