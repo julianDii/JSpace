@@ -67,7 +67,7 @@ router.route("/highscores/specific")
                 response = { "error": false, "message": data };
             }
             res.json(response);
-        }).sort({ completeTries: 'desc', task: 'desc' });
+        }).sort({ task: 'desc', completeTries: 'asc' });
     });
 
 // endpoint for code analyse requests
