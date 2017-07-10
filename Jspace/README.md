@@ -17,6 +17,8 @@ npm install
 1. Cors - Is necessary to communicate simultaneously with the FE and BE server. For further information, click this [link](https://de.wikipedia.org/wiki/Cross-Origin_Resource_Sharing).
 Next you should install install the [CORS](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) browser plug-in for chrome.
 
+2. The Server has to be set up and started from another console.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
