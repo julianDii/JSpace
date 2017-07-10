@@ -2,9 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+Projekt
+
+Medieninformatik, SS 2017
+Beuth Hochschule für Technik Berli
+
+
 # install
 
 npm install
+
+# Please note
+
+1. Cors - Is necessary to communicate simultaneously with the FE and BE server. For further information, click this [link](https://de.wikipedia.org/wiki/Cross-Origin_Resource_Sharing).
+Next you should install install the [CORS](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) browser plug-in for chrome.
 
 ## Development server
 
