@@ -3,7 +3,7 @@
 Projekt
 
 Medieninformatik, SS 2017
-Beuth Hochschule für Technik Berli
+Beuth Hochschule für Technik Berlin
 
 
 # install
