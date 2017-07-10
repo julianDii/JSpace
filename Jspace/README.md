@@ -16,6 +16,10 @@ npm install
 Next you should install install the [CORS](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) browser plug-in for chrome.
 
 2. The Server has to be set up and started from another console.
+- So run also npm install inside of the Server package
+- run server with node server.js or npm run dev (in dev mode)
+
+3. MongoDB has to run locally with path data/db
 
 ## Development server
 
