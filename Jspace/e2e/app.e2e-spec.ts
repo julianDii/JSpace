@@ -292,15 +292,15 @@ describe('jspace App', () => {
     page.setInputText("user.backpack.push(alien.backpack[0]);");
     runButton.click();
     nextButton.click();
-    browser.sleep(200);
+    browser.sleep(delay);
 
     page.setInputText("for(var i = 0; i < user.backpack.length; i ++) {boardcomputer.inventory.push(user.backpack[i]);}");
     runButton.click();
     nextButton.click();
-    browser.sleep(200);
+    browser.sleep(300);
 
-    page.getOutputText().then(function (text) {
-      var outputText = "GAME OVER";
+    page.getMentorText().then(function (text) {
+      var outputText = "Good bye, old friend. May the Force be with you.";
       expect(text.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, "")).toEqual(outputText.replace(/ /g, '').replace(/(\r\n|\n|\r)/gm, ""));
 
     });

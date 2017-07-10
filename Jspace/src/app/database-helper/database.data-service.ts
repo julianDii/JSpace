@@ -5,7 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DBDataService {
-    private userHighscoresEndpoint = 'http://localhost:3000/highscores';
+    private userHighscoresEndpoint = 'http://localhost:3000/highscores/specific';
+    private addPlayerEndpoint = 'http://localhost:3000/highscores/player';
 
     constructor(private http: Http) { }
 
@@ -20,7 +21,7 @@ export class DBDataService {
 
     addPlayerToHighscores(data: any): Observable<Response> {
         return this.http.post(
-            this.userHighscoresEndpoint,
+            this.addPlayerEndpoint,
             JSON.stringify(data),
             { headers: this.headers }
         )
